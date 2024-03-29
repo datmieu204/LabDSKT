@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en"                              class="pb-page"          data-request-id="85c2d049-8617-44f2-9214-c8cdf5edb068"  
+>    <head data-pb-dropzone="head"><meta name="pbContext" content=";taxonomy:taxonomy:conference-collections;wgroup:string:ACM Publication Websites;groupTopic:topic:acm-pubtype&gt;proceeding;ctype:string:Book Content;article:article:doi\:10.1109/ICSE-SEIP.2019.00042;issue:issue:doi\:10.5555/3339914;page:string:Article/Chapter View;subPage:string:Abstract;csubtype:string:Conference Proceedings;website:website:dl-site;topic:topic:conference-collections&gt;icse;journal:journal:acmconferences;pageGroup:string:Publication Pages"/>
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/"></link><meta name="dc.Format" content="text/HTML"></meta><meta name="dc.Identifier" scheme="acm-id" content="3339967"></meta><meta name="dc.Identifier" scheme="doi" content="10.1109/ICSE-SEIP.2019.00042"></meta><meta name="dc.Language" content="EN"></meta><meta name="dc.Coverage" content="world"></meta>
+
+
+
+
+<link rel="meta" type="application/atom+xml" href="https://doi.org/10.1109%2FESEM.2007.85"></link>
+<link rel="meta" type="application/rdf+json" href="https://doi.org/10.1109%2FESEM.2007.85"></link>
+<link rel="meta" type="application/unixref+xml" href="https://doi.org/10.1109%2FESEM.2007.85"></link>
+
+
+
+<style id="pb-theme">
+.theme {
+
+}
+</style>
+
+<title>Software engineering for machine learning | Proceedings of the 41st International Conference on Software Engineering: Software Engineering in Practice</title>
+
+
+
+
+<meta charset="UTF-8">
+<meta name="robots" content="noarchive"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <meta property="og:title" content="Software engineering for machine learning | Proceedings of the 41st International Conference on Software Engineering: Software Engineering in Practice"/>
+    
+    
+
+
+
+    
+        <meta property="og:type" content="Chapter"/>
+    
+    
+
+
+
+    
+        <meta property="og:url" content="https://dl.acm.org/doi/10.1109/ICSE-SEIP.2019.00042"/>
+    
+    
+
+
+    
+    
+
+
+
+    
+        <meta property="og:site_name" content="ACM Conferences"/>
+    
+    
+
+
+
+    
+    
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="/products/acm/releasedAssets/css/build-4b49664f6d1e5be020ef.css"/><link rel="stylesheet" href="/products/acm/releasedAssets/css/print-4b49664f6d1e5be020ef.css" media="print"/>
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="/pb-assets/styles/acm-custom-1708713724217.css">
+<link rel="stylesheet" href="/pb-assets/styles/journals-colors-1701100274777.css">
+<link rel="stylesheet" href="/pb-assets/styles/conferences-colors-1693402979777.css">
+<link rel="stylesheet" href="/pb-assets/styles/magazines-colors-1693402979777.css">
+<link rel="stylesheet" href="/pb-assets/styles/sigs-colors-1693402980330.css">
+<script defer src="https://scholar.google.com/scholar_js/casa.js" async></script>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="d5e9e377-b0f2-49fd-b006-d86d5073d17e" data-blockingmode="auto" type="text/javascript"></script>
+<script type="text/javascript">
+    window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+      heap.load("1083010732");
+</script>
+<link rel="apple-touch-icon" sizes="180x180" href="/pb-assets/head-metadata/apple-touch-icon-1574252172393.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/pb-assets/head-metadata/favicon-32x32-1574252172003.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/pb-assets/head-metadata/favicon-16x16-1574252172937.png">
+<link rel="manifest" href="/pb-assets/head-metadata/site-1574252171130.webmanifest" crossorigin="use-credentials">
+<link rel="mask-icon" href="/pb-assets/head-metadata/safari-pinned-tab-1574252171193.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="theme-color" content="#ffffff">
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e539318ac0a38db","token":"b7f168b3cd354a55a4dd51b513830799","version":"2021.12.0","si":100}' crossorigin="anonymous"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon='{"rayId":"7f51c78ba8dacf41","token":"3bb0add5452d43a2b5d4b3d6c628944c","version":"2023.8.0","si":100}' crossorigin="anonymous"></script>
+<!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NFGCMX');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+
+
+</head>
+        <body class="pb-ui website-dl-site">
+
+<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NFGCMX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+
+
+
+
+
+
+
+<a href="#skip-to-main-content" class="sr-only-focusable">skip to main content</a>    <div id="pb-page-content" data-ng-non-bindable>
+        <div data-pb-dropzone="main" data-pb-dropzone-name="Main">
+
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+    
+    
+        <header data-widget-def="ux3-layout-widget" data-widget-id="88f434fd-b4d9-4f0e-b7b6-cde0fadcc9ef" class="header base icse">
+        
+
+
+
+        
+        <div class="header__fixed-items fixed fixed-element">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="c844bab8-b1d5-4df4-8bea-71f6156459e4" class="container header--first-row">
+        
+
+
+
+        
+        <div class="pull-left">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-general-image" data-widget-id="83eada61-9003-4cb3-99a8-a38fa7692761" class="header__logo1">
+        
+
+
+
+        
+        <a href="/" title=""><img id="" alt="ACM Digital Library home" src="/specs/products/acm/releasedAssets/images/acm-dl-logo-white-1ecfb82271e5612e8ca12aa1b1737479.png" loading="eager"/></a>
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-general-image" data-widget-id="5517ee17-e847-46ff-b42e-c5a6754e032d" class="header__logo2">
+        
+
+
+
+        
+        <a href="https://www.acm.org" title=""><img id="" alt="ACM home" src="specs/products/acm/releasedAssets/images/acm-logo-1-ad466e729c8e2a97780337b76715e5cf.png" loading="eager"/></a>
+
+        </div>
+    
+
+</div><div class="pull-right">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="ab4ba9a1-6e57-4b90-b9c2-fc7914d9a3a1" class="header__quick-menu text-onDark">
+        
+
+
+
+        
+        <ul class="rlist--inline"><li class="advanced-search-link hidden-lg hidden-md hidden-sm">
+
+
+
+        
+        <a href="/search/advanced" >Advanced Search</a>
+</li><li class="show-on-mobile">
+
+
+
+        
+        <a href="/browse/" title="browse by title or publisher">Browse</a>
+</li><li class="show-on-mobile">
+
+
+
+        
+        <a href="/about" title="About the ACM Digital Library">About</a>
+</li><li class="login-list">
+
+
+
+        
+        
+
+
+
+
+    
+
+
+
+
+
+
+
+
+    
+    
+        
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+<div class="dropBlock loginBar login-open">
+    <ul class="rlist--inline">
+        <li class="login-link">
+            <a href="/action/showLogin?redirectUri=%2Fdoi%2Fabs%2F10.1109%2FICSE-SEIP.2019.00042%3Fdownload%3Dtrue">
+                Sign in
+            </a>
+        </li>
+        <li class="register-link">
+            
+                
+                
+                    <a href="https://accounts.acm.org?redirectUri=%2Fdoi%2Fabs%2F10.1109%2FICSE-SEIP.2019.00042%3Fdownload%3Dtrue" class="btn" title="Register">
+                        Register
+                    </a>
+                
+            
+        </li>
+    </ul>
+</div>
+
+
+
+    
+
+
+</li></ul>
+
+        </div>
+    
+
+</div>
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="menuWidget" data-widget-id="13da1316-80a7-4370-a291-8968cd9cb35e" class="container header--second-row">
+        
+
+
+
+        
+        <div class="responsive-menu-container clearfix"><div class="left-section pull-left"></div><div class="menu-section"><div class="main-nav responsive-menu-nav"><a href="#global-menu" data-target="global-menu" data-toggle="nav" title="menu drawer"><span class="drawer__icons-box"><span class="drawer__icons-controls"></span></span></a><nav role="navigation" id="global-menu" data-ctrl-res="screen-sm" aria-label="Main Navigation" class="drawer__nav container gutterless hidden-sm hidden-xs"><ul id="menubar" role="menubar" class="menubar rlist--inline"><li role="menuitem" class="hidden-lg hidden-md"><div data-toggle="transplant" data-target-class="hidden-xs hidden-sm" data-target=".header--second-row .quick-search--form" data-direction="from" data-transplant="self" class="quick-search-mobile"></div></li><li role="menuitem" aria-label="Advanced Search" id="menu-item-global-menu-0" class="menu-item mobile-menu-item"><a href="/search/advanced"><span>Advanced Search</span></a></li><li role="menuitem" aria-label="Journals" id="menu-item-global-menu-1" class="menu-item"><a href="/journals"><span>Journals</span></a></li><li role="menuitem" aria-label="Magazines" id="menu-item-global-menu-2" class="menu-item"><a href="/magazines"><span>Magazines</span></a></li><li role="menuitem" aria-label="Proceedings" id="menu-item-global-menu-3" class="menu-item"><a href="/proceedings"><span>Proceedings</span></a></li><li role="menuitem" aria-label="Books" id="menu-item-global-menu-4" class="menu-item"><a href="/acmbooks"><span>Books</span></a></li><li role="menuitem" aria-label="SIGs" id="menu-item-global-menu-5" class="menu-item"><a href="/sigs"><span>SIGs</span></a></li><li role="menuitem" aria-label="Conferences" id="menu-item-global-menu-6" class="menu-item"><a href="/conferences"><span>Conferences</span></a></li><li role="menuitem" aria-label="People" id="menu-item-global-menu-7" class="menu-item"><a href="/people"><span>People</span></a></li><li role="menuitem" class="hidden-lg hidden-md"><div data-toggle="transplant" data-target-class="hidden-xs hidden-sm" data-target=".header__quick-menu .show-on-mobile" data-direction="from" data-transplant="self"></div></li><li role="menuitem" aria-haspopup="true" aria-label="More" class="dropdown-more hidden dropdown menu-parent"><a href="#" title="More" data-toggle="dropdown" class="dropdown__toggle"><span>More</span><i aria-hidden="true" class="icon-section_arrow_d pull-right hidden-sm hidden-xs"></i></a><ul aria-labelledby="main0-1" aria-hidden="true" role="menu" class="rlist dropdown__menu"></ul></li><li role="menuitem" class="menubar__extra-mob-links"></li></ul></nav></div></div><div class="right-section pull-right">
+
+
+
+        
+        <div class="quickSearchFormContainer"><div class="quick-search"><div class="clearfix quick-search__clearfix"><form action="/action/doSearch" name="defaultQuickSearch" method="get" title="Quick Search" class="quick-search--form"><div class="quick-search--input"><div class="input-group option-0"><label for="AllFieldf73847c0-d936-48ec-9bf9-139b3828507f" class="sr-only">Search ACM Digital Library</label><input type="search" autocomplete="off" id="AllFieldf73847c0-d936-48ec-9bf9-139b3828507f" name="AllField" placeholder="Search ACM Digital Library" data-auto-complete-max-words="7" data-auto-complete-max-chars="32" data-contributors-conf="3" data-topics-conf="3" data-publication-titles-conf="3" data-history-items-conf="3" data-group-titles-conf="3" value="" class="auto-complete quick-search__input"/></div></div><div class="quick-search--button"><button type="submit" title="Search" aria-label="Search" class="btn quick-search__button icon-Icon_Search"><span class="sr-only">Search</span><span>Search</span></button></div></form></div>
+
+
+
+        
+        <a class="quick-search__advancedHeader" title="link to Advanced Search form" href="/search/advanced">Advanced Search</a>
+</div></div>
+</div></div><div class="header__dropzone"></div>
+
+        </div>
+    
+
+
+
+
+
+        
+        <span style="display: none;">10.1109/ICSE-SEIP.2019.00042</span><span style="display: none;">acmconferences</span><span style="display: none;">Article/Chapter View</span><span style="display: none;">Abstract</span><span style="display: none;">Publication Pages</span><span style="display: none;">icse</span><span style="display: none;">Conference Proceedings</span><span style="display: none;">conference-collections</span><div class="sub-nav fixed-element"><a href="#" data-db-target-for="sub-nav__items" data-more="false" data-lines="1" style="text-transform: uppercase;" class="sub-nav__toggle hidden-lg truncate-text-css">icse</a><div class="sub-nav__container"><div class="container"><div data-ctrl-res="screen-md" class="responsive-menu-container"><div class="left-section pull-left"></div><div class="menu-section"><div style="display: block" class="responsive-menu-nav"><nav id="sub-nav__items" data-db-target-of="sub-nav__items" class="sub-nav__holder drawer__nav"><ul role="menu" class="rlist--inline menubar"><li role="menuitem"><a href="/conference/icse" class="sub-nav__item">Conference</a></li><li role="menuitem"><a href="/conference/icse/proceedings" class="sub-nav__item">Proceedings</a></li><li role="menuitem"><a href="/conference/icse/upcoming" class="sub-nav__item">Upcoming Events</a></li><li role="menuitem"><a href="/conference/icse/authors" class="sub-nav__item">Authors</a></li><li role="menuitem"><a href="/conference/icse/affiliations" class="sub-nav__item">Affiliations</a></li><li role="menuitem"><a href="/conference/icse/award-winners" class="sub-nav__item">Award Winners</a></li><li role="menuitem" aria-haspopup="true" aria-label="More" class="dropdown-more hidden dropdown menu-parent"><a href="#" title="More" data-toggle="dropdown" class="dropdown__toggle hidden-md hidden-sm hidden-xs"><span>More</span><i aria-hidden="true" class="icon-section_arrow_d"></i></a><ul aria-labelledby="main0-1" aria-hidden="true" role="menu" class="rlist dropdown__menu visible-md visible-sm visible-xs"></ul></li></ul></nav></div></div><div class="right-section hidden-md hidden-sm hidden-xs"></div></div></div></div><div class="hidden-xs hidden-sm"><div class="progress-bar--wrapper"><div style="width: 0.116818%;" class="progress-bar"></div></div></div></div>
+</div><div></div><div class="banner conference-landing"></div><div class="header-breadcrumb">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="f5f275c5-a862-48bf-8119-8528d04615da" class="container">
+        
+
+
+
+        
+        <div>
+
+
+
+        
+        
+
+
+
+        
+        <nav aria-label="Breadcrumbs" class="article__breadcrumbs separator"><ul><li><a href="https://dl.acm.org/" class="article__tocHeading">Home</a></li><li><a href="/conferences" class="article__tocHeading">Conferences</a></li><li><a href="/conference/icse" class="article__tocHeading">ICSE</a></li><li><a href="/conference/icse/proceedings" class="article__tocHeading">Proceedings</a></li><li><a href="/doi/proceedings/10.5555/3339914" class="article__tocHeading">ICSE-SEIP '19</a></li><li><a href="/doi/abs/10.1109/ICSE-SEIP.2019.00042?download=true" aria-current="page" class="article__tocHeading">Software engineering for machine learning: a case study</a></li></ul></nav>
+
+</div>
+
+        </div>
+    
+
+</div>
+
+        </header>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="84fac94e-a290-4bf2-9ff9-7edc8316a494" id="skip-to-main-content">
+        
+
+
+
+        
+        <main class="content icse loi-page no-margin">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-publicationContent-widget" data-widget-id="f69d88a8-b404-4aae-83a9-9acea4426d78" class="container">
+        
+
+
+
+        
+        <article data-enable-mathjax="true" data-citationInfo="/action/acmCitationInfo?widgetId=f69d88a8-b404-4aae-83a9-9acea4426d78&ajax=true&doi=10.1109%2FICSE-SEIP.2019.00042&pbContext=%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3Bctype%3Astring%3ABook+Content%3Barticle%3Aarticle%3Adoi%5C%3A10.1109%2FICSE-SEIP.2019.00042%3Bissue%3Aissue%3Adoi%5C%3A10.5555%2F3339914%3Bpage%3Astring%3AArticle%2FChapter+View%3BsubPage%3Astring%3AAbstract%3Bcsubtype%3Astring%3AConference+Proceedings%3Bwebsite%3Awebsite%3Adl-site%3Btopic%3Atopic%3Aconference-collections%26gt%3Bicse%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages" data-proceedingInfo="/action/proceedingArticleMeta?widgetId=f69d88a8-b404-4aae-83a9-9acea4426d78&ajax=true&doi=10.1109%2FICSE-SEIP.2019.00042&pbContext=%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3Bctype%3Astring%3ABook+Content%3Barticle%3Aarticle%3Adoi%5C%3A10.1109%2FICSE-SEIP.2019.00042%3Bissue%3Aissue%3Adoi%5C%3A10.5555%2F3339914%3Bpage%3Astring%3AArticle%2FChapter+View%3BsubPage%3Astring%3AAbstract%3Bcsubtype%3Astring%3AConference+Proceedings%3Bwebsite%3Awebsite%3Adl-site%3Btopic%3Atopic%3Aconference-collections%26gt%3Bicse%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages"><div class="row"><div class="col-md-2 col-sm-3"></div><div class="col-md-8 col-sm-7"><div class="article-citations"><div class="citation"><div class="issue-item__citation clearfix"><span class="issue-heading">research-article </span><span class="article__access ml-3"><span></span></span>
+
+
+
+        
+        <!-- Go to https://www.addtoany.com/buttons/customize/ to customize your tools --><script type="text/javascript" defer="defer" src="https://static.addtoany.com/menu/page.js"></script><div class="share__block share__inline-links"><div class="pb-dropzone" data-pb-dropzone="shareBlock" title="shareBlock"></div><span class="sr-only">Share on</span><ul class="rlist--inline a2a a2a_kit a2a_kit_size_32 a2a_default_style"><li class="a2a_listitem_custom"><a role="link" title="twitter" class="a2a_button_twitter"><i aria-hidden="true" class="at-icon-wrapper icon-Icon_Twitter"></i></a></li><li class="a2a_listitem_custom"><a role="link" title="linkedin" class="a2a_button_linkedin"><i aria-hidden="true" class="at-icon-wrapper icon-linkedin"></i></a></li><li class="a2a_listitem_custom"><a role="link" title="reddit" class="a2a_button_reddit"><i aria-hidden="true" class="at-icon-wrapper icon-riddit-filled"></i></a></li><li class="a2a_listitem_custom"><a role="link" title="facebook" class="a2a_button_facebook"><i aria-hidden="true" class="at-icon-wrapper icon-Icon_Facebook"></i></a></li><li class="a2a_listitem_custom"><a role="link" title="email" class="a2a_button_email"><i aria-hidden="true" class="at-icon-wrapper icon-Icon_mail"></i></a></li><div class="pb-dropzone" data-pb-dropzone="share-additional-links" title="share-additional-links"></div></ul></div>
+</div><div class="border-bottom clearfix"><h1 class="citation__title">Software engineering for machine learning: a case study</h1></div><div class="border-bottom clearfix"> <div id="sb-1"> <ul data-lines="2" ariaa-label="authors" class="rlist--inline loa truncate-list"> <li class="label"><b>Authors: </b></li> <li class="loa__item"><a id="arnd_4804789061925765_Ctrl" href="javascript:void(0);" aria-controls="arnd_4804789061925765" aria-haspopup="true" class="author-name" title="Saleema Amershi"><span class="loa__author-info"> <div class="author-data"><span class="loa__author-name"><span><img class="author-picture" src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" width="24" height="24" alt="Author Picture" aria-hidden="true"/>Saleema Amershi</span></span></div><span class="loa_author_inst"> <p data-pill-inst="arnd_4804789061925765" data-doi="10.1145/contrib-81323487634">Microsoft Research</p></span></span></a><div id="arnd_4804789061925765" aria-labelledby="arnd_4804789061925765_Ctrl" class="author-info"> <div class="author-info__header" data-pill="d26482878e95"></div> <div class="author-info__body"> <p data-pill-inst="d26482878e95" data-doi="10.1145/contrib-81323487634">Microsoft Research</p><a href="/profile/81323487634" class="btn blue stretched">View Profile</a></div> </div><span>,</span></li> <li class="loa__item"><a id="arnd_4804789063887223_Ctrl" href="javascript:void(0);" aria-controls="arnd_4804789063887223" aria-haspopup="true" class="author-name" title="Andrew Begel"><span class="loa__author-info"> <div class="author-data"><span class="loa__author-name"><span><img class="author-picture" src="/action/showDoPubAsset?doi=10.1145/contrib-81100179596&format=rel-imgonly&assetId=andy-face-square.jpg" width="24" height="24" alt="Author Picture" aria-hidden="true"/>Andrew Begel</span></span></div><span class="loa_author_inst"> <p data-pill-inst="arnd_4804789063887223" data-doi="10.1145/contrib-81100179596">Microsoft Research</p></span></span></a><div id="arnd_4804789063887223" aria-labelledby="arnd_4804789063887223_Ctrl" class="author-info"> <div class="author-info__header" data-pill="d26482878e109"></div> <div class="author-info__body"> <p data-pill-inst="d26482878e109" data-doi="10.1145/contrib-81100179596">Microsoft Research</p><a href="/profile/81100179596" class="btn blue stretched">View Profile</a></div> </div><span>,</span></li> <li class="loa__item"><a id="arnd_4804789067131583_Ctrl" href="javascript:void(0);" aria-controls="arnd_4804789067131583" aria-haspopup="true" class="author-name" title="Christian Bird"><span class="loa__author-info"> <div class="author-data"><span class="loa__author-name"><span><img class="author-picture" src="/action/showDoPubAsset?doi=10.1145/contrib-81450592307&format=rel-imgonly&assetId=me.jpeg" width="24" height="24" alt="Author Picture" aria-hidden="true"/>Christian Bird</span></span></div><span class="loa_author_inst"> <p data-pill-inst="arnd_4804789067131583" data-doi="10.1145/contrib-81450592307">Microsoft Research</p></span></span></a><div id="arnd_4804789067131583" aria-labelledby="arnd_4804789067131583_Ctrl" class="author-info"> <div class="author-info__header" data-pill="d26482878e125"></div> <div class="author-info__body"> <p data-pill-inst="d26482878e125" data-doi="10.1145/contrib-81450592307">Microsoft Research</p><a href="/profile/81450592307" class="btn blue stretched">View Profile</a></div> </div><span>,</span></li> <li class="loa__item"><a id="arnd_4804789069152492_Ctrl" href="javascript:void(0);" aria-controls="arnd_4804789069152492" aria-haspopup="true" class="author-name" title="Robert DeLine"><span class="loa__author-info"> <div class="author-data"><span class="loa__author-name"><span><img class="author-picture" src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" width="24" height="24" alt="Author Picture" aria-hidden="true"/>Robert DeLine</span></span></div><span class="loa_author_inst"> <p data-pill-inst="arnd_4804789069152492" data-doi="10.1145/contrib-81350602833">Microsoft Research</p></span></span></a><div id="arnd_4804789069152492" aria-labelledby="arnd_4804789069152492_Ctrl" class="author-info"> <div class="author-info__header" data-pill="d26482878e139"></div> <div class="author-info__body"> <p data-pill-inst="d26482878e139" data-doi="10.1145/contrib-81350602833">Microsoft Research</p><a href="/profile/81350602833" class="btn blue stretched">View Profile</a></div> </div><span>,</span></li> <li class="loa__item"><a id="arnd_4804789070883757_Ctrl" href="javascript:void(0);" aria-controls="arnd_4804789070883757" aria-haspopup="true" class="author-name" title="Harald Gall"><span class="loa__author-info"> <div class="author-data"><span class="loa__author-name"><span><img class="author-picture" src="/action/showDoPubAsset?doi=10.1145/contrib-81408593089&format=rel-imgonly&assetId=hcg-tse.jpg" width="24" height="24" alt="Author Picture" aria-hidden="true"/>Harald Gall</span></span></div><span class="loa_author_inst"> <p data-pill-inst="arnd_4804789070883757" data-doi="10.1145/contrib-81408593089">University of Zurich, Zurich, Switzerland</p></span></span></a><div id="arnd_4804789070883757" aria-labelledby="arnd_4804789070883757_Ctrl" class="author-info"> <div class="author-info__header" data-pill="d26482878e153"></div> <div class="author-info__body"> <p data-pill-inst="d26482878e153" data-doi="10.1145/contrib-81408593089">University of Zurich, Zurich, Switzerland</p><a href="/profile/81408593089" class="btn blue stretched">View Profile</a></div> </div><span>,</span></li> <li class="loa__item"><a id="arnd_4804789073586519_Ctrl" href="javascript:void(0);" aria-controls="arnd_4804789073586519" aria-haspopup="true" class="author-name" title="Ece Kamar"><span class="loa__author-info"> <div class="author-data"><span class="loa__author-name"><span><img class="author-picture" src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" width="24" height="24" alt="Author Picture" aria-hidden="true"/>Ece Kamar</span></span></div><span class="loa_author_inst"> <p data-pill-inst="arnd_4804789073586519" data-doi="10.1145/contrib-81365597792">Microsoft Research</p></span></span></a><div id="arnd_4804789073586519" aria-labelledby="arnd_4804789073586519_Ctrl" class="author-info"> <div class="author-info__header" data-pill="d26482878e169"></div> <div class="author-info__body"> <p data-pill-inst="d26482878e169" data-doi="10.1145/contrib-81365597792">Microsoft Research</p><a href="/profile/81365597792" class="btn blue stretched">View Profile</a></div> </div><span>,</span></li> <li class="loa__item"><a id="arnd_4804789075488614_Ctrl" href="javascript:void(0);" aria-controls="arnd_4804789075488614" aria-haspopup="true" class="author-name" title="Nachiappan Nagappan"><span class="loa__author-info"> <div class="author-data"><span class="loa__author-name"><span><img class="author-picture" src="/action/showDoPubAsset?doi=10.1145/contrib-81100257124&format=rel-imgonly&assetId=nachi_1.jpg" width="24" height="24" alt="Author Picture" aria-hidden="true"/>Nachiappan Nagappan</span></span></div><span class="loa_author_inst"> <p data-pill-inst="arnd_4804789075488614" data-doi="10.1145/contrib-81100257124">Microsoft Research</p></span></span></a><div id="arnd_4804789075488614" aria-labelledby="arnd_4804789075488614_Ctrl" class="author-info"> <div class="author-info__header" data-pill="d26482878e183"></div> <div class="author-info__body"> <p data-pill-inst="d26482878e183" data-doi="10.1145/contrib-81100257124">Microsoft Research</p><a href="/profile/81100257124" class="btn blue stretched">View Profile</a></div> </div><span>,</span></li> <li class="loa__item"><a id="arnd_4804789077295021_Ctrl" href="javascript:void(0);" aria-controls="arnd_4804789077295021" aria-haspopup="true" class="author-name" title="Besmira Nushi"><span class="loa__author-info"> <div class="author-data"><span class="loa__author-name"><span><img class="author-picture" src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" width="24" height="24" alt="Author Picture" aria-hidden="true"/>Besmira Nushi</span></span></div><span class="loa_author_inst"> <p data-pill-inst="arnd_4804789077295021" data-doi="10.1145/contrib-81490688211">Microsoft Research</p></span></span></a><div id="arnd_4804789077295021" aria-labelledby="arnd_4804789077295021_Ctrl" class="author-info"> <div class="author-info__header" data-pill="d26482878e197"></div> <div class="author-info__body"> <p data-pill-inst="d26482878e197" data-doi="10.1145/contrib-81490688211">Microsoft Research</p><a href="/profile/81490688211" class="btn blue stretched">View Profile</a></div> </div><span>,</span></li> <li class="loa__item"><a id="arnd_4804789080472175_Ctrl" href="javascript:void(0);" aria-controls="arnd_4804789080472175" aria-haspopup="true" class="author-name" title="Thomas Zimmermann"><span class="loa__author-info"> <div class="author-data"><span class="loa__author-name"><span><img class="author-picture" src="/action/showDoPubAsset?doi=10.1145/contrib-81100591561&format=rel-imgonly&assetId=tom_z.jpg" width="24" height="24" alt="Author Picture" aria-hidden="true"/>Thomas Zimmermann</span></span></div><span class="loa_author_inst"> <p data-pill-inst="arnd_4804789080472175" data-doi="10.1145/contrib-81100591561">Microsoft Research</p></span></span></a><div id="arnd_4804789080472175" aria-labelledby="arnd_4804789080472175_Ctrl" class="author-info"> <div class="author-info__header" data-pill="d26482878e213"></div> <div class="author-info__body"> <p data-pill-inst="d26482878e213" data-doi="10.1145/contrib-81100591561">Microsoft Research</p><a href="/profile/81100591561" class="btn blue stretched">View Profile</a></div> </div> </li> </ul><a href="#pill-authors__contentcon" data-slide-target="#pill-information" data-full-screen="false" data-ctrl-res="screen-xlg" data-tab="pill-authors__content" data-label="<i class='icon-Icon_Information'&gt;</i&gt; Information &amp; Authors" class="loa__link w-slide__btn tab-link slide-active">Authors Info &amp; Claims </a></div> </div> <div class="border-bottom clearfix"><div class="issue-item__detail"><a href="/doi/proceedings/10.5555/3339914" title="ICSE-SEIP '19: Proceedings of the 41st International Conference on Software Engineering: Software Engineering in Practice"><span class="epub-section__title">ICSE-SEIP '19: Proceedings of the 41st International Conference on Software Engineering: Software Engineering in Practice</span></a><span class="dot-separator"><span class="epub-section__date">May 2019</span></span><span class="dot-separator"><span class="epub-section__pagerange">Pages   291–300</span></span><span class="dot-separator"><a href="https://doi.org/10.1109/ICSE-SEIP.2019.00042" class="issue-item__doi">https://doi.org/10.1109/ICSE-SEIP.2019.00042</a></span></div></div><div class="border-bottom clearfix"><span class="bold label">Published:</span><span class="CitationCoverDate">27 May 2019</span><a href="#" data-slide-target="#pill-information" data-ctrl-res="screen-xlg" data-full-screen="false" data-tab="pill-information__content" data-label="&lt;i class='icon-Icon_Information '&gt;&lt;/i&gt;Information &amp; Authors" class="publication-history-link w-slide__btn tab-link">Publication History</a><a data-target="crossmark"><img alt="Check for updates on crossmark" src="/specs/products/acm/releasedAssets/images/CROSSMARK_Color_horizontal-af7f62da74558dc5bb646a88e85ed60d.svg" class="crossmark__logo mt-sm-2 mt-xs-2 ml-lg-5"/></a></div>
+
+
+
+        
+        
+<div class="border-bottom clearfix"><div class="issue-item__footer"><div class="issue-item__footer-info pull-left"><div tabindex="0" class="tooltip"><ul title="Click to stay open" class="rlist--inline"><li><span class="citation"><i aria-hidden="true" class="icon-quote"></i><span>150</span><span class="sr-only">citation</span></span></li><li><span class="metric"><i aria-hidden="true" class="icon-metric"></i><span>1,069</span></span></li><li><span class="sr-only">Downloads</span></li></ul><div class="tooltip__body"><span class="arrow"></span><div class="left-bordered-title">Metrics</div><a href="#" data-slide-target="#pill-metric" data-ctrl-res="screen-xlg" data-full-screen="false" data-tab="pill-citations__content" title="See Bibliometrics &amp; Citations section" data-label="&lt;i class=&quot;icon-metric &quot;&gt;&lt;/i&gt;Bibliometrics &amp; Citations" class="w-slide__btn tab-link"><div class="citation">Total Citations<span class="bold">150</span></div></a><a href="#" data-slide-target="#pill-metric" data-ctrl-res="screen-xlg" data-full-screen="false" data-tab="pill-bibliometrics__content" title="See Bibliometrics &amp; Citations section" data-label="&lt;i class=&quot;icon-metric &quot;&gt;&lt;/i&gt;Bibliometrics &amp; Citations" class="w-slide__btn tab-link"><div class="metric">Total Downloads<span class="bold">1,069</span></div></a><div class="info">Last 12 Months<span class="bold">91</span></div><div class="info">Last 6 weeks<span class="bold">9</span></div></div></div></div><div class="issue-item__footer-links pull-right"><ul class="rlist--inline">
+
+
+
+        
+        <li role="menu" class="article-tool"><a id="manageAlert__crtl" href="/action/addCitationAlert?doi=10.1109/ICSE-SEIP.2019.00042" data-toggle="modal" role="menuitem" data-title="Get Citation Alerts" data-target="#manageAlert" aria-label="Get Citation Alerts" class="btn--icon simple-tooltip__block--b"><i aria-hidden="true" class="icon-Icon_Alerts"></i><span class="visibility-hidden">Get Citation Alerts</span></a><div role="dialog" aria-labelledby="id-hatemile-navigation-6073290063892647-6" class="ux-modal-container"><div id="manageAlert" class="modal"><div class="modal__dialog"><div class="modal__dialog--success hidden"><div class="modal__header"><button type="button" data-dismiss="modal" aria-label="close popup" class="close"><i aria-hidden="true" class="icon-close_thin"></i></button><a id="id-hatemile-navigation-6073290063892647-7" name="id-hatemile-navigation-6073290063892647-7" data-headinganchorfor="id-hatemile-navigation-6073290063892647-6" class="heading-anchor"></a><h2 id="id-hatemile-navigation-6073290063892647-6">New Citation Alert added!</h2></div><div class="modal__body"><p>This alert has been successfully added and will be sent to:<span class="email"></span></p><p>You will be notified whenever a record that you have chosen has been cited.</p></div><div class="modal__footer"><p>To manage your alert preferences, click on the button below.</p><a href="/action/showPreferences?menuTab=Alerts" title="Manage my Alerts" id="id-hatemile-display-1019331959102511-5" class="btn blue big stretched manageAlert__btn"><span data-attributetitleof="id-hatemile-display-1019331959102511-5" class="force-read-before">Manage my Alerts</span></a></div></div><div class="modal__dialog--error hidden"><div class="modal__header"><button type="button" data-dismiss="modal" aria-label="close popup" class="close"><i aria-hidden="true" class="icon-close_thin"></i></button><a id="id-hatemile-navigation-6073290063892647-9" name="id-hatemile-navigation-6073290063892647-9" data-headinganchorfor="id-hatemile-navigation-6073290063892647-8" class="heading-anchor"></a><h2 id="id-hatemile-navigation-6073290063892647-8">New Citation Alert!</h2></div><div class="modal__body"><p>Please <a href="/action/showLogin?redirectUri=/doi/abs/10.1109/ICSE-SEIP.2019.00042?download=true" title="Sign In" class="link">log in to your account</a></p></div></div></div></div></div></li>
+<li role="menu" class="article-tool"><button role="menuitem" data-title="Save to Binder" data-db-target-for="save-to-binder" data-link="/action/binderList?doi=10.1109/ICSE-SEIP.2019.00042" aria-label="save to binder" class="btn--icon simple-tooltip__block--b saveToBinders"><i aria-hidden="true" class="icon-add-folder"></i></button></li><li role="menu" class="article-tool"><button role="menuitem" data-title="Export Citation" data-toggle="modal" data-target="#exportCitation" aria-label="Export Citations" class="btn--icon simple-tooltip__block--b"><i aria-hidden="true" class="icon-quote"></i><input type="hidden" name="doiVal" value="10.1109/ICSE-SEIP.2019.00042"/></button></li><li class="publisher-site article-tool"><a href="#" class="btn blue"><span>Publisher Site</span><i aria-hidden="true" class="icon-export"></i></a></li></ul><ul class="rlist--inline right"><li><input type="hidden" id="formatsCount" value="2"/></li><li><a href="javascript:void(0);" data-slide-target="#pill-access" data-ctrl-res="screen-xlg" data-full-screen="false" data-label="&lt;i class=&quot;icon-get-access&quot;&gt;&lt;/i&gt;Get Access" title="Get Access" class="get-access w-slide__btn"><i class="icon-get-access"></i><span>Get Access</span></a></li></ul></div></div></div></div></div></div><div class="col-sm-2"></div></div><div class="row"><div class="col-md-2 col-sm-3 sidebar-section article-sidebar-section"><div class="article__sections"><div class="sections-box"><div><div class="sections-box__static-items"><div class="parent-item"><h2 class="parent-item__title"><a href="/doi/proceedings/10.5555/3339914" data-lines="2" data-title="ICSE-SEIP '19: Proceedings of the 41st International Conference on Software Engineering: Software Engineering in Practice" class="simple-tooltip__inline--r truncate-text-css">ICSE-SEIP '19: Proceedings of the 41st International Conference on Software Engineering: Software Engineering in Practice</a></h2><span href="/doi/proceedings/10.5555/3339914" data-lines="2" data-title="Software engineering for machine learning: a case study" class="parent-item__subtitle simple-tooltip__inline--r truncate-text-css">Software engineering for machine learning: a case study</span><div class="pageRange">Pages   291–300</div></div>
+
+
+
+        
+        <div class="content-navigation clearfix"><a href="/doi/10.1109/ICSE-SEIP.2019.00041" title="Previous item in TOC" class="content-navigation__btn--pre "><span><i class="icon-Arrow-Stroke"></i></span><span class="control">Previous</span><span class="type">Chapter</span></a><a href="/doi/10.1109/ICSE-SEIP.2019.00043" title="Next item in TOC" class="content-navigation__btn--next "><span class="control">Next</span><span class="type">Chapter</span><span><i class="icon-Arrow-Stroke"></i></span></a></div>
+</div><div class="sections-block scroll-to-target"></div></div><div class="logo"><img src="/specs/products/acm/releasedAssets/images/footer-logo1-45ae33115db81394d8bd25be65853b77.png" alt="ACM Digital Library" title="ACM Digital Library"/></div></div></div></div><div class="col-md-8 col-sm-7 sticko__side-content"><div class="stickybar__original__position"></div><nav class="stickybar coolBar trans visible-xs visible-sm"><div class="stickybar__wrapper coolBar__wrapper clearfix"><div class="coolBar__section"><a id="article_Ctrl" href="#" data-db-target-for="article-sec_Pop" role="button" aria-expanded="false" aria-label="Sections Menu" class="coolBar__ctrl"><i class="icon-burger"></i></a><div id="article_Pop" data-db-target-of="article-sec_Pop" aria-hidden="true" class="coolBar__drop fixed rlist"><div data-target=".article__sections" data-remove="false" data-target-class="hidden-xs hidden-sm" data-toggle="transplant" data-direction="from" data-transplant="self" class="transplant showit"></div></div></div><div data-target=".pill-section .pill-list" data-remove="false" data-target-class="hidden-xs hidden-sm" data-toggle="transplant" data-direction="from" data-transplant="self" class="transplant showit"></div></div></nav><div class="article__body"><!-- abstract content --><div class="hlFld-Abstract"><div class="article__section article__abstract hlFld-Abstract"><div class="colored-block__title"><h2 id="d26483099e1" class="section__title left-bordered-title">ABSTRACT</h2></div><div class="abstractSection abstractInFull">
+		<p>Recent advances in machine learning have stimulated widespread interest within the Information Technology sector on integrating AI capabilities into software and services. This goal has forced organizations to evolve their development processes. We report on a study that we conducted on observing software teams at Microsoft as they develop AI-based applications. We consider a nine-stage workflow process informed by prior experiences developing AI applications (e.g., search and NLP) and data science tools (e.g. application diagnostics and bug reporting). We found that various Microsoft teams have united this workflow into preexisting, well-evolved, Agile-like software engineering processes, providing insights about several essential engineering challenges that organizations may face in creating large-scale AI solutions for the marketplace. We collected some best practices from Microsoft teams to address these challenges. In addition, we have identified three aspects of the AI domain that make it fundamentally different from prior software application domains: 1) discovering, managing, and versioning the data needed for machine learning applications is much more complex and difficult than other types of software engineering, 2) model customization and model reuse require very different skills than are typically found in software teams, and 3) AI components are more difficult to handle as distinct modules than traditional software components --- models may be "entangled" in complex ways and experience non-monotonic error behavior. We believe that the lessons learned by Microsoft teams will be valuable to other organizations.</p>
+	</div></div></div><!-- /abstract content --><div class="pb-dropzone" data-pb-dropzone="pubContentAccessDenialDropzone"><!-- Empty dropzone --></div><div class="article__section article__references show-more-items" data-sectionname="References"><p class="explanation__text"></p><div class="colored-block__title"><a id="SEC_refrences" class="sr-only-focusable"></a><h2 id="sec-ref" class="section__title left-bordered-title">
+                    References
+                </h2></div><ol class="rlist references__list references__numeric"><li id="ref-00001" class="&#xA;                references__item&#xA;            "><span class="references__note">M. Salvaris, D. Dean, and W. H. Tok, "Microsoft AI Platform," in <i>Deep Learning with Azure.</i> Springer, 2018, pp. 79--98.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=M.+Salvaris%2C+D.+Dean%2C+and+W.+H.+Tok%2C+%22Microsoft+AI+Platform%2C%22+in+Deep+Learning+with+Azure.+Springer%2C+2018%2C+pp.+79%2D%2D98."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/servlet/linkout?suffix=e_1_3_2_1_1_1&amp;dbid=16&amp;doi=10.1109%2FICSE-SEIP.2019.00042&amp;key=10.1007%2F978-1-4842-3679-6_4" target="_blank"><span class="visibility-hidden">Cross Ref</span><img class="simple-tooltip__block--b" data-title="Cross Ref" alt="Cross Ref" src="/templates/jsp/_ux3/_acm/images/crossref_icon.svg"/></a></span></span></li><li id="ref-00002" class="&#xA;                references__item&#xA;            "><span class="references__note">A. Begel and N. Nagappan, "Usage and perceptions of agile software development in an industrial context: An exploratory study," in <i>First International Symposium on Empirical Software Engineering and Measurement (ESEM 2007)</i>, Sept 2007, pp. 255--264.  <span class="references__pub-id doi 10.1109/ESEM.2007.85"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=A.+Begel+and+N.+Nagappan%2C+%22Usage+and+perceptions+of+agile+software+development+in+an+industrial+context%3A+An+exploratory+study%2C%22+in+First+International+Symposium+on+Empirical+Software+Engineering+and+Measurement+%28ESEM+2007%29%2C+Sept+2007%2C+pp.+255%2D%2D264.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1109/ESEM.2007.85" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00003" class="&#xA;                references__item&#xA;            "><span class="references__note">A. Begel and N. Nagappan, "Pair programming: What's in it for me?" in <i>Proc. of the Second ACM-IEEE International Symposium on Empirical Software Engineering and Measurement</i>, 2008, pp. 120--128.  <span class="references__pub-id doi 10.1145/1414004.1414026"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=A.+Begel+and+N.+Nagappan%2C+%22Pair+programming%3A+What%27s+in+it+for+me%3F%22+in+Proc.+of+the+Second+ACM-IEEE+International+Symposium+on+Empirical+Software+Engineering+and+Measurement%2C+2008%2C+pp.+120%2D%2D128.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/1414004.1414026" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00004" class="&#xA;                references__item&#xA;            "><span class="references__note">B. Murphy, C. Bird, T. Zimmermann, L. Williams, N. Nagappan, and A. Begel, "Have agile techniques been the silver bullet for software development at microsoft?" in <i>2013 ACM/IEEE Intl. Symp. on Empirical Software Engineering and Measurement</i>, Oct 2013, pp. 75--84.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=B.+Murphy%2C+C.+Bird%2C+T.+Zimmermann%2C+L.+Williams%2C+N.+Nagappan%2C+and+A.+Begel%2C+%22Have+agile+techniques+been+the+silver+bullet+for+software+development+at+microsoft%3F%22+in+2013+ACM%2FIEEE+Intl.+Symp.+on+Empirical+Software+Engineering+and+Measurement%2C+Oct+2013%2C+pp.+75%2D%2D84."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00005" class="&#xA;                references__item&#xA;            "><span class="references__note">M. Senapathi, J. Buchan, and H. Osman, "DevOps capabilities, practices, and challenges: Insights from a case study," in <i>Proc. of the 22nd International Conference on Evaluation and Assessment in Software Engineering 2018</i>, 2018, pp. 57--67.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=M.+Senapathi%2C+J.+Buchan%2C+and+H.+Osman%2C+%22DevOps+capabilities%2C+practices%2C+and+challenges%3A+Insights+from+a+case+study%2C%22+in+Proc.+of+the+22nd+International+Conference+on+Evaluation+and+Assessment+in+Software+Engineering+2018%2C+2018%2C+pp.+57%2D%2D67."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00006" class="&#xA;                references__item&#xA;            "><span class="references__note">T. D. LaToza, G. Venolia, and R. DeLine, "Maintaining mental models: A study of developer work habits," in <i>Proc. of the 28th International Conference on Software Engineering</i>, 2006, pp. 492--501.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=T.+D.+LaToza%2C+G.+Venolia%2C+and+R.+DeLine%2C+%22Maintaining+mental+models%3A+A+study+of+developer+work+habits%2C%22+in+Proc.+of+the+28th+International+Conference+on+Software+Engineering%2C+2006%2C+pp.+492%2D%2D501."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00007" class="&#xA;                references__item&#xA;            "><span class="references__note">M. Kim, T. Zimmermann, R. DeLine, and A. Begel, "The emerging role of data scientists on software development teams," in <i>Proc. of the 38th International Conference on Software Engineering</i>, 2016, pp. 96--107.  <span class="references__pub-id doi 10.1145/2884781.2884783"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=M.+Kim%2C+T.+Zimmermann%2C+R.+DeLine%2C+and+A.+Begel%2C+%22The+emerging+role+of+data+scientists+on+software+development+teams%2C%22+in+Proc.+of+the+38th+International+Conference+on+Software+Engineering%2C+2016%2C+pp.+96%2D%2D107.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/2884781.2884783" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00008" class="&#xA;                references__item&#xA;            "><span class="references__note">M. Kim, T. Zimmermann, R. DeLine, and A. Begel, "Data scientists in software teams: State of the art and challenges," <i>IEEE Transactions on Software Engineering</i>, vol. 44, no. 11, pp. 1024--1038, 2018.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=M.+Kim%2C+T.+Zimmermann%2C+R.+DeLine%2C+and+A.+Begel%2C+%22Data+scientists+in+software+teams%3A+State+of+the+art+and+challenges%2C%22+IEEE+Transactions+on+Software+Engineering%2C+vol.+44%2C+no.+11%2C+pp.+1024%2D%2D1038%2C+2018."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/servlet/linkout?suffix=e_1_3_2_1_8_1&amp;dbid=16&amp;doi=10.1109%2FICSE-SEIP.2019.00042&amp;key=10.1109%2FTSE.2017.2754374" target="_blank"><span class="visibility-hidden">Cross Ref</span><img class="simple-tooltip__block--b" data-title="Cross Ref" alt="Cross Ref" src="/templates/jsp/_ux3/_acm/images/crossref_icon.svg"/></a></span></span></li><li id="ref-00009" class="&#xA;                references__item&#xA;            "><span class="references__note">C. Hill, R. Bellamy, T. Erickson, and M. Burnett, "Trials and tribulations of developers of intelligent systems: A field study," in <i>Visual Languages and Human-Centric Computing (VL/HCC), 2016 IEEE Symposium on.</i> IEEE, 2016, pp. 162--170.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=C.+Hill%2C+R.+Bellamy%2C+T.+Erickson%2C+and+M.+Burnett%2C+%22Trials+and+tribulations+of+developers+of+intelligent+systems%3A+A+field+study%2C%22+in+Visual+Languages+and+Human-Centric+Computing+%28VL%2FHCC%29%2C+2016+IEEE+Symposium+on.+IEEE%2C+2016%2C+pp.+162%2D%2D170."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00010" class="&#xA;                references__item&#xA;            "><span class="references__note">"Machine learning workflow," https://cloud.google.com/mlengine/docs/tensorflow/ml-solutions-overview, accessed: 2018-09-24.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=%22Machine+learning+workflow%2C%22+https%3A%2F%2Fcloud.google.com%2Fmlengine%2Fdocs%2Ftensorflow%2Fml-solutions-overview%2C+accessed%3A+2018-09-24."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00011" class="&#xA;                references__item&#xA;            "><span class="references__note">K. Patel, J. Fogarty, J. A. Landay, and B. Harrison, "Investigating statistical machine learning as a tool for software development," in <i>Proc. of the SIGCHI Conference on Human Factors in Computing Systems.</i> ACM, 2008, pp. 667--676.  <span class="references__pub-id doi 10.1145/1357054.1357160"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=K.+Patel%2C+J.+Fogarty%2C+J.+A.+Landay%2C+and+B.+Harrison%2C+%22Investigating+statistical+machine+learning+as+a+tool+for+software+development%2C%22+in+Proc.+of+the+SIGCHI+Conference+on+Human+Factors+in+Computing+Systems.+ACM%2C+2008%2C+pp.+667%2D%2D676.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/1357054.1357160" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00012" class="&#xA;                references__item&#xA;            "><span class="references__note">"The Team Data Science Process," https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/, accessed: 2018-09-24.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=%22The+Team+Data+Science+Process%2C%22+https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fmachine-learning%2Fteam-data-science-process%2F%2C+accessed%3A+2018-09-24."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00013" class="&#xA;                references__item&#xA;            "><span class="references__note">U. Fayyad, G. Piatetsky-Shapiro, and P. Smyth, "The KDD process for extracting useful knowledge from volumes of data," <i>Communications of the ACM</i>, vol. 39, no. 11, pp. 27--34, 1996.  <span class="references__pub-id doi 10.1145/240455.240464"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=U.+Fayyad%2C+G.+Piatetsky-Shapiro%2C+and+P.+Smyth%2C+%22The+KDD+process+for+extracting+useful+knowledge+from+volumes+of+data%2C%22+Communications+of+the+ACM%2C+vol.+39%2C+no.+11%2C+pp.+27%2D%2D34%2C+1996.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/240455.240464" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00014" class="&#xA;                references__item&#xA;            "><span class="references__note">R. Wirth and J. Hipp, "CRISP-DM: Towards a standard process model for data mining," in <i>Proc. 4th Intl. Conference on Practical Applications of Knowledge Discovery and Data mining</i>, 2000, pp. 29--39.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=R.+Wirth+and+J.+Hipp%2C+%22CRISP-DM%3A+Towards+a+standard+process+model+for+data+mining%2C%22+in+Proc.+4th+Intl.+Conference+on+Practical+Applications+of+Knowledge+Discovery+and+Data+mining%2C+2000%2C+pp.+29%2D%2D39."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00015" class="&#xA;                references__item&#xA;            "><span class="references__note">J. E. Hannay, C. MacLeod, J. Singer, H. P. Langtangen, D. Pfahl, and G. Wilson, "How do scientists develop and use scientific software?" in <i>Proc. of the 2009 ICSE workshop on Software Engineering for Computational Science and Engineering.</i> IEEE Computer Society, 2009, pp. 1--8.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=J.+E.+Hannay%2C+C.+MacLeod%2C+J.+Singer%2C+H.+P.+Langtangen%2C+D.+Pfahl%2C+and+G.+Wilson%2C+%22How+do+scientists+develop+and+use+scientific+software%3F%22+in+Proc.+of+the+2009+ICSE+workshop+on+Software+Engineering+for+Computational+Science+and+Engineering.+IEEE+Computer+Society%2C+2009%2C+pp.+1%2D%2D8."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00016" class="&#xA;                references__item&#xA;            "><span class="references__note">G. De Michell and R. K. Gupta, "Hardware/software co-design," <i>Proc. of the IEEE</i>, vol. 85, no. 3, pp. 349--365, 1997.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=G.+De+Michell+and+R.+K.+Gupta%2C+%22Hardware%2Fsoftware+co-design%2C%22+Proc.+of+the+IEEE%2C+vol.+85%2C+no.+3%2C+pp.+349%2D%2D365%2C+1997."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/servlet/linkout?suffix=e_1_3_2_1_16_1&amp;dbid=16&amp;doi=10.1109%2FICSE-SEIP.2019.00042&amp;key=10.1109%2F5.558708" target="_blank"><span class="visibility-hidden">Cross Ref</span><img class="simple-tooltip__block--b" data-title="Cross Ref" alt="Cross Ref" src="/templates/jsp/_ux3/_acm/images/crossref_icon.svg"/></a></span></span></li><li id="ref-00017" class="&#xA;                references__item&#xA;            "><span class="references__note">D. Bohus, S. Andrist, and M. Jalobeanu, "Rapid development of multimodal interactive systems: a demonstration of platform for situated intelligence," in <i>Proc. of the 19th ACM International Conference on Multimodal Interaction.</i> ACM, 2017, pp. 493--494.  <span class="references__pub-id doi 10.1145/3136755.3143021"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=D.+Bohus%2C+S.+Andrist%2C+and+M.+Jalobeanu%2C+%22Rapid+development+of+multimodal+interactive+systems%3A+a+demonstration+of+platform+for+situated+intelligence%2C%22+in+Proc.+of+the+19th+ACM+International+Conference+on+Multimodal+Interaction.+ACM%2C+2017%2C+pp.+493%2D%2D494.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/3136755.3143021" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00018" class="&#xA;                references__item&#xA;            "><span class="references__note">D. Sculley, G. Holt, D. Golovin, E. Davydov, T. Phillips, D. Ebner, V. Chaudhary, M. Young, J.-F. Crespo, and D. Dennison, "Hidden technical debt in machine learning systems," in <i>NIPS</i>, 2015. <span class="references__pub-id doi 10.5555/2969442.2969519"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=D.+Sculley%2C+G.+Holt%2C+D.+Golovin%2C+E.+Davydov%2C+T.+Phillips%2C+D.+Ebner%2C+V.+Chaudhary%2C+M.+Young%2C+J.-F.+Crespo%2C+and+D.+Dennison%2C+%22Hidden+technical+debt+in+machine+learning+systems%2C%22+in+NIPS%2C+2015.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.5555/2969442.2969519" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00019" class="&#xA;                references__item&#xA;            "><span class="references__note">B. Nushi, E. Kamar, E. Horvitz, and D. Kossmann, "On human intellect and machine failures: Troubleshooting integrative machine learning systems." in <i>AAAI</i>, 2017, pp. 1017--1025. <span class="references__pub-id doi 10.5555/3298239.3298389"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=B.+Nushi%2C+E.+Kamar%2C+E.+Horvitz%2C+and+D.+Kossmann%2C+%22On+human+intellect+and+machine+failures%3A+Troubleshooting+integrative+machine+learning+systems.%22+in+AAAI%2C+2017%2C+pp.+1017%2D%2D1025.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.5555/3298239.3298389" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00020" class="&#xA;                references__item&#xA;            "><span class="references__note">S. Andrist, D. Bohus, E. Kamar, and E. Horvitz, "What went wrong and why? diagnosing situated interaction failures in the wild," in <i>ICSR.</i> Springer, 2017, pp. 293--303.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=S.+Andrist%2C+D.+Bohus%2C+E.+Kamar%2C+and+E.+Horvitz%2C+%22What+went+wrong+and+why%3F+diagnosing+situated+interaction+failures+in+the+wild%2C%22+in+ICSR.+Springer%2C+2017%2C+pp.+293%2D%2D303."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00021" class="&#xA;                references__item&#xA;            "><span class="references__note">R. Salay, R. Queiroz, and K. Czarnecki, "An analysis of ISO 26262: Using machine learning safely in automotive software," <i>arXiv preprint arXiv:1709.02435</i>, 2017.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=R.+Salay%2C+R.+Queiroz%2C+and+K.+Czarnecki%2C+%22An+analysis+of+ISO+26262%3A+Using+machine+learning+safely+in+automotive+software%2C%22+arXiv+preprint+arXiv%3A1709.02435%2C+2017."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00022" class="&#xA;                references__item&#xA;            "><span class="references__note">D. Baylor, E. Breck, H.-T. Cheng, N. Fiedel, C. Y. Foo, Z. Haque, S. Haykal, M. Ispir, V. Jain, L. Koc <i>et al.</i>, "TFX: A tensorflow-based production-scale machine learning platform," in <i>Proc. of the 23rd ACM SIGKDD.</i> ACM, 2017, pp. 1387--1395.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=D.+Baylor%2C+E.+Breck%2C+H.-T.+Cheng%2C+N.+Fiedel%2C+C.+Y.+Foo%2C+Z.+Haque%2C+S.+Haykal%2C+M.+Ispir%2C+V.+Jain%2C+L.+Koc+et+al.%2C+%22TFX%3A+A+tensorflow-based+production-scale+machine+learning+platform%2C%22+in+Proc.+of+the+23rd+ACM+SIGKDD.+ACM%2C+2017%2C+pp.+1387%2D%2D1395."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00023" class="&#xA;                references__item&#xA;            "><span class="references__note">V. Sridhar, S. Subramanian, D. Arteaga, S. Sundararaman, D. Roselli, and N. Talagala, "Model governance: Reducing the anarchy of production ML," in <i>USENIX.</i> USENIX Association, 2018, pp. 351--358. <span class="references__pub-id doi 10.5555/3277355.3277389"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=V.+Sridhar%2C+S.+Subramanian%2C+D.+Arteaga%2C+S.+Sundararaman%2C+D.+Roselli%2C+and+N.+Talagala%2C+%22Model+governance%3A+Reducing+the+anarchy+of+production+ML%2C%22+in+USENIX.+USENIX+Association%2C+2018%2C+pp.+351%2D%2D358.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.5555/3277355.3277389" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00024" class="&#xA;                references__item&#xA;            "><span class="references__note">T. Wuest, D. Weimer, C. Irgens, and K.-D. Thoben, "Machine learning in manufacturing: advantages, challenges, and applications," <i>Production &amp; Manufacturing Research</i>, vol. 4, no. 1, pp. 23--45, 2016.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=T.+Wuest%2C+D.+Weimer%2C+C.+Irgens%2C+and+K.-D.+Thoben%2C+%22Machine+learning+in+manufacturing%3A+advantages%2C+challenges%2C+and+applications%2C%22+Production+%26+Manufacturing+Research%2C+vol.+4%2C+no.+1%2C+pp.+23%2D%2D45%2C+2016."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/servlet/linkout?suffix=e_1_3_2_1_24_1&amp;dbid=16&amp;doi=10.1109%2FICSE-SEIP.2019.00042&amp;key=10.1080%2F21693277.2016.1192517" target="_blank"><span class="visibility-hidden">Cross Ref</span><img class="simple-tooltip__block--b" data-title="Cross Ref" alt="Cross Ref" src="/templates/jsp/_ux3/_acm/images/crossref_icon.svg"/></a></span></span></li><li id="ref-00025" class="&#xA;                references__item&#xA;            "><span class="references__note">J. Sillito and A. Begel, "App-directed learning: An exploratory study," in <i>6th International Workshop on Cooperative and Human Aspects of Software Engineering (CHASE)</i>, May 2013, pp. 81--84.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=J.+Sillito+and+A.+Begel%2C+%22App-directed+learning%3A+An+exploratory+study%2C%22+in+6th+International+Workshop+on+Cooperative+and+Human+Aspects+of+Software+Engineering+%28CHASE%29%2C+May+2013%2C+pp.+81%2D%2D84."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00026" class="&#xA;                references__item&#xA;            "><span class="references__note">C. Weber, B. Curtis, and M. B. Chrissis, <i>The capability maturity model, guidelines for improving the software process.</i> Harlow: Addison Wesley, 1994.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=C.+Weber%2C+B.+Curtis%2C+and+M.+B.+Chrissis%2C+The+capability+maturity+model%2C+guidelines+for+improving+the+software+process.+Harlow%3A+Addison+Wesley%2C+1994."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00027" class="&#xA;                references__item&#xA;            "><span class="references__note">M. Alexander, <i>Six Sigma: The breakthrough management strategy revolutionizing the world's top corporations.</i> Taylor &amp; Francis, 2001.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=M.+Alexander%2C+Six+Sigma%3A+The+breakthrough+management+strategy+revolutionizing+the+world%27s+top+corporations.+Taylor+%26+Francis%2C+2001."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/servlet/linkout?suffix=e_1_3_2_1_27_1&amp;dbid=16&amp;doi=10.1109%2FICSE-SEIP.2019.00042&amp;key=10.1198%2Ftech.2001.s622" target="_blank"><span class="visibility-hidden">Cross Ref</span><img class="simple-tooltip__block--b" data-title="Cross Ref" alt="Cross Ref" src="/templates/jsp/_ux3/_acm/images/crossref_icon.svg"/></a></span></span></li><li id="ref-00028" class="&#xA;                references__item&#xA;            "><span class="references__note">N. Polyzotis, S. Roy, S. E. Whang, and M. Zinkevich, "Data management challenges in production machine learning," in <i>Proc. of the 2017 ACM SIGMOD</i>, 2017, pp. 1723--1726.  <span class="references__pub-id doi 10.1145/3035918.3054782"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=N.+Polyzotis%2C+S.+Roy%2C+S.+E.+Whang%2C+and+M.+Zinkevich%2C+%22Data+management+challenges+in+production+machine+learning%2C%22+in+Proc.+of+the+2017+ACM+SIGMOD%2C+2017%2C+pp.+1723%2D%2D1726.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/3035918.3054782" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00029" class="&#xA;                references__item&#xA;            "><span class="references__note">T. Kulesza, M. Burnett, W.-K. Wong, and S. Stumpf, "Principles of explanatory debugging to personalize interactive machine learning," in <i>Proc. of the 20th International Conference on Intelligent User Interfaces</i>, 2015, pp. 126--137.  <span class="references__pub-id doi 10.1145/2678025.2701399"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=T.+Kulesza%2C+M.+Burnett%2C+W.-K.+Wong%2C+and+S.+Stumpf%2C+%22Principles+of+explanatory+debugging+to+personalize+interactive+machine+learning%2C%22+in+Proc.+of+the+20th+International+Conference+on+Intelligent+User+Interfaces%2C+2015%2C+pp.+126%2D%2D137.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/2678025.2701399" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00030" class="&#xA;                references__item&#xA;            "><span class="references__note">S. Amershi, M. Chickering, S. M. Drucker, B. Lee, P. Simard, and J. Suh, "Modeltracker: Redesigning performance analysis tools for machine learning," in <i>Proc. of the 33rd Annual ACM Conference on Human Factors in Computing Systems</i>, 2015, pp. 337--346.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=S.+Amershi%2C+M.+Chickering%2C+S.+M.+Drucker%2C+B.+Lee%2C+P.+Simard%2C+and+J.+Suh%2C+%22Modeltracker%3A+Redesigning+performance+analysis+tools+for+machine+learning%2C%22+in+Proc.+of+the+33rd+Annual+ACM+Conference+on+Human+Factors+in+Computing+Systems%2C+2015%2C+pp.+337%2D%2D346."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00031" class="&#xA;                references__item&#xA;            "><span class="references__note">B. Nushi, E. Kamar, and E. Horvitz, "Towards accountable AI: Hybrid human-machine analyses for characterizing system failure," in <i>HCOMP</i>, 2018, pp. 126--135.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=B.+Nushi%2C+E.+Kamar%2C+and+E.+Horvitz%2C+%22Towards+accountable+AI%3A+Hybrid+human-machine+analyses+for+characterizing+system+failure%2C%22+in+HCOMP%2C+2018%2C+pp.+126%2D%2D135."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00032" class="&#xA;                references__item&#xA;            "><span class="references__note">D. Gunning, "Explainable artificial intelligence (XAI)," <i>Defense Advanced Research Projects Agency (DARPA)</i>, 2017.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=D.+Gunning%2C+%22Explainable+artificial+intelligence+%28XAI%29%2C%22+Defense+Advanced+Research+Projects+Agency+%28DARPA%29%2C+2017."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00033" class="&#xA;                references__item&#xA;            "><span class="references__note">D. S. Weld and G. Bansal, "Intelligible artificial intelligence," <i>arXiv preprint arXiv:1803.04263</i>, 2018.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=D.+S.+Weld+and+G.+Bansal%2C+%22Intelligible+artificial+intelligence%2C%22+arXiv+preprint+arXiv%3A1803.04263%2C+2018."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00034" class="&#xA;                references__item&#xA;            "><span class="references__note">T. Gebru, J. Morgenstern, B. Vecchione, J. W. Vaughan, H. M. Wallach, H. D. III, and K. Crawford, "Datasheets for datasets," <i>CoRR</i>, vol. abs/1803.09010, 2018.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=T.+Gebru%2C+J.+Morgenstern%2C+B.+Vecchione%2C+J.+W.+Vaughan%2C+H.+M.+Wallach%2C+H.+D.+III%2C+and+K.+Crawford%2C+%22Datasheets+for+datasets%2C%22+CoRR%2C+vol.+abs%2F1803.09010%2C+2018."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00035" class="&#xA;                references__item&#xA;            "><span class="references__note">C. Sutton, T. Hobson, J. Geddes, and R. Caruana, "Data diff: Interpretable, executable summaries of changes in distributions for data wrangling," in <i>Proc. of the 24th ACM SIGKDD.</i> ACM, 2018, pp. 2279--2288.  <span class="references__pub-id doi 10.1145/3219819.3220057"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=C.+Sutton%2C+T.+Hobson%2C+J.+Geddes%2C+and+R.+Caruana%2C+%22Data+diff%3A+Interpretable%2C+executable+summaries+of+changes+in+distributions+for+data+wrangling%2C%22+in+Proc.+of+the+24th+ACM+SIGKDD.+ACM%2C+2018%2C+pp.+2279%2D%2D2288.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/3219819.3220057" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00036" class="&#xA;                references__item&#xA;            "><span class="references__note">C. R. B. de Souza, D. Redmiles, and P. Dourish, ""Breaking the Code", moving between private and public work in collaborative software development," in <i>Proc. of the 2003 International ACM SIGGROUP Conference on Supporting Group Work</i>, 2003, pp. 105--114.  <span class="references__pub-id doi 10.1145/958160.958177"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=C.+R.+B.+de+Souza%2C+D.+Redmiles%2C+and+P.+Dourish%2C+%22%22Breaking+the+Code%22%2C+moving+between+private+and+public+work+in+collaborative+software+development%2C%22+in+Proc.+of+the+2003+International+ACM+SIGGROUP+Conference+on+Supporting+Group+Work%2C+2003%2C+pp.+105%2D%2D114.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/958160.958177" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00037" class="&#xA;                references__item&#xA;            "><span class="references__note">C. R. B. de Souza, D. Redmiles, L.-T. Cheng, D. Millen, and J. Patterson, "Sometimes you need to see through walls: A field study of application programming interfaces," in <i>Proc. of the 2004 ACM Conference on Computer Supported Cooperative Work</i>, 2004, pp. 63--71.  <span class="references__pub-id doi 10.1145/1031607.1031620"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=C.+R.+B.+de+Souza%2C+D.+Redmiles%2C+L.-T.+Cheng%2C+D.+Millen%2C+and+J.+Patterson%2C+%22Sometimes+you+need+to+see+through+walls%3A+A+field+study+of+application+programming+interfaces%2C%22+in+Proc.+of+the+2004+ACM+Conference+on+Computer+Supported+Cooperative+Work%2C+2004%2C+pp.+63%2D%2D71.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/1031607.1031620" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li></ol></div><div class="pb-dropzone" data-pb-dropzone="citedByListDropzone" title="citedByListDropzone"><div class="article__cited article__section show-more-items hidden" data-sectionname="Cited By">
+  <div class="header-container">
+    <div class="colored-block__title">
+      <h2 class="section__title left-bordered-title citedBy-label" id="sec-cit">Cited By</h2><a class="btn btn--rounded ml-0 mt-0 mb-0 pl-2 blue pull-right" id="downloadAllMain" href="#" target="_blank" title="View all cited by in new tab">View all<i class="icon-export ml-2"></i></a>
+    </div>
+      <div class="loader"><img src="/specs/products/acm/releasedAssets/images/loader-7e60691fbe777356dc81ff6d223a82a6.gif"></div>
+      <ol class="rlist citedBy-main references__list mt-4"></ol>
+  </div>
+</div></div>
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3TagWidget" data-widget-id="2a75f978-170a-4843-8722-e878a1b77fbc" class="citation article__section article__index-terms">
+        
+
+
+
+        
+        
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="graphQueryWidget" data-widget-id="f85757d8-f597-4128-920f-1eb1466bb8b8" class="disclaimer">
+        
+
+
+
+        
+        
+
+        </div>
+    
+
+
+
+
+
+        
+        <div class="colored-block__title"> <h2 id="sec-recommendations" class="section__title left-bordered-title">Recommendations</h2> </div>
+
+
+
+
+        
+        <div data-exp-type="" data-query-id="10.1109/ICSE-SEIP.2019.00042" class="recommended-articles__content"><ul class="rlist lot"><li class="grid-item"><div class="creative-work"><a href="/doi/10.5555/520047.854878" title="Establishment of a National Benchmark of Software Engineering Practices"><h5 data-lines="2" class="creative-work__title truncate-text-css">Establishment of a National Benchmark of Software Engineering Practices</h5></a><div class="creative-work__sub-title mb-3 mt-1">ISESS '99: Proceedings of the 4th IEEE International Symposium and Forum on Software Engineering Standards  </div><div class="description"><div class="issue-item__abstract truncate-text" data-lines="4">
+		<p>Software engineering process benchmarking is one of the important methodologies in software process assessment and improvement. In collaboration with IBM, IVF has conducted a Swedish national benchmarking survey to derive a national benchmark of ...</p></div></div><div class="readMore"><a href="/doi/10.5555/520047.854878" title="Read More">Read More</a></div></div></li><li class="grid-item"><div class="creative-work"><a href="/doi/10.5555/850952.853766" title="Machine Learning and Software Engineering"><h5 data-lines="2" class="creative-work__title truncate-text-css">Machine Learning and Software Engineering</h5></a><div class="creative-work__sub-title mb-3 mt-1">ICTAI '02: Proceedings of the 14th IEEE International Conference on Tools with Artificial Intelligence  </div><div class="description"><div class="issue-item__abstract truncate-text" data-lines="4">
+		<p>Machine learning deals with the issue of how to build programs that improve their performance at some task through experience. Machine learning algorithms have proven to be of great practical value in a variety of application domains. Not surprisingly, ...</p></div></div><div class="readMore"><a href="/doi/10.5555/850952.853766" title="Read More">Read More</a></div></div></li><li class="grid-item"><div class="creative-work"><a href="/doi/10.1109/TSE.1983.235114" title="A Survey of Software Engineering Practice: Tools, Methods, and Results"><h5 data-lines="2" class="creative-work__title truncate-text-css">A Survey of Software Engineering Practice: Tools, Methods, and Results</h5></a><div class="description"><div class="issue-item__abstract truncate-text" data-lines="4">
+		<p>The results of a survey of software development practice are reported and analyzed. The problems encountered in various phases of the software life cycle are measured and correlated with characteristics of the responding installations. The use and ...</p></div></div><div class="readMore"><a href="/doi/10.1109/TSE.1983.235114" title="Read More">Read More</a></div></div></li></ul></div>
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="graphQueryWidget" data-widget-id="91639479-279a-46e3-b7c7-f902a3fd7945" class="toc__section accordion-tabbed__tab">
+        
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3RelatedDigitalObject" data-widget-id="98838540-5c38-436f-9b98-0e292765fbe4" class="accordion-tabbed__content">
+        
+
+
+
+        
+        
+
+        </div>
+    
+
+
+
+        </div>
+    
+
+
+
+
+
+        
+        <div class="article__section article__comments">
+
+
+
+        
+        <div class="colored-block__title"> <h2 id="sec-comments" class="section__title left-bordered-title">Comments</h2> </div>
+
+
+
+
+        
+        <div id="disqus_thread"></div><a href="https://dl.acm.org/doi/abs/10.1109/ICSE-SEIP.2019.00042?download=true#disqus_thread" class="disqus-count hidden"></a><script>var disqus_config = function () {
+    this.page.url = window.location.href;
+    this.page.identifier = '10.1109/ICSE-SEIP.2019.00042';
+    this.page.remote_auth_s3 = '';
+    this.page.api_key = 'MmWj4FlWmXk20FJsmWMXbTJoZT7TVzTsc9Rw0yrJp3L1ZNXZuvmxF3F5rFIF8RqQ';
+};
+(function () {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://acm-prod.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();</script><noscript>Please enable JavaScript to view the<a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript><script id="dsq-count-scr" src="//acm-prod.disqus.com/count.js" async=""></script>
+</div>
+</div><div class="pill-content"><div id="pill-access"><div class="pill-access__content">
+
+
+
+        
+        <div class="pill-access__content"><div class="section__separator"><h3 class="left-bordered-title">Login options</h3><div class="section__content"><p class="info--text">Check if you have access through your login credentials or your institution to get full access on this article.</p><a href="/action/showLogin?redirectUri=/doi/abs/10.1109/ICSE-SEIP.2019.00042?download=true" title="Sign in" class="btn big btn--inverse">Sign in</a></div></div><div class="section__separator"><h3 class="left-bordered-title">Full Access</h3><div class="section__content"><a href="/action/publisherEcommerceHelper?doi=10.1109/ICSE-SEIP.2019.00042&amp;redirectUri=https://dl.acm.org/doi/abs/10.1109/ICSE-SEIP.2019.00042?download=true" title="Get this Publication" class="btn blue big">Get this Publication</a></div></div></div>
+</div></div><div id="pill-information"><div class="tab tab--flex"><ul role="tablist" class="rlist tab__nav"><li role="presentation" class="active"><a id="pill-information__contentcon" href="#pill-information__content" aria-controls="pill-information__content" role="tab" data-toggle="tab" title="Information" aria-selected="true" data-simple-tab-id="" tabindex="0">Information</a></li><li role="presentation"><a id="pill-authors__contentcon" href="#pill-authors__content" aria-controls="pill-authors__content" role="tab" data-toggle="tab" title="Authors" aria-selected="false" data-simple-tab-id="" tabindex="-1">Contributors</a></li></ul><ul class="rlist tab__content"><li id="pill-information__content" aria-labelledby="pill-information__contentcon" role="tabpanel" aria-hidden="false" tabindex="0" class="tab__pane active"><div class="pill-information__content"><div class="section__separator"><h3 class="left-bordered-title">Published in</h3><div class="section__content cover-image-proceeding">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3CoverImage" data-widget-id="7b8bd09e-8112-4266-b136-2f71ab2b109c" class="left-side-image">
+        
+
+
+
+        
+        <div class="cover-image"><div class="cover-image__image"><img src="/specs/products/acm/releasedAssets/images/Default_image_lazy-0687af31f0f1c8d4b7a22b686995ab9b.svg" data-src="/specs/products/acm/releasedAssets/images/cover-default--acm-proceeding-4d51ce6d9b364da1d24015fc4d1b50fb.svg" alt="cover image ACM Conferences" class="lazy"/></div><div class="cover-image__details"><div class="book-meta">ICSE-SEIP '19: Proceedings of the 41st International Conference on Software Engineering: Software Engineering in Practice</div><div class="cover-date">May 2019</div><div class="cover-pages">339  pages</div><div class="cover-image__details-extra"><div class="flex-container"><div><ul class="rlist--inline loa truncate-list" title="list of authors" data-lines="2"><li class="label"><b>Conference Chairs: </b></li><li><a href="/profile/81100267870" title="Helen Sharp"><img class="author-picture" src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" width="24" height="24" alt="Author Picture" aria-hidden="true"/><span>Helen Sharp</span></a><span class="loa_author_inst hidden"><p data-doi="10.1145/contrib-81100267870">The Open University, UK</p></span><span>,</span></li><li><a href="/profile/81502653115" title="Mike Whalen"><img class="author-picture" src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" width="24" height="24" alt="Author Picture" aria-hidden="true"/><span>Mike Whalen</span></a><span class="loa_author_inst hidden"><p data-doi="10.1145/contrib-81502653115">Amazon Inc.</p></span></li></ul></div></div></div><div class="pb-dropzone" data-pb-dropzone="metadataDisplayExtra" title="metadataDisplayExtra"></div></div></div>
+
+        </div>
+    
+
+</div></div><div class="section__separator proceedingInfo-sponsors hidden"><h3 class="left-bordered-title">Sponsors</h3><ul class="proceedingInfo-sponsors__list"></ul></div><div class="section__separator proceedingInfo-inCoop hidden"><h3 class="left-bordered-title">In-Cooperation</h3><ul class="proceedingInfo-inCoop__list"></ul></div><div class="section__separator"><h3 class="left-bordered-title">Publisher</h3><div class="section__content publisher"><div class="inlineBlock"></div><div class="inlineBlock"><p class="publisher__name">IEEE Press</p><p class="publisher__address"></p></div></div></div>
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="contentItemHistory" data-widget-id="6eba30da-4023-4f09-bb08-f98cf09d5aa0" class="section__separator">
+        
+
+
+
+        
+            <h3 class="left-bordered-title">
+                Publication History
+            </h3>
+        
+        <div class="section__content"><ul class="rlist article-chapter-history-list"><li><span class="item_label">Published:</span> 27 May 2019</li></ul></div>
+
+        </div>
+    
+
+
+
+
+
+        
+        
+<div class="section__separator inline-section p-3"><h3 class="left-bordered-title">Check for updates</h3><a data-target="crossmark"><img alt="Check for updates on crossmark" src="/specs/products/acm/releasedAssets/images/CrossMarkIcon-d6fb3282a56d93dd889e4259d1cf4bd1.svg" class="crossmark__mini__logo ml-5 mt-sm-2 mt-xs-2 ml-lg-5 mb-2"/></a></div>
+
+<div class="section__separator"><h3 class="left-bordered-title">Author Tags</h3><div class="section__content"><div class="tags-widget"><div class="tags-widget__content"><ul class="rlist--inline"><li><a href="/keyword/AI?expand=all" title="AI" class="badge-type">AI</a></li><li><a href="/keyword/data?expand=all" title="data" class="badge-type">data</a></li><li><a href="/keyword/process?expand=all" title="process" class="badge-type">process</a></li><li><a href="/keyword/software engineering?expand=all" title="software engineering" class="badge-type">software engineering</a></li></ul></div></div></div></div><div class="section__separator"><h3 class="left-bordered-title">Qualifiers</h3><ul class="qualifiers__list"><li class="capitalized qualifiers__list__item">research-article</li></ul></div><div class="section__separator proceedingInfo-conference hidden"><h3 class="left-bordered-title">Conference</h3></div>
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3AcceptanceRatesWidget" data-widget-id="daac1568-1d03-438e-a4c9-c9df280908b7" class="section__separator">
+        
+
+
+
+        
+        
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3UpcomingConferencesWidget" data-widget-id="452ce022-9919-435e-ab40-1386965a30bd" class="section__separator">
+        
+
+
+
+        
+        
+
+
+
+
+
+
+<div class="upcoming-conf">
+<h3 class="left-bordered-title">Upcoming Conference</h3>
+    <div class="section__content">
+        <div class="event event--inline-info row--event active">
+        <input type="hidden" name="Longitude" value="-9.208354"/>
+        <input type="hidden" name="Latitude" value="38.695503"/>
+        <input type="hidden" name="StartDate" value="2024-04-14T00:00:00.000+00:00">
+        <input type="hidden" name="EndDate" value="2024-04-20T00:00:00.000+00:00">  
+            <div class="event__header clearfix">
+                <div class="left--block gutterless">
+                    <span class="event__code">
+                        <span class="event__code--text">ICSE 2024</span>
+                    </span>
+                        
+                </div>
+                <div class="right--block">
+                    
+                        
+                            <a class="event__title" href="/conference/icse" title="2024 IEEE/ACM 46th International Conference on Software Engineering">2024 IEEE/ACM 46th International Conference on Software Engineering</a>                                
+                        
+                    
+                        
+                     
+                    <div class="event__content">
+                        <div class="info calender">
+                            <a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;text=2024 IEEE/ACM 46th International Conference on Software Engineering&amp;dates=20240414/20240420&amp;details=2024 IEEE/ACM 46th International Conference on Software Engineering&amp;location=Lisbon%2C%20%2C%20Portugal" target="_blank">
+                                    <i class="icon-add-calendar"></i>
+                            </a>
+                            <span>
+                                April 14 - 20, 2024
+                            <span>
+                        </div>
+                        <div class="info map">
+                            <a href="https://maps.google.com/?q=Lisbon,, Portugal" target="_blank">
+                                <i class="icon-navigator"></i>
+                            </a>
+                            <span>
+                                
+                                    Lisbon ,
+                                
+                                 
+                                
+                                    Portugal       
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        </div>
+    
+
+<div class="section__separator funding-sources hidden"><h3 class="left-bordered-title">Funding Sources</h3><ul class="funding-list"></ul></div></div></li><li id="pill-authors__content" aria-labelledby="pill-authors__contentcon" role="tabpanel" aria-hidden="true" class="tab__pane"><div class="pill-authors__content"><div class="section__separator"><div class="pill-authors-list"><div class="expandable-accordion"><div class="pill-normalized-authors">
+
+
+
+        
+        <div class="publication-contribs-contianer"><input id="ContribsAjax" type="hidden" data-ajax="/pb/widgets/getContribs?widgetId=f6c6c0f3-1b50-42bb-a7bb-1062377c12d4&amp;pbContext=%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3Bctype%3Astring%3ABook+Content%3Barticle%3Aarticle%3Adoi%5C%3A10.1109%2FICSE-SEIP.2019.00042%3Bissue%3Aissue%3Adoi%5C%3A10.5555%2F3339914%3Bpage%3Astring%3AArticle%2FChapter+View%3BsubPage%3Astring%3AAbstract%3Bcsubtype%3Astring%3AConference+Proceedings%3Bwebsite%3Awebsite%3Adl-site%3Btopic%3Atopic%3Aconference-collections%26gt%3Bicse%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages"/><div class="loader"><img src="/specs/products/acm/releasedAssets/images/loader-7e60691fbe777356dc81ff6d223a82a6.gif"/></div></div>
+</div><!--.pill-all-authors.authors-accordion.disable-truncate.hidden(aria-hidden="true")--><!--    if(data.item && data.item.contribsFull)--><!--        | !{data.item.contribsFull}--></div></div></div><div class="section__separator"><h3 class="left-bordered-title">Other Metrics</h3><div class="section__content badges"><a href="#pill-bibliometrics__contentcon" data-slide-target="#pill-metric" data-tab="pill-bibliometrics__content" data-ctrl-res="screen-xlg" data-full-screen="false" data-label="&lt;i class=&quot;icon-metric &quot;&gt;&lt;/i&gt;Bibliometrics &amp; Citations" class="btn big stretched btn--inverse w-slide__btn tab-link pill-content">View Article Metrics</a></div></div></div></li></ul></div></div><div id="pill-metric"><div class="tab tab--flex"><ul role="tablist" class="rlist tab__nav"><li role="presentation" class="active"><a id="pill-bibliometrics__contentcon" href="#pill-bibliometrics__content" aria-controls="pill-bibliometrics__content" role="tab" data-toggle="tab" title="Bibliometrics" aria-selected="true" data-simple-tab-id="" tabindex="0">Bibliometrics</a></li><li role="presentation"><a id="pill-citations__contentcon" href="#pill-citations__content" data-ajaxurl="/action/ajaxShowCitedBy?widgetId=f69d88a8-b404-4aae-83a9-9acea4426d78&amp;ajax=true&amp;doi=10.1109%2FICSE-SEIP.2019.00042&amp;pbContext=%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3Bctype%3Astring%3ABook+Content%3Barticle%3Aarticle%3Adoi%5C%3A10.1109%2FICSE-SEIP.2019.00042%3Bissue%3Aissue%3Adoi%5C%3A10.5555%2F3339914%3Bpage%3Astring%3AArticle%2FChapter+View%3BsubPage%3Astring%3AAbstract%3Bcsubtype%3Astring%3AConference+Proceedings%3Bwebsite%3Awebsite%3Adl-site%3Btopic%3Atopic%3Aconference-collections%26gt%3Bicse%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages" data-component="pubAjaxContent" data-ajaxtarget="#pill-citations__content .citedBy" aria-controls="pill-citations__content" role="tab" data-toggle="tab" title="Citations" aria-selected="false" data-simple-tab-id="" tabindex="-1" class="loadAjax loadLazyAjax">Citations<span class="citation-count count-bubble">150</span></a></li></ul><ul class="rlist tab__content"><li id="pill-bibliometrics__content" aria-labelledby="pill-bibliometrics__contentcon" role="tabpanel" aria-hidden="false" tabindex="0" class="tab__pane active"><div class="pill-bibliometrics__content"><div class="section__separator"><h3 class="left-bordered-title">Article Metrics</h3><div class="section__content"><ul class="rlist--inline article-metrics"><li><div class="article-metric citation"><div class="metric-value"><span>150</span></div>Total Citations</div><a href="#pill-citations__contentcon" data-tab="pill-citations__content" data-slide-target="#pill-metric" data-full-screen="false" data-ctrl-res="screen-xlg" class="primary-blue-color w-slide__btn tab-link slide-active pill-content">View Citations</a></li><li><div class="article-metric download"><div class="metric-value"><span>1,069</span></div>Total Downloads</div></li></ul><ul class="rlist metrics__list"><li><span class="metric-name">Downloads (Last 12 months)</span><span class="metric-value">91</span></li><li><span class="metric-name">Downloads (Last 6 weeks)</span><span class="metric-value">9</span></li></ul></div></div><div class="section__separator"><h3 class="left-bordered-title">Other Metrics</h3><div class="section__content"><a href="#pill-authors__contentcon" data-slide-target="#pill-information" data-ctrl-res="screen-xlg" data-tab="pill-authors__content" data-full-screen="false" data-label="&lt;i class=&quot;icon-Icon_Information &quot;&gt;&lt;/i&gt;Information &amp; Authors" class="btn big stretched btn--inverse w-slide__btn tab-link pill-content">View Author Metrics</a></div></div></div></li><li id="pill-citations__content" aria-labelledby="pill-citations__contentcon" role="tabpanel" aria-hidden="true" class="tab__pane"><div class="pill-citations__content"><div class="section__separator"><div class="header-container"><h3 class="left-bordered-title citedBy-label">Cited By</h3><a id="downloadAll" href="/action/ajaxShowCitedBy?doi=10.1109/ICSE-SEIP.2019.00042" target="_blank" title="View all cited by in new tab" class="btn btn--rounded ml-0 mt-0 mb-0 pl-2 blue pull-right">View all<i class="icon-export ml-2"></i></a><ol class="rlist references__list citedBy mt-5"></ol></div></div></div></li></ul></div></div><div id="pill-formats"><div class="pill-formats__content"><div class="section__separator"><h3 class="left-bordered-title">PDF Format</h3><div class="section__content"><p class="info--text">View or Download as a PDF file.</p><a href="/doi/pdf/10.1109/ICSE-SEIP.2019.00042" title="View or Download as a PDF file" class="btn big stretched red"><i aria-hidden="true" class="icon-pdf-file"></i>PDF</a></div></div><div class="section__separator"><h3 class="left-bordered-title">eReader</h3><div class="section__content"><p class="info--text">View online with eReader.</p><a href="/doi/epdf/10.1109/ICSE-SEIP.2019.00042" title="View online with eReader" class="btn big stretched blue no-margin-top pill-content"><i aria-hidden="true" class="icon-eReader"></i>eReader</a></div></div><div class="section__separator de-format hidden"><h3 class="left-bordered-title">Digital Edition</h3><div class="section__content"><p class="info--text">View this article in digital edition.</p><a href="#" title="View Digital Edition" class="btn big stretched blue"><i aria-hidden="true" class="icon-open-book"></i>View Digital Edition</a></div></div></div></div><div id="pill-references"><div class="pill-references__content"></div></div><div id="pill-media"><div class="tab tab--flex"><ul role="tablist" class="rlist tab__nav"><li role="presentation" class="active"><a id="pill-fig__contentcon" href="#pill-fig__content" aria-controls="pill-fig__content" role="tab" data-toggle="tab" title="Figures" aria-selected="true" data-simple-tab-id="" tabindex="0">Figures</a></li><li role="presentation"><a id="pill-media__contentcon" href="#pill-media__content" aria-controls="pill-media__content" role="tab" data-toggle="tab" title="Other" aria-selected="false" data-simple-tab-id="" tabindex="-1">Other</a></li></ul><div class="pill-figures__content"><ul class="rlist tab__content"><li id="pill-fig__content" aria-labelledby="pill-fig__contentcon" role="tabpanel" aria-hidden="false" tabindex="0" class="tab__pane active"></li><li id="pill-media__content" aria-labelledby="pill-media__contentcon" role="tabpanel" aria-hidden="true" class="tab__pane"><ul class="rlist pill-media__content"></ul></li></ul></div></div></div><div id="pill-tables"><div class="pill-tables__content"></div></div><div id="pill-share"><div class="pill-share__content"><div class="section__separator"><h3 class="left-bordered-title">Share this Publication link</h3><div class="section__content copy__text-wrapper"><fieldset><p id="shareable-link__text" class="copy__text">https://dl.acm.org/doi/abs/10.1109/ICSE-SEIP.2019.00042?download=true</p><button type="submit" class="btn big btn--inverse copy__btn"><i aria-hidden="true" class="icon-pages"></i>Copy Link</button></fieldset></div></div><div class="section__separator"><h3 class="left-bordered-title">Share on Social Media</h3><div class="section__content"><div class="visible-service-name">
+
+
+
+        
+        <!-- Go to https://www.addtoany.com/buttons/customize/ to customize your tools --><script type="text/javascript" defer="defer" src="https://static.addtoany.com/menu/page.js"></script><div class="share__block share__inline-links"><div class="pb-dropzone" data-pb-dropzone="shareBlock" title="shareBlock"></div><span class="sr-only">Share on</span><ul class="rlist--inline a2a a2a_kit a2a_kit_size_32 a2a_default_style"><li><a role="link" title="Twitter" class="a2a_button_twitter"></a></li><li><a role="link" title="Linked In" class="a2a_button_linkedin"></a></li><li><a role="link" title="Reddit" class="a2a_button_reddit"></a></li><li><a role="link" title="Facebook" class="a2a_button_facebook"></a></li><li><a role="link" title="Email" class="a2a_button_email"></a></li><div class="pb-dropzone" data-pb-dropzone="share-additional-links" title="share-additional-links"></div></ul></div>
+</div></div></div></div></div></div></div><div class="col-sm-2 pill-section"><div data-stop-on=".more-issue__section" class="pill-icons"><ul class="rlist pill-list"><li title="Information &amp; Authors"><button aria-haspopup="dialog" aria-controls="w-slideElement" data-slide-target="#pill-information" data-ctrl-res="screen-xlg" data-full-screen="false" title="Information and Authors" data-label="&lt;i class=&quot;icon-Icon_Information&quot;&gt;&lt;/i&gt;Information &amp; Authors" class="w-slide__btn pill-information"><i aria-hidden="true" class="icon-Icon_Information"></i></button></li><li title="Bibliometrics &amp; Citations"><button aria-haspopup="dialog" aria-controls="w-slideElement" data-slide-target="#pill-metric" data-ctrl-res="screen-xlg" data-full-screen="false" data-label="&lt;i class=&quot;icon-metric &quot;&gt;&lt;/i&gt;Bibliometrics &amp; Citations" title="Bibliometrics and Citations" class="w-slide__btn pill-metric"><i aria-hidden="true" class="icon-metric"></i></button></li><li title="Get Access"><a href="javascript:void(0);" data-slide-target="#pill-access" data-ctrl-res="screen-xlg" data-full-screen="false" title="Get Access" data-label="&lt;i class=&quot;icon-get-access&quot;&gt;&lt;/i&gt;Get Access" class="w-slide__btn pill-access"><i class="icon-get-access"></i></a></li><li title="References"><button aria-haspopup="dialog" aria-controls="w-slideElement" data-slide-target="#pill-references" data-ctrl-res="screen-xlg" data-full-screen="false" title="References" data-label="&lt;i class=&quot;icon-Icon_Links-References&quot;&gt;&lt;/i&gt;References" class="w-slide__btn pill-references"><i aria-hidden="true" class="icon-Icon_Links-References"></i><span class="refNum count-bubble">0<span class="sr-only">References</span></span></button></li><li title="Media"><button aria-haspopup="dialog" aria-controls="w-slideElement" data-slide-target="#pill-media" data-ctrl-res="screen-xlg" data-full-screen="false" title="Media" data-label="&lt;i class=&quot;icon-Icon_Images&quot;&gt;&lt;/i&gt;Media" data-ajaxtarget="#pill-fig__content" data-component="pubAjaxContent" data-action="onResponse" data-ajaxurl="/action/ajaxShowFigures?widgetId=f69d88a8-b404-4aae-83a9-9acea4426d78&amp;ajax=true&amp;doi=10.1109%2FICSE-SEIP.2019.00042&amp;pbContext=%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3Bctype%3Astring%3ABook+Content%3Barticle%3Aarticle%3Adoi%5C%3A10.1109%2FICSE-SEIP.2019.00042%3Bissue%3Aissue%3Adoi%5C%3A10.5555%2F3339914%3Bpage%3Astring%3AArticle%2FChapter+View%3BsubPage%3Astring%3AAbstract%3Bcsubtype%3Astring%3AConference+Proceedings%3Bwebsite%3Awebsite%3Adl-site%3Btopic%3Atopic%3Aconference-collections%26gt%3Bicse%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages" class="w-slide__btn loadAjax-auto pill-media"><i aria-hidden="true" class="icon-Icon_Images"></i></button></li><li title="Tables"><button aria-haspopup="dialog" aria-controls="w-slideElement" data-slide-target="#pill-tables" data-ctrl-res="screen-xlg" title="Tables" data-full-screen="false" data-label="&lt;i class=&quot;icon-table&quot;&gt;&lt;/i&gt;Tables" data-ajaxtarget=".pill-tables__content" data-component="pubAjaxContent" data-action="onResponse" data-ajaxurl="/action/ajaxShowTables?widgetId=f69d88a8-b404-4aae-83a9-9acea4426d78&amp;ajax=true&amp;doi=10.1109%2FICSE-SEIP.2019.00042&amp;pbContext=%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3Bctype%3Astring%3ABook+Content%3Barticle%3Aarticle%3Adoi%5C%3A10.1109%2FICSE-SEIP.2019.00042%3Bissue%3Aissue%3Adoi%5C%3A10.5555%2F3339914%3Bpage%3Astring%3AArticle%2FChapter+View%3BsubPage%3Astring%3AAbstract%3Bcsubtype%3Astring%3AConference+Proceedings%3Bwebsite%3Awebsite%3Adl-site%3Btopic%3Atopic%3Aconference-collections%26gt%3Bicse%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages" class="w-slide__btn loadAjax-auto pill-tables"><i aria-hidden="true" class="icon-table"></i></button></li><li title="Share"><button aria-haspopup="dialog" aria-controls="w-slideElement" data-slide-target="#pill-share" data-ctrl-res="screen-xlg" data-full-screen="false" title="Share" data-label="&lt;i class=&quot;icon-Icon_Share&quot;&gt;&lt;/i&gt;Share" class="w-slide__btn pill-share pill-content"><i aria-hidden="true" class="icon-Icon_Share"></i></button></li></ul></div></div></div></article><div id="figure-viewer" data-ux3-wrapper="figure-viewer" data-ux3-transformed-by="figureInit" data-ux3-role="parent" role="dialog" aria-label="Figure Viewer" class="figure-viewer"><div class="figure-viewer__reg__top clearfix"><div class="figure-viewer__top__right"><a title="Zoom In" href="#" class="figure-viewer__ctrl figure-viewer__ctrl__zoom zoomSetting"><div aria-hidden="true" class="icon-zoom-in zoom-in"></div></a><a title="Zoom Out" href="#" class="figure-viewer__ctrl figure-viewer__label__zoom zoomSetting"><div aria-hidden="true" class="icon-zoom-out zoom-out"></div></a><a title="Open Caption" href="#" class="figure-viewer__ctrl figure-viewer__ctrl__caption"><i aria-hidden="true" class="icon-Icon_Information"></i></a><a href="#" data-ux3-role="controller" role="button" title="close" class="figure-viewer__ctrl figure-viewer__ctrl__close"><i aria-hidden="true" class="icon-cancel-bold"><span class="sr-only">Close Figure Viewer</span></i></a></div><h4 class="figure-viewer__top__center"></h4><div class="figure-viewer__top__left"><a href="#" role="button" title="Browse All" class="figure-viewer__ctrl__browse"><i aria-hidden="true" class="icon-grid-3"><span class="sr-only">Browse All</span></i></a><a href="#" role="button" title="Return" class="figure-viewer__ctrl__return is-hidden"><i aria-hidden="true" class="icon-cancel-bold"><span class="sr-only">Return</span></i></a><span class="zoomSlider js__zoom-slider ui-slider zoomSetting"><label for="figure-viewer__zoom-range" class="sr-only">Change zoom level</label><input type="range" id="figure-viewer__zoom-range" class="zoom-range"/></span></div></div><div class="figure-viewer__reg__center"><div class="figure-viewer__cent__left"><div class="figure-viewer__hold__fig"><div class="holder"></div></div><div class="figure-viewer__hold__list"><h3 class="figure-viewer__browse-title"></h3><div class="flex-grid"></div></div></div><div class="figure-viewer__cent__right"><div class="figure-viewer__caption-header"><h3 class="figure-viewer__caption-label">Caption</h3><a title="Close Caption" href="#" class="pull-right figure-viewer__close-caption figure-viewer__ctrl__caption"><i aria-hidden="true" class="icon-cancel-bold"></i></a></div><div class="figure-viewer__caption-wrapper"><div class="figure-viewer__title"><span class="figure-viewer__title__text"></span></div><div class="figure-viewer__hold__figcap"></div></div></div></div></div>
+
+        </div>
+    
+
+
+
+
+
+        
+        <div class="separated-block--dashed align-center"><a href="/doi/proceedings/10.5555/3339914" style="text-transform: capitalize;" class="btn btn--inverse big">View Table of Contents</a></div>
+
+
+
+
+        
+        <div role="dialog" aria-labelledby="exportCitationsPopup" class="ux-modal-container"><div id="exportCitation" class="modal"><div class="modal__dialog"><div class="modal__header"><button type="button" data-dismiss="modal" class="close"><i aria-hidden="true" aria-label="close popup" class="icon-close_thin"></i></button><h2 id="exportCitationsPopup">Export Citations</h2></div><div class="modal__body"><div class="exportCitation__tabs"><div class="tab"><ul role="tablist" class="rlist tab__nav"></ul></div><div class="csl-wrapper copy__text-wrapper"><form action="/action/exportCiteProcCitation" method="post" target="_blank"><input type="hidden" name="content" value=""/><input type="hidden" name="dois" value=""/><input type="hidden" name="format" value=""/><fieldset class="input-group"><label for="citation-format" class="visibility-hidden">Select Citation format</label><select id="citation-format" data-csl-doi="10.1109/ICSE-SEIP.2019.00042" aria-label="Select Citation format"><option value="bibtex" data-format="bibTex">BibTeX</option><option value="endNote" data-format="endNote">EndNote</option><option value="acm" data-format="text">ACM Ref</option></select><span class="select-arrow"><i class="icon-bottom-arrow"></i></span></fieldset><ul class="rlist tab__content"><li id="allResultstab" aria-labelledby="allResults" role="tabpanel" class="tab__pane"><div class="all-results-tab-container"><div class="hidden warning-message mb-2">Please download or close your previous search result export first before starting a new bulk export.</div><div class="desc-text"><div class="bold">Preview is not available.</div>By clicking download,<b class="ml-1">a status dialog</b> will open to start the export process. The process may take<b class="ml-1">a few minutes</b> but once it finishes a file will be downloadable from your browser. You may continue to browse the DL while the export process is in progress.</div><a href="#" title="Download" data-href="/action/searchCitationExport?query=DOI%3D10.1109%252FICSE-SEIP.2019.00042%26target%3Dindex-terms" class="btn transparent downloadBtn"><i aria-hidden="true" class="icon-Icon_Download"></i>Download<i aria-hidden="true" class="icon-export"></i></a></div></li><li id="selectedTab" aria-labelledby="selected" role="tabpanel" class="tab__pane active"><div class="csl-wrapper copy__text-wrapper"><pre class="copy__text csl-response"></pre><div id="export-warning"></div><div class="pull-right"><ul role="menu" class="rlist--inline separator"><li><a href="javascript:void(0)" role="menuitem" title="Download citation" class="download__btn disabled"><label class="visibility-hidden">Download citation</label><i aria-hidden="true" class="icon-Icon_Download"></i></a></li><li><input type="hidden" id="doisLimitNumber" value="1000"/><a href="javascript:void(0)" role="menuitem" title="Copy citation" class="copy__btn disabled"><label class="visibility-hidden">Copy citation</label><i aria-hidden="true" class="icon-pages"></i></a></li></ul></div></div></li></ul></form></div></div></div></div></div></div>
+</main>
+
+        </div>
+    
+
+
+
+
+
+        
+        <footer class="footer">
+
+
+
+        
+        <h2 class="sr-only" tabindex="0">Footer</h2>
+
+
+
+
+        
+        <div class="back-to-top clearfix">
+    <i class="icon-arrow_u_p"></i>
+</div>
+
+
+
+
+        
+        <div class="footer-top">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="81a18a14-d709-41fd-9bb6-25a7fc1e13df" class="container">
+        
+
+
+
+        
+        <div class="row sitemap">
+
+
+
+        
+        <div class="col-sm-2 col-xs-6 sitemap__column">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="5b00ef28-f63b-4518-bd06-da82035f86ca" class="sitemap__data">
+        
+
+
+
+        
+        <h3 style="font-size: .875rem; margin-bottom: 18px;" tabindex="0">Categories</h3>
+<ul class="rlist">
+    <li><a href="/journals" title="Browse a listing of ACM’s Journals">Journals</a></li>
+    <li><a href="/magazines" title="Browse ACM's Magazines">Magazines</a></li>
+    <li><a href="/acmbooks" title="Browse new Releases of ACM Books">Books</a></li>
+    <li><a href="/proceedings" title="Browse the ACM Proceedings">Proceedings</a></li>
+    <li><a href="/sigs" title="Browse the Special Interest Groups">SIGs</a></li>
+    <li><a href="/conferences" title="Browse the Conferences">Conferences</a></li>
+    <li><a href="/collections" title="Browse the Special Collections">Collections</a></li>
+    <li><a href="/people" title="Discover ACM’s community of authors">People</a></li>
+</ul>
+
+        </div>
+    
+
+</div><div class="col-sm-4 col-xs-6 sitemap__column">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="731f98d3-e996-490d-a071-e9b966b32e2d" class="sitemap__data">
+        
+
+
+
+        
+        <h3 style="font-size: .875rem; margin-bottom: 18px;" tabindex="0">About</h3>
+<ul class="rlist">
+    <li><a href="/about">About ACM Digital Library</a></li>
+    <li><a href="/about/dlboard" title="ACM DL Board - Governance and Support Staff">ACM Digital Library Board</a></li>
+    <li><a href="/about/access" title="Accessing the DL">Subscription Information</a></li>
+    <li><a href="https://www.acm.org/publications/authors/information-for-authors" title="Information for Authors">Author Guidelines</a></li>
+    <li><a href="/about/access" title="Accessing the DL">Using ACM Digital Library</a></li>
+    <li><a href="/about/content#sec2">All Holdings within the ACM Digital Library</a></li>
+    <li><a href="/ccs" title="Classify publications using ACM's Computing Classification System">ACM Computing Classification System</a></li>
+     <li><a href="/about/accessibility" title="Digital Library Accessibility">Digital Library Accessibility</a></li>
+</ul>
+
+        </div>
+    
+
+</div><div class="col-sm-3 col-xs-6 sitemap__column">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="d4ed040d-22e8-481c-a7ef-0cac141f5246" class="sitemap__data">
+        
+
+
+
+        
+        <h3 style="font-size: .875rem; margin-bottom: 18px;" tabindex="0">Join</h3>
+<ul class="rlist">
+    <li><a href="https://www.acm.org/membership/join">Join ACM</a></li>
+    <li><a href="https://www.acm.org/special-interest-groups/join">Join SIGs</a></li>
+    <li><a href="https://www.acm.org/publications/subscribe">Subscribe to Publications</a></li>
+    <li><a href="https://libraries.acm.org/">Institutions and Libraries</a></li>
+</ul>
+
+        </div>
+    
+
+</div><div class="col-sm-3 col-xs-6 sitemap__column">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="4a649bf1-cf3f-472c-b764-dc3ab0cf4310" class="sitemap__data">
+        
+
+
+
+        
+        <h3 style="font-size: .875rem; margin-bottom: 18px;" tabindex="0">Connect</h3>
+<ul class="rlist social-media__connect">
+    <li><a href="/cdn-cgi/l/email-protection#1e7a72336a7b7f735e766f307f7d7330716c79" title="email dl team"><i class="icon-Icon_mail" aria-hidden="true"></i><span>Contact</span></a></li>
+    <li><a href="https://www.facebook.com/AssociationForComputingMachinery/" title="ACM on facebook"><i class="icon-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
+    <li><a href="https://twitter.com/acmdl" title="Tweets from ACM DL"><i class="icon-twitter" aria-hidden="true"></i><span>Twitter</span></a></li>
+    <li><a href="https://www.linkedin.com/company/association-for-computing-machinery/" title="acm  linkedin"><i class="icon-linkedin" aria-hidden="true"></i><span>Linkedin</span></a></li>
+    <!--li><a href="#" title="icon-Rss"><i class="icon-Rss" aria-hidden="true"></i><span>RSS</span></a></li-->
+    <li><a onclick="srv.openModal(true,'02b075ed48492ef0e7598ddf9762f5ef668d7320')" title="Provide Feedback"><i class="icon-Icon_Information" aria-hidden="true"></i><span>Feedback</span></a></li>
+    <li><a onclick="srv.openModal(true,'02b075ed48492ef0e7598ddf9762f5ef668d7320')" title="Report a problem"><i class="icon-Icon_Information" aria-hidden="true"></i><span>Bug Report</span></a></li>
+</ul>
+
+        </div>
+    
+
+</div>
+</div>
+
+        </div>
+    
+
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="6e6da9b7-371e-4ea0-827e-8de5915b8cd5" class="footer-bottom text-onDark">
+        
+
+
+
+        
+        <div class="container"><div class="row"><div class="col-md-8 col-sm-6 footer__copyright-wrapper">
+
+
+
+        
+        <div class="copyright">The ACM Digital Library is published by the Association for Computing Machinery. Copyright © 2024 ACM, Inc.</div>
+<ul class="rlist--inline">
+    <li><a class="link-nocolor-nounderline" href="https://libraries.acm.org/digital-library/policies#anchor3">Terms of Usage</a></li>
+    <li><a class="link-nocolor-nounderline" href="https://www.acm.org/about-acm/privacy-policy">Privacy Policy</a></li>
+    <li><a class="link-nocolor-nounderline" href="https://www.acm.org/code-of-ethics">Code of Ethics</a></li>
+</ul>
+</div><div class="col-md-4 col-sm-6 footer__logos-wrapper">
+
+
+
+        
+        <div class="logos">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-general-image" data-widget-id="42d543b3-ff9d-4f92-bf03-6d1fa00da8c6" class="footer__logo1">
+        
+
+
+
+        
+        <a href="/" title=""><img id="" alt="ACM Digital Library home" src="/specs/products/acm/releasedAssets/images/acm-logo-dl-8437178134fce530bc785276fc316cbf.png" loading="eager"/></a>
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-general-image" data-widget-id="5a0bc5df-cd95-408f-8ae5-8b1f40746519" class="footer__logo2">
+        
+
+
+
+        
+        <a href="https://www.acm.org" title=""><img id="" alt="ACM home" src="/specs/products/acm/releasedAssets/images/acm-logo-3-10aed79f3a6c95ddb67053b599f029af.png" loading="eager"/></a>
+
+        </div>
+    
+
+</div>
+</div></div></div>
+
+        </div>
+    
+
+
+
+
+
+        
+        <!-- Mopinion Pastea.se  start --><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">(function(){var id="7zt4vp6rxi2bbpxuy9yzabob4fy2enwmumr";var js=document.createElement("script");var pbBtn=document.querySelector('.admin-bar-disclosure');if(!window.PB){js.setAttribute("src","//deploy.mopinion.com/js/pastease.js");document.getElementsByTagName("head")[0].appendChild(js);var t=setInterval(function(){try{new Pastease.load(id);clearInterval(t)}catch(e){}},50)}})();
+    </script><!-- Mopinion Pastea.se end -->
+</footer>
+
+
+
+
+        
+        <script type="text/javascript">
+(function(h,o,t,j,a,r){
+    h.hj=h.hj||function()
+    
+    {(h.hj.q=h.hj.q||[]).push(arguments)}
+    ;
+    h._hjSettings={hjid:1290436,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+
+
+
+        
+        <script type="text/javascript">
+    (function (w, d) {
+    var b = d.getElementsByTagName('body')[0];
+    var s = d.createElement("script");
+    var v = !("IntersectionObserver" in w) ? "8.17.0" : "10.19.0";
+    s.async = true; // This includes the script as async. See the "recipes" section for more information about async loading of LazyLoad.
+    s.src = "https://cdn.jsdelivr.net/npm/vanilla-lazyload@" + v + "/dist/lazyload.min.js";
+    w.lazyLoadOptions = {elements_selector: ".lazy", "class_loaded": "image-lazy-loaded"};
+    b.appendChild(s);
+}(window, document));
+</script>
+
+
+
+
+        
+        
+
+
+
+
+        
+        
+
+
+
+    
+
+    
+
+    
+        
+    
+
+
+
+
+
+
+        
+        <div role="region" class="affs-popup"><input id="deleteCookie" type="hidden" name="deleteCookie" value="true"/></div>
+
+
+
+
+        
+        <div id="exportDownloadNotReady" role="region" class="searchCiteExport-popup hidden"><div class="searchCiteExport-popup__header"><i aria-hidden="true" class="icon-info"></i><span aria-label="Your Search Results Download Request" class="searchCiteExport-popup__title">Your Search Results Download Request</span><i aria-hidden="true" tabindex="0" class="icon-cancel-bold"> </i></div><div aria-label="Search Results Popup Body" class="searchCiteExport-popup__body clearfix"><p>We are preparing your search results for download ...</p><p>We will inform you here when the file is ready.</p><a href="#" disabled="disabled" class="btn blue pull-right">Download now!</a></div></div><div id="exportDownloadReady" role="region" class="searchCiteExport-popup hidden"><div class="searchCiteExport-popup__header"><i aria-hidden="true" class="icon-info"></i><span aria-label="Your Search Results Download Request" class="searchCiteExport-popup__title">Your Search Results Download Request</span><i aria-hidden="true" tabindex="0" class="icon-cancel-bold"></i></div><div aria-label="Search Results Popup Body" class="searchCiteExport-popup__body clearfix"><div class="csl-all-response hidden"></div><p>Your file of search results citations is now ready.</p><a href="#" class="btn blue searchCiteExport-popup__close pull-right">Download now!</a></div></div><div id="exportDownloadExpired" role="region" class="searchCiteExport-popup hidden"><div class="searchCiteExport-popup__header"><i aria-hidden="true" class="icon-info"></i><span aria-label="Your Search Results Download Request" class="searchCiteExport-popup__title">Your Search Results Download Request</span><i aria-hidden="true" tabindex="0" class="icon-cancel-bold"></i></div><div aria-label="Search Results Popup Body" class="searchCiteExport-popup__body clearfix"><p>Your search export query has expired. Please try again.</p></div></div>
+        </div>
+    </div>
+
+
+	
+    <script>if (typeof define !== 'undefined' && define.amd)
+    define.amd = false</script><script src="/products/acm/releasedAssets/js/main.bundle-d669c8a2ed7b5426bcf3.js"></script><script>(function (w, d) {
+    var b = d.getElementsByTagName('body')[0];
+    var s = d.createElement("script");
+    var v = !("IntersectionObserver" in w) ? "8.17.0" : "10.19.0";
+    s.async = true; // This includes the script as async. See the "recipes" section for more information about async loading of LazyLoad.
+    s.src = "https://cdn.jsdelivr.net/npm/vanilla-lazyload@" + v + "/dist/lazyload.min.js";
+    w.lazyLoadOptions = {elements_selector: ".lazy", "class_loaded": "image-lazy-loaded"};
+    b.appendChild(s);
+}(window, document));</script>
+<script type="text/javascript" src="/wro/n3h9~product.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(() => setTimeout(() => {
+            let _bnw=window,_bna=atob("bG9jYXRpb24="),_bnb=atob("b3JpZ2lu"),_hn=_bnw[_bna][_bnb],_bnt=btoa(_hn+new Array(5 - _hn.length % 4).join(" "));
+            $.get("/resource/lodash?t="+_bnt);
+        },4000));
+    </script>
+
+
+
+
+
+
+
+
+    
+
+    
+    
+
+    
+    
+    
+    
+        
+            
+                <script type="text/javascript" src="/wro/n3h9~article-metrics.js"></script>
+            
+            
+            
+        
+    
+
+
+
+<script>(function(){if (!document.body) return;var js = "window['__CF$cv$params']={r:'86bf6ed97ffd04be',t:'MTcxMTcxMDgzMS44MTcwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script></body>
+</html>

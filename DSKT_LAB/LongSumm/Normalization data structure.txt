@@ -1,0 +1,10 @@
+Data sample
+1 sample có dạng dict gồm các trường sau:
+- id: định dạng của bài báo được tóm tắt
+- title: string-Tên bài báo
+- metadata: array - các thông tin liên quan đến tác giả, url, ...
+- summary: array - chứa danh sách các câu tóm tắt
+- plain_text: array - thông tin về văn bản trong bài báo, gồm các section
+	- Section A: array of sentences
+	- Section B: array of sentences
+Tạo 1 thư mục riêng để lưu trữ plain_text_source phòng trường hợp cần detect thêm dữ liệu sau này

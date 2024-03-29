@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en"                              class="pb-page"          data-request-id="da25c4ba-4e71-4a4f-a3eb-cd972683ea7f"  
+>    <head data-pb-dropzone="head"><meta name="pbContext" content=";issue:issue:doi\:10.1145/3317550;taxonomy:taxonomy:conference-collections;wgroup:string:ACM Publication Websites;groupTopic:topic:acm-pubtype&gt;proceeding;ctype:string:Book Content;page:string:Article/Chapter View;article:article:doi\:10.1145/3317550.3321443;subPage:string:Abstract;csubtype:string:Conference Proceedings;topic:topic:conference-collections&gt;hotos;website:website:dl-site;journal:journal:acmconferences;pageGroup:string:Publication Pages"/>
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/"></link><meta name="dc.Format" content="text/HTML"></meta><meta name="dc.Identifier" scheme="acm-id" content="3321443"></meta><meta name="dc.Identifier" scheme="doi" content="10.1145/3317550.3321443"></meta><meta name="dc.Language" content="EN"></meta><meta name="dc.Coverage" content="world"></meta>
+
+
+
+
+
+
+<style id="pb-theme">
+.theme {
+
+}
+</style>
+
+<title>A Case for Managed and Model-less Inference Serving | Proceedings of the Workshop on Hot Topics in Operating Systems</title>
+
+
+
+
+<meta charset="UTF-8">
+<meta name="robots" content="noarchive"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <meta property="og:title" content="A Case for Managed and Model-less Inference Serving | Proceedings of the Workshop on Hot Topics in Operating Systems"/>
+    
+    
+
+
+
+    
+        <meta property="og:type" content="Chapter"/>
+    
+    
+
+
+
+    
+        <meta property="og:url" content="https://dl.acm.org/doi/10.1145/3317550.3321443"/>
+    
+    
+
+
+    
+    
+
+
+
+    
+        <meta property="og:site_name" content="ACM Conferences"/>
+    
+    
+
+
+
+    
+    
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="/products/acm/releasedAssets/css/build-4b49664f6d1e5be020ef.css"/><link rel="stylesheet" href="/products/acm/releasedAssets/css/print-4b49664f6d1e5be020ef.css" media="print"/>
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="/pb-assets/styles/acm-custom-1708713724217.css">
+<link rel="stylesheet" href="/pb-assets/styles/journals-colors-1701100274777.css">
+<link rel="stylesheet" href="/pb-assets/styles/conferences-colors-1693402979777.css">
+<link rel="stylesheet" href="/pb-assets/styles/magazines-colors-1693402979777.css">
+<link rel="stylesheet" href="/pb-assets/styles/sigs-colors-1693402980330.css">
+<script defer src="https://scholar.google.com/scholar_js/casa.js" async></script>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="d5e9e377-b0f2-49fd-b006-d86d5073d17e" data-blockingmode="auto" type="text/javascript"></script>
+<script type="text/javascript">
+    window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+      heap.load("1083010732");
+</script>
+<link rel="apple-touch-icon" sizes="180x180" href="/pb-assets/head-metadata/apple-touch-icon-1574252172393.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/pb-assets/head-metadata/favicon-32x32-1574252172003.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/pb-assets/head-metadata/favicon-16x16-1574252172937.png">
+<link rel="manifest" href="/pb-assets/head-metadata/site-1574252171130.webmanifest" crossorigin="use-credentials">
+<link rel="mask-icon" href="/pb-assets/head-metadata/safari-pinned-tab-1574252171193.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="theme-color" content="#ffffff">
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e539318ac0a38db","token":"b7f168b3cd354a55a4dd51b513830799","version":"2021.12.0","si":100}' crossorigin="anonymous"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon='{"rayId":"7f51c78ba8dacf41","token":"3bb0add5452d43a2b5d4b3d6c628944c","version":"2023.8.0","si":100}' crossorigin="anonymous"></script>
+<!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NFGCMX');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+
+
+</head>
+        <body class="pb-ui website-dl-site">
+
+<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NFGCMX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+
+
+
+
+
+
+
+<a href="#skip-to-main-content" class="sr-only-focusable">skip to main content</a>    <div id="pb-page-content" data-ng-non-bindable>
+        <div data-pb-dropzone="main" data-pb-dropzone-name="Main">
+
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+    
+    
+        <header data-widget-def="ux3-layout-widget" data-widget-id="88f434fd-b4d9-4f0e-b7b6-cde0fadcc9ef" class="header base hotos">
+        
+
+
+
+        
+        <div class="header__fixed-items fixed fixed-element">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="c844bab8-b1d5-4df4-8bea-71f6156459e4" class="container header--first-row">
+        
+
+
+
+        
+        <div class="pull-left">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-general-image" data-widget-id="83eada61-9003-4cb3-99a8-a38fa7692761" class="header__logo1">
+        
+
+
+
+        
+        <a href="/" title=""><img id="" alt="ACM Digital Library home" src="/specs/products/acm/releasedAssets/images/acm-dl-logo-white-1ecfb82271e5612e8ca12aa1b1737479.png" loading="eager"/></a>
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-general-image" data-widget-id="5517ee17-e847-46ff-b42e-c5a6754e032d" class="header__logo2">
+        
+
+
+
+        
+        <a href="https://www.acm.org" title=""><img id="" alt="ACM home" src="specs/products/acm/releasedAssets/images/acm-logo-1-ad466e729c8e2a97780337b76715e5cf.png" loading="eager"/></a>
+
+        </div>
+    
+
+</div><div class="pull-right">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="ab4ba9a1-6e57-4b90-b9c2-fc7914d9a3a1" class="header__quick-menu text-onDark">
+        
+
+
+
+        
+        <ul class="rlist--inline"><li class="advanced-search-link hidden-lg hidden-md hidden-sm">
+
+
+
+        
+        <a href="/search/advanced" >Advanced Search</a>
+</li><li class="show-on-mobile">
+
+
+
+        
+        <a href="/browse/" title="browse by title or publisher">Browse</a>
+</li><li class="show-on-mobile">
+
+
+
+        
+        <a href="/about" title="About the ACM Digital Library">About</a>
+</li><li class="login-list">
+
+
+
+        
+        
+
+
+
+
+    
+
+
+
+
+
+
+
+
+    
+    
+        
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+<div class="dropBlock loginBar login-open">
+    <ul class="rlist--inline">
+        <li class="login-link">
+            <a href="/action/showLogin?redirectUri=%2Fdoi%2Fabs%2F10.1145%2F3317550.3321443%3Fdownload%3Dtrue">
+                Sign in
+            </a>
+        </li>
+        <li class="register-link">
+            
+                
+                
+                    <a href="https://accounts.acm.org?redirectUri=%2Fdoi%2Fabs%2F10.1145%2F3317550.3321443%3Fdownload%3Dtrue" class="btn" title="Register">
+                        Register
+                    </a>
+                
+            
+        </li>
+    </ul>
+</div>
+
+
+
+    
+
+
+</li></ul>
+
+        </div>
+    
+
+</div>
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="menuWidget" data-widget-id="13da1316-80a7-4370-a291-8968cd9cb35e" class="container header--second-row">
+        
+
+
+
+        
+        <div class="responsive-menu-container clearfix"><div class="left-section pull-left"></div><div class="menu-section"><div class="main-nav responsive-menu-nav"><a href="#global-menu" data-target="global-menu" data-toggle="nav" title="menu drawer"><span class="drawer__icons-box"><span class="drawer__icons-controls"></span></span></a><nav role="navigation" id="global-menu" data-ctrl-res="screen-sm" aria-label="Main Navigation" class="drawer__nav container gutterless hidden-sm hidden-xs"><ul id="menubar" role="menubar" class="menubar rlist--inline"><li role="menuitem" class="hidden-lg hidden-md"><div data-toggle="transplant" data-target-class="hidden-xs hidden-sm" data-target=".header--second-row .quick-search--form" data-direction="from" data-transplant="self" class="quick-search-mobile"></div></li><li role="menuitem" aria-label="Advanced Search" id="menu-item-global-menu-0" class="menu-item mobile-menu-item"><a href="/search/advanced"><span>Advanced Search</span></a></li><li role="menuitem" aria-label="Journals" id="menu-item-global-menu-1" class="menu-item"><a href="/journals"><span>Journals</span></a></li><li role="menuitem" aria-label="Magazines" id="menu-item-global-menu-2" class="menu-item"><a href="/magazines"><span>Magazines</span></a></li><li role="menuitem" aria-label="Proceedings" id="menu-item-global-menu-3" class="menu-item"><a href="/proceedings"><span>Proceedings</span></a></li><li role="menuitem" aria-label="Books" id="menu-item-global-menu-4" class="menu-item"><a href="/acmbooks"><span>Books</span></a></li><li role="menuitem" aria-label="SIGs" id="menu-item-global-menu-5" class="menu-item"><a href="/sigs"><span>SIGs</span></a></li><li role="menuitem" aria-label="Conferences" id="menu-item-global-menu-6" class="menu-item"><a href="/conferences"><span>Conferences</span></a></li><li role="menuitem" aria-label="People" id="menu-item-global-menu-7" class="menu-item"><a href="/people"><span>People</span></a></li><li role="menuitem" class="hidden-lg hidden-md"><div data-toggle="transplant" data-target-class="hidden-xs hidden-sm" data-target=".header__quick-menu .show-on-mobile" data-direction="from" data-transplant="self"></div></li><li role="menuitem" aria-haspopup="true" aria-label="More" class="dropdown-more hidden dropdown menu-parent"><a href="#" title="More" data-toggle="dropdown" class="dropdown__toggle"><span>More</span><i aria-hidden="true" class="icon-section_arrow_d pull-right hidden-sm hidden-xs"></i></a><ul aria-labelledby="main0-1" aria-hidden="true" role="menu" class="rlist dropdown__menu"></ul></li><li role="menuitem" class="menubar__extra-mob-links"></li></ul></nav></div></div><div class="right-section pull-right">
+
+
+
+        
+        <div class="quickSearchFormContainer"><div class="quick-search"><div class="clearfix quick-search__clearfix"><form action="/action/doSearch" name="defaultQuickSearch" method="get" title="Quick Search" class="quick-search--form"><div class="quick-search--input"><div class="input-group option-0"><label for="AllFieldf73847c0-d936-48ec-9bf9-139b3828507f" class="sr-only">Search ACM Digital Library</label><input type="search" autocomplete="off" id="AllFieldf73847c0-d936-48ec-9bf9-139b3828507f" name="AllField" placeholder="Search ACM Digital Library" data-auto-complete-max-words="7" data-auto-complete-max-chars="32" data-contributors-conf="3" data-topics-conf="3" data-publication-titles-conf="3" data-history-items-conf="3" data-group-titles-conf="3" value="" class="auto-complete quick-search__input"/></div></div><div class="quick-search--button"><button type="submit" title="Search" aria-label="Search" class="btn quick-search__button icon-Icon_Search"><span class="sr-only">Search</span><span>Search</span></button></div></form></div>
+
+
+
+        
+        <a class="quick-search__advancedHeader" title="link to Advanced Search form" href="/search/advanced">Advanced Search</a>
+</div></div>
+</div></div><div class="header__dropzone"></div>
+
+        </div>
+    
+
+
+
+
+
+        
+        <span style="display: none;">10.1145/3317550.3321443</span><span style="display: none;">acmconferences</span><span style="display: none;">Article/Chapter View</span><span style="display: none;">Abstract</span><span style="display: none;">Publication Pages</span><span style="display: none;">hotos</span><span style="display: none;">Conference Proceedings</span><span style="display: none;">conference-collections</span><div class="sub-nav fixed-element"><a href="#" data-db-target-for="sub-nav__items" data-more="false" data-lines="1" style="text-transform: uppercase;" class="sub-nav__toggle hidden-lg truncate-text-css">hotos</a><div class="sub-nav__container"><div class="container"><div data-ctrl-res="screen-md" class="responsive-menu-container"><div class="left-section pull-left"></div><div class="menu-section"><div style="display: block" class="responsive-menu-nav"><nav id="sub-nav__items" data-db-target-of="sub-nav__items" class="sub-nav__holder drawer__nav"><ul role="menu" class="rlist--inline menubar"><li role="menuitem"><a href="/conference/hotos" class="sub-nav__item">Conference</a></li><li role="menuitem"><a href="/conference/hotos/proceedings" class="sub-nav__item">Proceedings</a></li><li role="menuitem"><a href="/conference/hotos/upcoming" class="sub-nav__item">Upcoming Events</a></li><li role="menuitem"><a href="/conference/hotos/authors" class="sub-nav__item">Authors</a></li><li role="menuitem"><a href="/conference/hotos/affiliations" class="sub-nav__item">Affiliations</a></li><li role="menuitem"><a href="/conference/hotos/award-winners" class="sub-nav__item">Award Winners</a></li><li role="menuitem" aria-haspopup="true" aria-label="More" class="dropdown-more hidden dropdown menu-parent"><a href="#" title="More" data-toggle="dropdown" class="dropdown__toggle hidden-md hidden-sm hidden-xs"><span>More</span><i aria-hidden="true" class="icon-section_arrow_d"></i></a><ul aria-labelledby="main0-1" aria-hidden="true" role="menu" class="rlist dropdown__menu visible-md visible-sm visible-xs"></ul></li></ul></nav></div></div><div class="right-section hidden-md hidden-sm hidden-xs"></div></div></div></div><div class="hidden-xs hidden-sm"><div class="progress-bar--wrapper"><div style="width: 0.116818%;" class="progress-bar"></div></div></div></div>
+</div><div></div><div class="banner conference-landing"></div><div class="header-breadcrumb">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="f5f275c5-a862-48bf-8119-8528d04615da" class="container">
+        
+
+
+
+        
+        <div>
+
+
+
+        
+        
+
+
+
+        
+        <nav aria-label="Breadcrumbs" class="article__breadcrumbs separator"><ul><li><a href="https://dl.acm.org/" class="article__tocHeading">Home</a></li><li><a href="/conferences" class="article__tocHeading">Conferences</a></li><li><a href="/conference/hotos" class="article__tocHeading">HOTOS</a></li><li><a href="/conference/hotos/proceedings" class="article__tocHeading">Proceedings</a></li><li><a href="/doi/proceedings/10.1145/3317550" class="article__tocHeading">HotOS '19</a></li><li><a href="/doi/abs/10.1145/3317550.3321443?download=true" aria-current="page" class="article__tocHeading">A Case for Managed and Model-less Inference Serving</a></li></ul></nav>
+
+</div>
+
+        </div>
+    
+
+</div>
+
+        </header>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="84fac94e-a290-4bf2-9ff9-7edc8316a494" id="skip-to-main-content">
+        
+
+
+
+        
+        <main class="content hotos loi-page no-margin">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-publicationContent-widget" data-widget-id="f69d88a8-b404-4aae-83a9-9acea4426d78" class="container">
+        
+
+
+
+        
+        <article data-enable-mathjax="true" data-citationInfo="/action/acmCitationInfo?widgetId=f69d88a8-b404-4aae-83a9-9acea4426d78&ajax=true&doi=10.1145%2F3317550.3321443&pbContext=%3Bissue%3Aissue%3Adoi%5C%3A10.1145%2F3317550%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3Bctype%3Astring%3ABook+Content%3Bpage%3Astring%3AArticle%2FChapter+View%3Barticle%3Aarticle%3Adoi%5C%3A10.1145%2F3317550.3321443%3BsubPage%3Astring%3AAbstract%3Bcsubtype%3Astring%3AConference+Proceedings%3Btopic%3Atopic%3Aconference-collections%26gt%3Bhotos%3Bwebsite%3Awebsite%3Adl-site%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages" data-proceedingInfo="/action/proceedingArticleMeta?widgetId=f69d88a8-b404-4aae-83a9-9acea4426d78&ajax=true&doi=10.1145%2F3317550.3321443&pbContext=%3Bissue%3Aissue%3Adoi%5C%3A10.1145%2F3317550%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3Bctype%3Astring%3ABook+Content%3Bpage%3Astring%3AArticle%2FChapter+View%3Barticle%3Aarticle%3Adoi%5C%3A10.1145%2F3317550.3321443%3BsubPage%3Astring%3AAbstract%3Bcsubtype%3Astring%3AConference+Proceedings%3Btopic%3Atopic%3Aconference-collections%26gt%3Bhotos%3Bwebsite%3Awebsite%3Adl-site%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages"><div class="row"><div class="col-md-2 col-sm-3"></div><div class="col-md-8 col-sm-7"><div class="article-citations"><div class="citation"><div class="issue-item__citation clearfix"><span class="issue-heading">research-article </span><span class="article__access ml-3"><span></span></span>
+
+
+
+        
+        <!-- Go to https://www.addtoany.com/buttons/customize/ to customize your tools --><script type="text/javascript" defer="defer" src="https://static.addtoany.com/menu/page.js"></script><div class="share__block share__inline-links"><div class="pb-dropzone" data-pb-dropzone="shareBlock" title="shareBlock"></div><span class="sr-only">Share on</span><ul class="rlist--inline a2a a2a_kit a2a_kit_size_32 a2a_default_style"><li class="a2a_listitem_custom"><a role="link" title="twitter" class="a2a_button_twitter"><i aria-hidden="true" class="at-icon-wrapper icon-Icon_Twitter"></i></a></li><li class="a2a_listitem_custom"><a role="link" title="linkedin" class="a2a_button_linkedin"><i aria-hidden="true" class="at-icon-wrapper icon-linkedin"></i></a></li><li class="a2a_listitem_custom"><a role="link" title="reddit" class="a2a_button_reddit"><i aria-hidden="true" class="at-icon-wrapper icon-riddit-filled"></i></a></li><li class="a2a_listitem_custom"><a role="link" title="facebook" class="a2a_button_facebook"><i aria-hidden="true" class="at-icon-wrapper icon-Icon_Facebook"></i></a></li><li class="a2a_listitem_custom"><a role="link" title="email" class="a2a_button_email"><i aria-hidden="true" class="at-icon-wrapper icon-Icon_mail"></i></a></li><div class="pb-dropzone" data-pb-dropzone="share-additional-links" title="share-additional-links"></div></ul></div>
+</div><div class="border-bottom clearfix"><h1 class="citation__title">A Case for Managed and Model-less Inference Serving</h1></div><div class="border-bottom clearfix"> <div id="sb-1"> <ul data-lines="2" ariaa-label="authors" class="rlist--inline loa truncate-list"> <li class="label"><b>Authors: </b></li> <li class="loa__item"><a id="arnd_4779475176453761_Ctrl" href="javascript:void(0);" aria-controls="arnd_4779475176453761" aria-haspopup="true" class="author-name" title="Neeraja J. Yadwadkar"><span class="loa__author-info"> <div class="author-data"><span class="loa__author-name"><span><img class="author-picture" src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" width="24" height="24" alt="Author Picture" aria-hidden="true"/>Neeraja J. Yadwadkar</span></span></div><span class="loa_author_inst"> <p data-pill-inst="arnd_4779475176453761" data-doi="10.1145/contrib-81467667328">Stanford University</p></span></span></a><div id="arnd_4779475176453761" aria-labelledby="arnd_4779475176453761_Ctrl" class="author-info"> <div class="author-info__header" data-pill="d26841465e66"></div> <div class="author-info__body"> <p data-pill-inst="d26841465e66" data-doi="10.1145/contrib-81467667328">Stanford University</p><a href="/profile/81467667328" class="btn blue stretched">View Profile</a></div> </div><span>,</span></li> <li class="loa__item"><a id="arnd_4779475182480766_Ctrl" href="javascript:void(0);" aria-controls="arnd_4779475182480766" aria-haspopup="true" class="author-name" title="Francisco Romero"><span class="loa__author-info"> <div class="author-data"><span class="loa__author-name"><span><img class="author-picture" src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" width="24" height="24" alt="Author Picture" aria-hidden="true"/>Francisco Romero</span></span></div><span class="loa_author_inst"> <p data-pill-inst="arnd_4779475182480766" data-doi="10.1145/contrib-99659312352">Stanford University</p></span></span></a><div id="arnd_4779475182480766" aria-labelledby="arnd_4779475182480766_Ctrl" class="author-info"> <div class="author-info__header" data-pill="d26841465e82"></div> <div class="author-info__body"> <p data-pill-inst="d26841465e82" data-doi="10.1145/contrib-99659312352">Stanford University</p><a href="/profile/99659312352" class="btn blue stretched">View Profile</a></div> </div><span>,</span></li> <li class="loa__item"><a id="arnd_4779475184951360_Ctrl" href="javascript:void(0);" aria-controls="arnd_4779475184951360" aria-haspopup="true" class="author-name" title="Qian Li"><span class="loa__author-info"> <div class="author-data"><span class="loa__author-name"><span><img class="author-picture" src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" width="24" height="24" alt="Author Picture" aria-hidden="true"/>Qian Li</span></span></div><span class="loa_author_inst"> <p data-pill-inst="arnd_4779475184951360" data-doi="10.1145/contrib-99659320837">Stanford University</p></span></span></a><div id="arnd_4779475184951360" aria-labelledby="arnd_4779475184951360_Ctrl" class="author-info"> <div class="author-info__header" data-pill="d26841465e96"></div> <div class="author-info__body"> <p data-pill-inst="d26841465e96" data-doi="10.1145/contrib-99659320837">Stanford University</p><a href="/profile/99659320837" class="btn blue stretched">View Profile</a></div> </div><span>,</span></li> <li class="loa__item"><a id="arnd_4779475186824449_Ctrl" href="javascript:void(0);" aria-controls="arnd_4779475186824449" aria-haspopup="true" class="author-name" title="Christos Kozyrakis"><span class="loa__author-info"> <div class="author-data"><span class="loa__author-name"><span><img class="author-picture" src="/action/showDoPubAsset?doi=10.1145/contrib-81350597257&format=rel-imgonly&assetId=2906213.jpeg" width="24" height="24" alt="Author Picture" aria-hidden="true"/>Christos Kozyrakis</span></span></div><span class="loa_author_inst"> <p data-pill-inst="arnd_4779475186824449" data-doi="10.1145/contrib-81350597257">Stanford University, Google</p></span></span></a><div id="arnd_4779475186824449" aria-labelledby="arnd_4779475186824449_Ctrl" class="author-info"> <div class="author-info__header" data-pill="d26841465e112"></div> <div class="author-info__body"> <p data-pill-inst="d26841465e112" data-doi="10.1145/contrib-81350597257">Stanford University, Google</p><a href="/profile/81350597257" class="btn blue stretched">View Profile</a></div> </div> </li> </ul><a href="#pill-authors__contentcon" data-slide-target="#pill-information" data-full-screen="false" data-ctrl-res="screen-xlg" data-tab="pill-authors__content" data-label="<i class='icon-Icon_Information'&gt;</i&gt; Information &amp; Authors" class="loa__link w-slide__btn tab-link slide-active">Authors Info &amp; Claims </a></div> </div> <div class="border-bottom clearfix"><div class="issue-item__detail"><a href="/doi/proceedings/10.1145/3317550" title="HotOS '19: Proceedings of the Workshop on Hot Topics in Operating Systems"><span class="epub-section__title">HotOS '19: Proceedings of the Workshop on Hot Topics in Operating Systems</span></a><span class="dot-separator"><span class="epub-section__date">May 2019</span></span><span class="dot-separator"><span class="epub-section__pagerange">Pages   184–191</span></span><span class="dot-separator"><a href="https://doi.org/10.1145/3317550.3321443" class="issue-item__doi">https://doi.org/10.1145/3317550.3321443</a></span></div></div><div class="border-bottom clearfix"><span class="bold label">Published:</span><span class="CitationCoverDate">13 May 2019</span><a href="#" data-slide-target="#pill-information" data-ctrl-res="screen-xlg" data-full-screen="false" data-tab="pill-information__content" data-label="&lt;i class='icon-Icon_Information '&gt;&lt;/i&gt;Information &amp; Authors" class="publication-history-link w-slide__btn tab-link">Publication History</a><a data-target="crossmark"><img alt="Check for updates on crossmark" src="/specs/products/acm/releasedAssets/images/CROSSMARK_Color_horizontal-af7f62da74558dc5bb646a88e85ed60d.svg" class="crossmark__logo mt-sm-2 mt-xs-2 ml-lg-5"/></a></div>
+
+
+
+        
+        
+<div class="border-bottom clearfix"><div class="issue-item__footer"><div class="issue-item__footer-info pull-left"><div tabindex="0" class="tooltip"><ul title="Click to stay open" class="rlist--inline"><li><span class="citation"><i aria-hidden="true" class="icon-quote"></i><span>16</span><span class="sr-only">citation</span></span></li><li><span class="metric"><i aria-hidden="true" class="icon-metric"></i><span>1,187</span></span></li><li><span class="sr-only">Downloads</span></li></ul><div class="tooltip__body"><span class="arrow"></span><div class="left-bordered-title">Metrics</div><a href="#" data-slide-target="#pill-metric" data-ctrl-res="screen-xlg" data-full-screen="false" data-tab="pill-citations__content" title="See Bibliometrics &amp; Citations section" data-label="&lt;i class=&quot;icon-metric &quot;&gt;&lt;/i&gt;Bibliometrics &amp; Citations" class="w-slide__btn tab-link"><div class="citation">Total Citations<span class="bold">16</span></div></a><a href="#" data-slide-target="#pill-metric" data-ctrl-res="screen-xlg" data-full-screen="false" data-tab="pill-bibliometrics__content" title="See Bibliometrics &amp; Citations section" data-label="&lt;i class=&quot;icon-metric &quot;&gt;&lt;/i&gt;Bibliometrics &amp; Citations" class="w-slide__btn tab-link"><div class="metric">Total Downloads<span class="bold">1,187</span></div></a><div class="info">Last 12 Months<span class="bold">111</span></div><div class="info">Last 6 weeks<span class="bold">13</span></div></div></div></div><div class="issue-item__footer-links pull-right"><ul class="rlist--inline">
+
+
+
+        
+        <li role="menu" class="article-tool"><a id="manageAlert__crtl" href="/action/addCitationAlert?doi=10.1145/3317550.3321443" data-toggle="modal" role="menuitem" data-title="Get Citation Alerts" data-target="#manageAlert" aria-label="Get Citation Alerts" class="btn--icon simple-tooltip__block--b"><i aria-hidden="true" class="icon-Icon_Alerts"></i><span class="visibility-hidden">Get Citation Alerts</span></a><div role="dialog" aria-labelledby="id-hatemile-navigation-6073290063892647-6" class="ux-modal-container"><div id="manageAlert" class="modal"><div class="modal__dialog"><div class="modal__dialog--success hidden"><div class="modal__header"><button type="button" data-dismiss="modal" aria-label="close popup" class="close"><i aria-hidden="true" class="icon-close_thin"></i></button><a id="id-hatemile-navigation-6073290063892647-7" name="id-hatemile-navigation-6073290063892647-7" data-headinganchorfor="id-hatemile-navigation-6073290063892647-6" class="heading-anchor"></a><h2 id="id-hatemile-navigation-6073290063892647-6">New Citation Alert added!</h2></div><div class="modal__body"><p>This alert has been successfully added and will be sent to:<span class="email"></span></p><p>You will be notified whenever a record that you have chosen has been cited.</p></div><div class="modal__footer"><p>To manage your alert preferences, click on the button below.</p><a href="/action/showPreferences?menuTab=Alerts" title="Manage my Alerts" id="id-hatemile-display-1019331959102511-5" class="btn blue big stretched manageAlert__btn"><span data-attributetitleof="id-hatemile-display-1019331959102511-5" class="force-read-before">Manage my Alerts</span></a></div></div><div class="modal__dialog--error hidden"><div class="modal__header"><button type="button" data-dismiss="modal" aria-label="close popup" class="close"><i aria-hidden="true" class="icon-close_thin"></i></button><a id="id-hatemile-navigation-6073290063892647-9" name="id-hatemile-navigation-6073290063892647-9" data-headinganchorfor="id-hatemile-navigation-6073290063892647-8" class="heading-anchor"></a><h2 id="id-hatemile-navigation-6073290063892647-8">New Citation Alert!</h2></div><div class="modal__body"><p>Please <a href="/action/showLogin?redirectUri=/doi/abs/10.1145/3317550.3321443?download=true" title="Sign In" class="link">log in to your account</a></p></div></div></div></div></div></li>
+<li role="menu" class="article-tool"><button role="menuitem" data-title="Save to Binder" data-db-target-for="save-to-binder" data-link="/action/binderList?doi=10.1145/3317550.3321443" aria-label="save to binder" class="btn--icon simple-tooltip__block--b saveToBinders"><i aria-hidden="true" class="icon-add-folder"></i></button></li><li role="menu" class="article-tool"><button role="menuitem" data-title="Export Citation" data-toggle="modal" data-target="#exportCitation" aria-label="Export Citations" class="btn--icon simple-tooltip__block--b"><i aria-hidden="true" class="icon-quote"></i><input type="hidden" name="doiVal" value="10.1145/3317550.3321443"/></button></li><li class="publisher-site article-tool"><a href="#" class="btn blue"><span>Publisher Site</span><i aria-hidden="true" class="icon-export"></i></a></li></ul><ul class="rlist--inline right"><li><input type="hidden" id="formatsCount" value="2"/></li><li><a href="javascript:void(0);" data-slide-target="#pill-access" data-ctrl-res="screen-xlg" data-full-screen="false" data-label="&lt;i class=&quot;icon-get-access&quot;&gt;&lt;/i&gt;Get Access" title="Get Access" class="get-access w-slide__btn"><i class="icon-get-access"></i><span>Get Access</span></a></li></ul></div></div></div></div></div></div><div class="col-sm-2"></div></div><div class="row"><div class="col-md-2 col-sm-3 sidebar-section article-sidebar-section"><div class="article__sections"><div class="sections-box"><div><div class="sections-box__static-items"><div class="parent-item"><h2 class="parent-item__title"><a href="/doi/proceedings/10.1145/3317550" data-lines="2" data-title="HotOS '19: Proceedings of the Workshop on Hot Topics in Operating Systems" class="simple-tooltip__inline--r truncate-text-css">HotOS '19: Proceedings of the Workshop on Hot Topics in Operating Systems</a></h2><span href="/doi/proceedings/10.1145/3317550" data-lines="2" data-title="A Case for Managed and Model-less Inference Serving" class="parent-item__subtitle simple-tooltip__inline--r truncate-text-css">A Case for Managed and Model-less Inference Serving</span><div class="pageRange">Pages   184–191</div></div>
+
+
+
+        
+        <div class="content-navigation clearfix"><a href="/doi/10.1145/3317550.3321441" title="Previous item in TOC" class="content-navigation__btn--pre "><span><i class="icon-Arrow-Stroke"></i></span><span class="control">Previous</span><span class="type">Chapter</span></a><a href="/doi/10.1145/3317550.3321430" title="Next item in TOC" class="content-navigation__btn--next "><span class="control">Next</span><span class="type">Chapter</span><span><i class="icon-Arrow-Stroke"></i></span></a></div>
+</div><div class="sections-block scroll-to-target"></div></div><div class="logo"><img src="/specs/products/acm/releasedAssets/images/footer-logo1-45ae33115db81394d8bd25be65853b77.png" alt="ACM Digital Library" title="ACM Digital Library"/></div></div></div></div><div class="col-md-8 col-sm-7 sticko__side-content"><div class="stickybar__original__position"></div><nav class="stickybar coolBar trans visible-xs visible-sm"><div class="stickybar__wrapper coolBar__wrapper clearfix"><div class="coolBar__section"><a id="article_Ctrl" href="#" data-db-target-for="article-sec_Pop" role="button" aria-expanded="false" aria-label="Sections Menu" class="coolBar__ctrl"><i class="icon-burger"></i></a><div id="article_Pop" data-db-target-of="article-sec_Pop" aria-hidden="true" class="coolBar__drop fixed rlist"><div data-target=".article__sections" data-remove="false" data-target-class="hidden-xs hidden-sm" data-toggle="transplant" data-direction="from" data-transplant="self" class="transplant showit"></div></div></div><div data-target=".pill-section .pill-list" data-remove="false" data-target-class="hidden-xs hidden-sm" data-toggle="transplant" data-direction="from" data-transplant="self" class="transplant showit"></div></div></nav><div class="article__body"><!-- abstract content --><div class="hlFld-Abstract"><div class="article__section article__abstract hlFld-Abstract"><div class="colored-block__title"><h2 id="d26841578e1" class="section__title left-bordered-title">ABSTRACT</h2></div><div class="abstractSection abstractInFull">
+		<p>The number of applications relying on inference from machine learning models, especially neural networks, is already large and expected to keep growing. For instance, Facebook applications issue tens-of-trillions of inference queries per day with varying performance, accuracy, and cost constraints. Unfortunately, today's inference serving systems are neither easy to use nor cost effective. Developers must manually match the performance, accuracy, and cost constraints of their applications to a large design space that includes decisions such as selecting the right model and model optimizations, selecting the right hardware architecture, selecting the right scale-out factor, and avoiding cold-start effects. These interacting decisions are difficult to make, especially when the application load varies over time, applications evolve over time, and the available resources vary over time.</p> <p>If we want an increasing number of applications to use machine learning, we must automate issues that affect ease-of-use, performance, and cost efficiency for both users and providers. Hence, we define and make the case for managed and model-less inference serving. In this paper, we identify and discuss open research directions to realize this vision.</p>
+	</div></div></div><!-- /abstract content --><div class="pb-dropzone" data-pb-dropzone="pubContentAccessDenialDropzone"><!-- Empty dropzone --></div><div class="article__section article__references show-more-items" data-sectionname="References"><p class="explanation__text"></p><div class="colored-block__title"><a id="SEC_refrences" class="sr-only-focusable"></a><h2 id="sec-ref" class="section__title left-bordered-title">
+                    References
+                </h2></div><ol class="rlist references__list references__numeric"><li id="ref-00001" class="&#xA;                references__item&#xA;            "><span class="references__note">M. AbdelBaky, M. Zou, A. R. Zamani, E. Renart, J. Diaz-Montes, and M. Parashar. 2017. Computing in the Continuum: Combining Pervasive Devices and Services to Support Data-Driven Applications. In 2017 IEEE 37th International Conference on Distributed Computing Systems (ICDCS). 1815--1824.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=M.+AbdelBaky%2C+M.+Zou%2C+A.+R.+Zamani%2C+E.+Renart%2C+J.+Diaz-Montes%2C+and+M.+Parashar.+2017.+Computing+in+the+Continuum%3A+Combining+Pervasive+Devices+and+Services+to+Support+Data-Driven+Applications.+In+2017+IEEE+37th+International+Conference+on+Distributed+Computing+Systems+%28ICDCS%29.+1815%2D%2D1824."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00002" class="&#xA;                references__item&#xA;            "><span class="references__note">Istemi Ekin Akkus, Ruichuan Chen, Ivica Rimac, Manuel Stein, Klaus Satzke, Andre Beck, Paarijaat Aditya, and Volker Hilt. 2018. SAND: Towards High-Performance Serverless Computing. In 2018 USENIX Annual Technical Conference (USENIX ATC 18). USENIX Association, Boston, MA, 923--935. https://www.usenix.org/conference/atc18/presentation/akkus <span class="references__pub-id doi 10.5555/3277355.3277444"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Istemi+Ekin+Akkus%2C+Ruichuan+Chen%2C+Ivica+Rimac%2C+Manuel+Stein%2C+Klaus+Satzke%2C+Andre+Beck%2C+Paarijaat+Aditya%2C+and+Volker+Hilt.+2018.+SAND%3A+Towards+High-Performance+Serverless+Computing.+In+2018+USENIX+Annual+Technical+Conference+%28USENIX+ATC+18%29.+USENIX+Association%2C+Boston%2C+MA%2C+923%2D%2D935.+https%3A%2F%2Fwww.usenix.org%2Fconference%2Fatc18%2Fpresentation%2Fakkus+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.5555/3277355.3277444" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00003" class="&#xA;                references__item&#xA;            "><span class="references__note">Amazon 2018. Amazon Elastic Inference. https://aws.amazon.com/machine-learning/elastic-inference/.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Amazon+2018.+Amazon+Elastic+Inference.+https%3A%2F%2Faws.amazon.com%2Fmachine-learning%2Felastic-inference%2F."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00004" class="&#xA;                references__item&#xA;            "><span class="references__note">Amazon 2018. Amazon SageMaker. https://aws.amazon.com/sagemaker/.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Amazon+2018.+Amazon+SageMaker.+https%3A%2F%2Faws.amazon.com%2Fsagemaker%2F."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00005" class="&#xA;                references__item&#xA;            "><span class="references__note">Amazon 2018. Amazon SageMaker Neo. https://aws.amazon.com/sagemaker/neo/.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Amazon+2018.+Amazon+SageMaker+Neo.+https%3A%2F%2Faws.amazon.com%2Fsagemaker%2Fneo%2F."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00006" class="&#xA;                references__item&#xA;            "><span class="references__note">Dan Ardelean, Amer Diwan, and Chandra Erdman. 2018. Performance Analysis of Cloud Applications. In 15th USENIX Symposium on Networked Systems Design and Implementation (NSDI 18). USENIX Association, Renton, WA, 405--417. https://www.usenix.org/conference/nsdi18/presentation/ardelean <span class="references__pub-id doi 10.5555/3307441.3307476"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Dan+Ardelean%2C+Amer+Diwan%2C+and+Chandra+Erdman.+2018.+Performance+Analysis+of+Cloud+Applications.+In+15th+USENIX+Symposium+on+Networked+Systems+Design+and+Implementation+%28NSDI+18%29.+USENIX+Association%2C+Renton%2C+WA%2C+405%2D%2D417.+https%3A%2F%2Fwww.usenix.org%2Fconference%2Fnsdi18%2Fpresentation%2Fardelean+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.5555/3307441.3307476" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00007" class="&#xA;                references__item&#xA;            "><span class="references__note">Mohammed Attia, Younes Samih, Ali Elkahky, and Laura Kallmeyer. 2018. Multilingual Multi-class Sentiment Classification Using Convolutional Neural Networks. Miyazaki, Japan, 635--640. http://www.lrec-conf.org/proceedings/lrec2018/pdf/149.pdf<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Mohammed+Attia%2C+Younes+Samih%2C+Ali+Elkahky%2C+and+Laura+Kallmeyer.+2018.+Multilingual+Multi-class+Sentiment+Classification+Using+Convolutional+Neural+Networks.+Miyazaki%2C+Japan%2C+635%2D%2D640.+http%3A%2F%2Fwww.lrec-conf.org%2Fproceedings%2Flrec2018%2Fpdf%2F149.pdf"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00008" class="&#xA;                references__item&#xA;            "><span class="references__note">AWS 2018. AWS Lambda. https://aws.amazon.com/lambda/.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=AWS+2018.+AWS+Lambda.+https%3A%2F%2Faws.amazon.com%2Flambda%2F."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00009" class="&#xA;                references__item&#xA;            "><span class="references__note">Alfredo Canziani, Adam Paszke, and Eugenio Culurciello. 2016. An Analysis of Deep Neural Network Models for Practical Applications. CoRR abs/1605.07678 (2016). arXiv:1605.07678 http://arxiv.org/abs/1605.07678<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Alfredo+Canziani%2C+Adam+Paszke%2C+and+Eugenio+Culurciello.+2016.+An+Analysis+of+Deep+Neural+Network+Models+for+Practical+Applications.+CoRR+abs%2F1605.07678+%282016%29.+arXiv%3A1605.07678+http%3A%2F%2Farxiv.org%2Fabs%2F1605.07678"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00010" class="&#xA;                references__item&#xA;            "><span class="references__note">Tianqi Chen, Thierry Moreau, Ziheng Jiang, Lianmin Zheng, Eddie Yan, Haichen Shen, Meghan Cowan, Leyuan Wang, Yuwei Hu, Luis Ceze, Carlos Guestrin, and Arvind Krishnamurthy. 2018. TVM: An Automated End-to-End Optimizing Compiler for Deep Learning. In 13th USENIX Symposium on Operating Systems Design and Implementation (OSDI 18). USENIX Association, Carlsbad, CA, 578--594. https://www.usenix.org/conference/osdi18/presentation/chen <span class="references__pub-id doi 10.5555/3291168.3291211"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Tianqi+Chen%2C+Thierry+Moreau%2C+Ziheng+Jiang%2C+Lianmin+Zheng%2C+Eddie+Yan%2C+Haichen+Shen%2C+Meghan+Cowan%2C+Leyuan+Wang%2C+Yuwei+Hu%2C+Luis+Ceze%2C+Carlos+Guestrin%2C+and+Arvind+Krishnamurthy.+2018.+TVM%3A+An+Automated+End-to-End+Optimizing+Compiler+for+Deep+Learning.+In+13th+USENIX+Symposium+on+Operating+Systems+Design+and+Implementation+%28OSDI+18%29.+USENIX+Association%2C+Carlsbad%2C+CA%2C+578%2D%2D594.+https%3A%2F%2Fwww.usenix.org%2Fconference%2Fosdi18%2Fpresentation%2Fchen+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00011" class="&#xA;                references__item&#xA;            "><span class="references__note">Daniel Crankshaw, Xin Wang, Giulio Zhou, Michael J. Franklin, Joseph E. Gonzalez, and Ion Stoica. 2017. Clipper: A Low-Latency Online Prediction Serving System. In 14th USENIX Symposium on Networked Systems Design and Implementation, NSDI 2017, Boston, MA, USA, March 27-29, 2017. 613--627. https://www.usenix.org/conference/nsdi17/technical-sessions/presentation/crankshaw <span class="references__pub-id doi 10.5555/3154630.3154681"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Daniel+Crankshaw%2C+Xin+Wang%2C+Giulio+Zhou%2C+Michael+J.+Franklin%2C+Joseph+E.+Gonzalez%2C+and+Ion+Stoica.+2017.+Clipper%3A+A+Low-Latency+Online+Prediction+Serving+System.+In+14th+USENIX+Symposium+on+Networked+Systems+Design+and+Implementation%2C+NSDI+2017%2C+Boston%2C+MA%2C+USA%2C+March+27-29%2C+2017.+613%2D%2D627.+https%3A%2F%2Fwww.usenix.org%2Fconference%2Fnsdi17%2Ftechnical-sessions%2Fpresentation%2Fcrankshaw+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.5555/3154630.3154681" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00012" class="&#xA;                references__item&#xA;            "><span class="references__note">Abdul Dakkak, Cheng Li, Simon Garcia De Gonzalo, Jinjun Xiong, and Wen-Mei W. Hwu. 2018. TrIMS: Transparent and Isolated Model Sharing for Low Latency Deep LearningInference in Function as a Service Environments. CoRR abs/1811.09732 (2018). arXiv:1811.09732 http://arxiv.org/abs/1811.09732<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Abdul+Dakkak%2C+Cheng+Li%2C+Simon+Garcia+De+Gonzalo%2C+Jinjun+Xiong%2C+and+Wen-Mei+W.+Hwu.+2018.+TrIMS%3A+Transparent+and+Isolated+Model+Sharing+for+Low+Latency+Deep+LearningInference+in+Function+as+a+Service+Environments.+CoRR+abs%2F1811.09732+%282018%29.+arXiv%3A1811.09732+http%3A%2F%2Farxiv.org%2Fabs%2F1811.09732"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00013" class="&#xA;                references__item&#xA;            "><span class="references__note">Facebook 2017. PyTorch. https://pytorch.org/.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Facebook+2017.+PyTorch.+https%3A%2F%2Fpytorch.org%2F."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00014" class="&#xA;                references__item&#xA;            "><span class="references__note">Jeremy Fowers, Kalin Ovtcharov, Michael Papamichael, Todd Massengill, Ming Liu, Daniel Lo, Shlomi Alkalay, Michael Haselman, Logan Adams, Mahdi Ghandi, Stephen Heil, Prerak Patel, Adam Sapek, Gabriel Weisz, Lisa Woods, Sitaram Lanka, Steven K. Reinhardt, Adrian M. Caulfield, Eric S. Chung, and Doug Burger. 2018. A Configurable Cloud-scale DNN Processor for Real-time AI. In Proceedings of the 45th Annual International Symposium on Computer Architecture (ISCA '18). IEEE Press, Piscataway, NJ, USA, 1--14.  <span class="references__pub-id doi 10.1109/ISCA.2018.00012"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Jeremy+Fowers%2C+Kalin+Ovtcharov%2C+Michael+Papamichael%2C+Todd+Massengill%2C+Ming+Liu%2C+Daniel+Lo%2C+Shlomi+Alkalay%2C+Michael+Haselman%2C+Logan+Adams%2C+Mahdi+Ghandi%2C+Stephen+Heil%2C+Prerak+Patel%2C+Adam+Sapek%2C+Gabriel+Weisz%2C+Lisa+Woods%2C+Sitaram+Lanka%2C+Steven+K.+Reinhardt%2C+Adrian+M.+Caulfield%2C+Eric+S.+Chung%2C+and+Doug+Burger.+2018.+A+Configurable+Cloud-scale+DNN+Processor+for+Real-time+AI.+In+Proceedings+of+the+45th+Annual+International+Symposium+on+Computer+Architecture+%28ISCA+%2718%29.+IEEE+Press%2C+Piscataway%2C+NJ%2C+USA%2C+1%2D%2D14.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1109/ISCA.2018.00012" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00015" class="&#xA;                references__item&#xA;            "><span class="references__note">Anshul Gandhi, Mor Harchol-Balter, Ram Raghunathan, and Michael A Kozuch. 2012. Autoscale: Dynamic, robust capacity management for multi-tier data centers. ACM Transactions on Computer Systems (TOCS) 30, 4(2012), 14.  <span class="references__pub-id doi 10.1145/2382553.2382556"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Anshul+Gandhi%2C+Mor+Harchol-Balter%2C+Ram+Raghunathan%2C+and+Michael+A+Kozuch.+2012.+Autoscale%3A+Dynamic%2C+robust+capacity+management+for+multi-tier+data+centers.+ACM+Transactions+on+Computer+Systems+%28TOCS%29+30%2C+4%282012%29%2C+14.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/2382553.2382556" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00016" class="&#xA;                references__item&#xA;            "><span class="references__note">Google 2018. Google Cloud Machine Learning Engine. https://cloud.google.com/ml-engine/.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Google+2018.+Google+Cloud+Machine+Learning+Engine.+https%3A%2F%2Fcloud.google.com%2Fml-engine%2F."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00017" class="&#xA;                references__item&#xA;            "><span class="references__note">Google 2018. Google Compute Engine Pricing. https://cloud.google.com/compute/pricing.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Google+2018.+Google+Compute+Engine+Pricing.+https%3A%2F%2Fcloud.google.com%2Fcompute%2Fpricing."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00018" class="&#xA;                references__item&#xA;            "><span class="references__note">Google 2018. TensorFlow - An open source machine learning framework for everyone. https://www.tensorflow.org.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Google+2018.+TensorFlow+-+An+open+source+machine+learning+framework+for+everyone.+https%3A%2F%2Fwww.tensorflow.org."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00019" class="&#xA;                references__item&#xA;            "><span class="references__note">Google 2018. TensorFlow Serving for model deployment in production. https://www.tensorflow.org/serving/.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Google+2018.+TensorFlow+Serving+for+model+deployment+in+production.+https%3A%2F%2Fwww.tensorflow.org%2Fserving%2F."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00020" class="&#xA;                references__item&#xA;            "><span class="references__note">Juncheng Gu, Mosharaf Chowdhury, Kang G. Shin, Yibo Zhu, Myeongjae Jeon, Junjie Qian, Hongqiang Liu, and Chuanxiong Guo. 2019. Tiresias: A GPU Cluster Manager for Distributed Deep Learning. In 16th USENIX Symposium on Networked Systems Design and Implementation (NSDI 19). USENIX Association, Boston, MA, 485--500. https://www.usenix.org/conference/nsdi19/presentation/gu <span class="references__pub-id doi 10.5555/3323234.3323274"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Juncheng+Gu%2C+Mosharaf+Chowdhury%2C+Kang+G.+Shin%2C+Yibo+Zhu%2C+Myeongjae+Jeon%2C+Junjie+Qian%2C+Hongqiang+Liu%2C+and+Chuanxiong+Guo.+2019.+Tiresias%3A+A+GPU+Cluster+Manager+for+Distributed+Deep+Learning.+In+16th+USENIX+Symposium+on+Networked+Systems+Design+and+Implementation+%28NSDI+19%29.+USENIX+Association%2C+Boston%2C+MA%2C+485%2D%2D500.+https%3A%2F%2Fwww.usenix.org%2Fconference%2Fnsdi19%2Fpresentation%2Fgu+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.5555/3323234.3323274" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00021" class="&#xA;                references__item&#xA;            "><span class="references__note">Arpan Gujarati, Sameh Elnikety, Yuxiong He, Kathryn S McKinley, and Björn B Brandenburg. 2017. Swayam: distributed autoscaling to meet SLAs of machine learning inference services with resource efficiency. In Proceedings of the 18th ACM/IFIP/USENIX Middleware Conference. ACM, 109--120.  <span class="references__pub-id doi 10.1145/3135974.3135993"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Arpan+Gujarati%2C+Sameh+Elnikety%2C+Yuxiong+He%2C+Kathryn+S+McKinley%2C+and+Bj%C3%B6rn+B+Brandenburg.+2017.+Swayam%3A+distributed+autoscaling+to+meet+SLAs+of+machine+learning+inference+services+with+resource+efficiency.+In+Proceedings+of+the+18th+ACM%2FIFIP%2FUSENIX+Middleware+Conference.+ACM%2C+109%2D%2D120.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/3135974.3135993" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00022" class="&#xA;                references__item&#xA;            "><span class="references__note">Arpan Gujarati, Sameh Elnikety, Yuxiong He, Kathryn S. McKinley, and Björn B. Brandenburg. 2017. Swayam: distributed autoscaling to meet SLAs of machine learning inference services with resource efficiency. In Middleware. ACM, 109--120.  <span class="references__pub-id doi 10.1145/3135974.3135993"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Arpan+Gujarati%2C+Sameh+Elnikety%2C+Yuxiong+He%2C+Kathryn+S.+McKinley%2C+and+Bj%C3%B6rn+B.+Brandenburg.+2017.+Swayam%3A+distributed+autoscaling+to+meet+SLAs+of+machine+learning+inference+services+with+resource+efficiency.+In+Middleware.+ACM%2C+109%2D%2D120.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/3135974.3135993" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00023" class="&#xA;                references__item&#xA;            "><span class="references__note">Song Han, Jeff Pool, John Tran, and William Dally. 2015. Learning both weights and connections for efficient neural network. In Advances in neural information processing systems. 1135--1143. <span class="references__pub-id doi 10.5555/2969239.2969366"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Song+Han%2C+Jeff+Pool%2C+John+Tran%2C+and+William+Dally.+2015.+Learning+both+weights+and+connections+for+efficient+neural+network.+In+Advances+in+neural+information+processing+systems.+1135%2D%2D1143.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.5555/2969239.2969366" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00024" class="&#xA;                references__item&#xA;            "><span class="references__note">Kim Hazelwood, Sarah Bird, David Brooks, Soumith Chintala, Utku Diril, Dmytro Dzhulgakov, Mohamed Fawzy, Bill Jia, Yangqing Jia, Aditya Kalro, James Law, Kevin Lee, Jason Lu, Pieter Noordhuis, Misha Smelyanskiy, Liang Xiong, and Xiaodong Wang. 2018. Applied Machine Learning at Facebook: A Datacenter Infrastructure Perspective. In Proceedings of the 2018 IEEE International Symposium on High Performance Computer Architecture (HPCA) (HPCA '18). IEEE.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Kim+Hazelwood%2C+Sarah+Bird%2C+David+Brooks%2C+Soumith+Chintala%2C+Utku+Diril%2C+Dmytro+Dzhulgakov%2C+Mohamed+Fawzy%2C+Bill+Jia%2C+Yangqing+Jia%2C+Aditya+Kalro%2C+James+Law%2C+Kevin+Lee%2C+Jason+Lu%2C+Pieter+Noordhuis%2C+Misha+Smelyanskiy%2C+Liang+Xiong%2C+and+Xiaodong+Wang.+2018.+Applied+Machine+Learning+at+Facebook%3A+A+Datacenter+Infrastructure+Perspective.+In+Proceedings+of+the+2018+IEEE+International+Symposium+on+High+Performance+Computer+Architecture+%28HPCA%29+%28HPCA+%2718%29.+IEEE."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/servlet/linkout?suffix=e_1_3_2_1_24_1&amp;dbid=16&amp;doi=10.1145%2F3317550.3321443&amp;key=10.1109%2FHPCA.2018.00059" target="_blank"><span class="visibility-hidden">Cross Ref</span><img class="simple-tooltip__block--b" data-title="Cross Ref" alt="Cross Ref" src="/templates/jsp/_ux3/_acm/images/crossref_icon.svg"/></a></span></span></li><li id="ref-00025" class="&#xA;                references__item&#xA;            "><span class="references__note">Gao Huang, Danlu Chen, Tianhong Li, Felix Wu, Laurens van der Maaten, and Kilian Weinberger. 2018. Multi-Scale Dense Networks for Resource Efficient Image Classification. In International Conference on Learning Representations. https://openreview.net/forum?id=Hk2aImxAb<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Gao+Huang%2C+Danlu+Chen%2C+Tianhong+Li%2C+Felix+Wu%2C+Laurens+van+der+Maaten%2C+and+Kilian+Weinberger.+2018.+Multi-Scale+Dense+Networks+for+Resource+Efficient+Image+Classification.+In+International+Conference+on+Learning+Representations.+https%3A%2F%2Fopenreview.net%2Fforum%3Fid%3DHk2aImxAb"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00026" class="&#xA;                references__item&#xA;            "><span class="references__note">Forrest N Iandola, Song Han, Matthew W Moskewicz, Khalid Ashraf, William J Dally, and Kurt Keutzer. 2016. Squeezenet: Alexnet-level accuracy with 50x fewer parameters and&amp;lt; 0.5 mb model size. arXiv preprint arXiv:1602.07360 (2016).<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Forrest+N+Iandola%2C+Song+Han%2C+Matthew+W+Moskewicz%2C+Khalid+Ashraf%2C+William+J+Dally%2C+and+Kurt+Keutzer.+2016.+Squeezenet%3A+Alexnet-level+accuracy+with+50x+fewer+parameters+and%26lt%3B+0.5+mb+model+size.+arXiv+preprint+arXiv%3A1602.07360+%282016%29."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00027" class="&#xA;                references__item&#xA;            "><span class="references__note">Intel 2018. Intel Nervana Neural Network Processor. https://ai.intel.com/nervana-nnp/.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Intel+2018.+Intel+Nervana+Neural+Network+Processor.+https%3A%2F%2Fai.intel.com%2Fnervana-nnp%2F."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00028" class="&#xA;                references__item&#xA;            "><span class="references__note">Paras Jain, Xiangxi Mo, Ajay Jain, Harikaran Subbaraj, Rehan Durrani, Alexey Tumanov, Joseph Gonzalez, and Ion Stoica. 2018. Dynamic Space-Time Scheduling for GPU Inference. In LearningSys Workshop at Neural Information Processing Systems 2018.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Paras+Jain%2C+Xiangxi+Mo%2C+Ajay+Jain%2C+Harikaran+Subbaraj%2C+Rehan+Durrani%2C+Alexey+Tumanov%2C+Joseph+Gonzalez%2C+and+Ion+Stoica.+2018.+Dynamic+Space-Time+Scheduling+for+GPU+Inference.+In+LearningSys+Workshop+at+Neural+Information+Processing+Systems+2018."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00029" class="&#xA;                references__item&#xA;            "><span class="references__note">Junchen Jiang, Ganesh Ananthanarayanan, Peter Bodik, Siddhartha Sen, and Ion Stoica. 2018. Chameleon: Scalable Adaptation of Video Analytics. In Proceedings of the 2018 Conference of the ACM Special Interest Group on Data Communication (SIGCOMM '18). ACM, New York, NY, USA, 253--266.  <span class="references__pub-id doi 10.1145/3230543.3230574"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Junchen+Jiang%2C+Ganesh+Ananthanarayanan%2C+Peter+Bodik%2C+Siddhartha+Sen%2C+and+Ion+Stoica.+2018.+Chameleon%3A+Scalable+Adaptation+of+Video+Analytics.+In+Proceedings+of+the+2018+Conference+of+the+ACM+Special+Interest+Group+on+Data+Communication+%28SIGCOMM+%2718%29.+ACM%2C+New+York%2C+NY%2C+USA%2C+253%2D%2D266.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/3230543.3230574" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00030" class="&#xA;                references__item&#xA;            "><span class="references__note">Eric Jonas, Qifan Pu, Shivaram Venkataraman, Ion Stoica, and Benjamin Recht. 2017. Occupy the Cloud: Distributed Computing for the 99%. In Proceedings of the 2017 Symposium on Cloud Computing (SoCC '17). ACM, New York, NY, USA, 445--451.  <span class="references__pub-id doi 10.1145/3127479.3128601"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Eric+Jonas%2C+Qifan+Pu%2C+Shivaram+Venkataraman%2C+Ion+Stoica%2C+and+Benjamin+Recht.+2017.+Occupy+the+Cloud%3A+Distributed+Computing+for+the+99%25.+In+Proceedings+of+the+2017+Symposium+on+Cloud+Computing+%28SoCC+%2717%29.+ACM%2C+New+York%2C+NY%2C+USA%2C+445%2D%2D451.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/3127479.3128601" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00031" class="&#xA;                references__item&#xA;            "><span class="references__note">Norman P. Jouppi, Cliff Young, Nishant Patil, David Patterson, Gaurav Agrawal, Raminder Bajwa, Sarah Bates, Suresh Bhatia, Nan Boden, Al Borchers, Rick Boyle, Pierre-luc Cantin, Clifford Chao, Chris Clark, Jeremy Coriell, Mike Daley, Matt Dau, Jeffrey Dean, Ben Gelb, Tara Vazir Ghaemmaghami, Rajendra Gottipati, William Gulland, Robert Hagmann, C. Richard Ho, Doug Hogberg, John Hu, Robert Hundt, Dan Hurt, Julian Ibarz, Aaron Jaffey, Alek Jaworski, Alexander Kaplan, Harshit Khaitan, Daniel Killebrew, Andy Koch, Naveen Kumar, Steve Lacy, James Laudon, James Law, Diemthu Le, Chris Leary, Zhuyuan Liu, Kyle Lucke, Alan Lundin, Gordon MacKean, Adriana Maggiore, Maire Mahony, Kieran Miller, Rahul Nagarajan, Ravi Narayanaswami, Ray Ni, Kathy Nix, Thomas Norrie, Mark Omernick, Narayana Penukonda, Andy Phelps, Jonathan Ross, Matt Ross, Amir Salek, Emad Samadiani, Chris Severn, Gregory Sizikov, Matthew Snelham, Jed Souter, Dan Steinberg, Andy Swing, Mercedes Tan, Gregory Thorson, Bo Tian, Horia Toma, Erick Tuttle, Vijay Vasudevan, Richard Walter, Walter Wang, Eric Wilcox, and Doe Hyun Yoon. 2017. In-Datacenter Performance Analysis of a Tensor Processing Unit. In Proceedings of the 44th Annual International Symposium on Computer Architecture (ISCA '17). ACM, New York, NY, USA, 1--12.  <span class="references__pub-id doi 10.1145/3079856.3080246"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Norman+P.+Jouppi%2C+Cliff+Young%2C+Nishant+Patil%2C+David+Patterson%2C+Gaurav+Agrawal%2C+Raminder+Bajwa%2C+Sarah+Bates%2C+Suresh+Bhatia%2C+Nan+Boden%2C+Al+Borchers%2C+Rick+Boyle%2C+Pierre-luc+Cantin%2C+Clifford+Chao%2C+Chris+Clark%2C+Jeremy+Coriell%2C+Mike+Daley%2C+Matt+Dau%2C+Jeffrey+Dean%2C+Ben+Gelb%2C+Tara+Vazir+Ghaemmaghami%2C+Rajendra+Gottipati%2C+William+Gulland%2C+Robert+Hagmann%2C+C.+Richard+Ho%2C+Doug+Hogberg%2C+John+Hu%2C+Robert+Hundt%2C+Dan+Hurt%2C+Julian+Ibarz%2C+Aaron+Jaffey%2C+Alek+Jaworski%2C+Alexander+Kaplan%2C+Harshit+Khaitan%2C+Daniel+Killebrew%2C+Andy+Koch%2C+Naveen+Kumar%2C+Steve+Lacy%2C+James+Laudon%2C+James+Law%2C+Diemthu+Le%2C+Chris+Leary%2C+Zhuyuan+Liu%2C+Kyle+Lucke%2C+Alan+Lundin%2C+Gordon+MacKean%2C+Adriana+Maggiore%2C+Maire+Mahony%2C+Kieran+Miller%2C+Rahul+Nagarajan%2C+Ravi+Narayanaswami%2C+Ray+Ni%2C+Kathy+Nix%2C+Thomas+Norrie%2C+Mark+Omernick%2C+Narayana+Penukonda%2C+Andy+Phelps%2C+Jonathan+Ross%2C+Matt+Ross%2C+Amir+Salek%2C+Emad+Samadiani%2C+Chris+Severn%2C+Gregory+Sizikov%2C+Matthew+Snelham%2C+Jed+Souter%2C+Dan+Steinberg%2C+Andy+Swing%2C+Mercedes+Tan%2C+Gregory+Thorson%2C+Bo+Tian%2C+Horia+Toma%2C+Erick+Tuttle%2C+Vijay+Vasudevan%2C+Richard+Walter%2C+Walter+Wang%2C+Eric+Wilcox%2C+and+Doe+Hyun+Yoon.+2017.+In-Datacenter+Performance+Analysis+of+a+Tensor+Processing+Unit.+In+Proceedings+of+the+44th+Annual+International+Symposium+on+Computer+Architecture+%28ISCA+%2717%29.+ACM%2C+New+York%2C+NY%2C+USA%2C+1%2D%2D12.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/3079856.3080246" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00032" class="&#xA;                references__item&#xA;            "><span class="references__note">Yiping Kang, Johann Hauswald, Cao Gao, Austin Rovinski, Trevor Mudge, Jason Mars, and Lingjia Tang. 2017. Neurosurgeon: Collaborative Intelligence Between the Cloud and Mobile Edge. In Proceedings of the Twenty-Second International Conference on Architectural Support for Programming Languages and Operating Systems (2017-01-01) (ASPLOS '17). ACM, Xi'an, China, 615--629.  <span class="references__pub-id doi 10.1145/3037697.3037698"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Yiping+Kang%2C+Johann+Hauswald%2C+Cao+Gao%2C+Austin+Rovinski%2C+Trevor+Mudge%2C+Jason+Mars%2C+and+Lingjia+Tang.+2017.+Neurosurgeon%3A+Collaborative+Intelligence+Between+the+Cloud+and+Mobile+Edge.+In+Proceedings+of+the+Twenty-Second+International+Conference+on+Architectural+Support+for+Programming+Languages+and+Operating+Systems+%282017-01-01%29+%28ASPLOS+%2717%29.+ACM%2C+Xi%27an%2C+China%2C+615%2D%2D629.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/3037697.3037698" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00033" class="&#xA;                references__item&#xA;            "><span class="references__note">Animesh Koratana, Daniel Kang, Peter Bailis, and Matei Zaharia. 2018. LIT: Block-wise Intermediate Representation Training for Model Compression. CoRR abs/1810.01937 (2018). arXiv:1810.01937 http://arxiv.org/abs/1810.01937<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Animesh+Koratana%2C+Daniel+Kang%2C+Peter+Bailis%2C+and+Matei+Zaharia.+2018.+LIT%3A+Block-wise+Intermediate+Representation+Training+for+Model+Compression.+CoRR+abs%2F1810.01937+%282018%29.+arXiv%3A1810.01937+http%3A%2F%2Farxiv.org%2Fabs%2F1810.01937"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00034" class="&#xA;                references__item&#xA;            "><span class="references__note">Urs Köster, Tristan Webb, Xin Wang, Marcel Nassar, Arjun K. Bansal, William Constable, Oguz Elibol, Stewart Hall, Luke Hornof, Amir Khosrowshahi, Carey Kloss, Ruby J. Pai, and Naveen Rao. 2017. Flex-point: An Adaptive Numerical Format for Efficient Training of Deep Neural Networks. CoRR abs/1711.02213 (2017). arXiv:1711.02213 http://arxiv.org/abs/1711.02213<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Urs+K%C3%B6ster%2C+Tristan+Webb%2C+Xin+Wang%2C+Marcel+Nassar%2C+Arjun+K.+Bansal%2C+William+Constable%2C+Oguz+Elibol%2C+Stewart+Hall%2C+Luke+Hornof%2C+Amir+Khosrowshahi%2C+Carey+Kloss%2C+Ruby+J.+Pai%2C+and+Naveen+Rao.+2017.+Flex-point%3A+An+Adaptive+Numerical+Format+for+Efficient+Training+of+Deep+Neural+Networks.+CoRR+abs%2F1711.02213+%282017%29.+arXiv%3A1711.02213+http%3A%2F%2Farxiv.org%2Fabs%2F1711.02213"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00035" class="&#xA;                references__item&#xA;            "><span class="references__note">Microsoft 2018. Azure Machine Learning. https://docs.microsoft.com/en-us/azure/machine-learning/.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Microsoft+2018.+Azure+Machine+Learning.+https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fmachine-learning%2F."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00036" class="&#xA;                references__item&#xA;            "><span class="references__note">Philipp Moritz, Robert Nishihara, Ion Stoica, and Michael I. Jordan. 2015. SparkNet: Training Deep Networks in Spark. CoRR abs/1511.06051 (2015). arXiv:1511.06051 http://arxiv.org/abs/1511.06051<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Philipp+Moritz%2C+Robert+Nishihara%2C+Ion+Stoica%2C+and+Michael+I.+Jordan.+2015.+SparkNet%3A+Training+Deep+Networks+in+Spark.+CoRR+abs%2F1511.06051+%282015%29.+arXiv%3A1511.06051+http%3A%2F%2Farxiv.org%2Fabs%2F1511.06051"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00037" class="&#xA;                references__item&#xA;            "><span class="references__note">MXNet 2017. Apache MXNet (Incubating) - A flexible and efficient library for deep learning. https://mxnet.apache.org/.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=MXNet+2017.+Apache+MXNet+%28Incubating%29+-+A+flexible+and+efficient+library+for+deep+learning.+https%3A%2F%2Fmxnet.apache.org%2F."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00038" class="&#xA;                references__item&#xA;            "><span class="references__note">Feng Niu, Benjamin Recht, Christopher Re, and Stephen J. Wright. 2011. HOGWILD!: A Lock-free Approach to Parallelizing Stochastic Gradient Descent. In Proceedings of the 24th International Conference on Neural Information Processing Systems (NIPS'11). Curran Associates Inc., USA, 693--701. http://dl.acm.org/citation.cfm?id=2986459.2986537 <span class="references__pub-id doi 10.5555/2986459.2986537"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Feng+Niu%2C+Benjamin+Recht%2C+Christopher+Re%2C+and+Stephen+J.+Wright.+2011.+HOGWILD%21%3A+A+Lock-free+Approach+to+Parallelizing+Stochastic+Gradient+Descent.+In+Proceedings+of+the+24th+International+Conference+on+Neural+Information+Processing+Systems+%28NIPS%2711%29.+Curran+Associates+Inc.%2C+USA%2C+693%2D%2D701.+http%3A%2F%2Fdl.acm.org%2Fcitation.cfm%3Fid%3D2986459.2986537+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.5555/2986459.2986537" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00039" class="&#xA;                references__item&#xA;            "><span class="references__note">NVIDIA 2017. NVIDIA Tesla V100 Tensor Core GPU. https://www.nvidia.com/en-us/data-center/tesla-v100/.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=NVIDIA+2017.+NVIDIA+Tesla+V100+Tensor+Core+GPU.+https%3A%2F%2Fwww.nvidia.com%2Fen-us%2Fdata-center%2Ftesla-v100%2F."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00040" class="&#xA;                references__item&#xA;            "><span class="references__note">NVIDIA 2018. NVIDIA TensorRT Inference Server. https://github.com/NVIDIA/tensorrt-inference-server.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=NVIDIA+2018.+NVIDIA+TensorRT+Inference+Server.+https%3A%2F%2Fgithub.com%2FNVIDIA%2Ftensorrt-inference-server."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00041" class="&#xA;                references__item&#xA;            "><span class="references__note">NVIDIA 2018. NVIDIA TensorRT: Programmable Inference Accelerator. https://developer.nvidia.com/tensorrt.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=NVIDIA+2018.+NVIDIA+TensorRT%3A+Programmable+Inference+Accelerator.+https%3A%2F%2Fdeveloper.nvidia.com%2Ftensorrt."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00042" class="&#xA;                references__item&#xA;            "><span class="references__note">Edward Oakes, Leon Yang, Dennis Zhou, Kevin Houck, Tyler Harter, Andrea Arpaci-Dusseau, and Remzi Arpaci-Dusseau. 2018. SOCK: Rapid Task Provisioning with Serverless-Optimized Containers. In 2018 USENIX Annual Technical Conference (USENIX ATC 18). USENIX Association, Boston, MA, 57--70. https://www.usenix.org/conference/atc18/presentation/oakes <span class="references__pub-id doi 10.5555/3277355.3277362"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Edward+Oakes%2C+Leon+Yang%2C+Dennis+Zhou%2C+Kevin+Houck%2C+Tyler+Harter%2C+Andrea+Arpaci-Dusseau%2C+and+Remzi+Arpaci-Dusseau.+2018.+SOCK%3A+Rapid+Task+Provisioning+with+Serverless-Optimized+Containers.+In+2018+USENIX+Annual+Technical+Conference+%28USENIX+ATC+18%29.+USENIX+Association%2C+Boston%2C+MA%2C+57%2D%2D70.+https%3A%2F%2Fwww.usenix.org%2Fconference%2Fatc18%2Fpresentation%2Foakes+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.5555/3277355.3277362" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00043" class="&#xA;                references__item&#xA;            "><span class="references__note">Young H. Oh, Quan Quan, Daeyeon Kim, Seonghak Kim, Jun Heo, Sungjun Jung, Jaeyoung Jang, and Jae W. Lee. 2018. A Portable, Automatic Data Quantizer for Deep Neural Networks. In Proceedings of the 27th International Conference on Parallel Architectures and Compilation Techniques (PACT '18). ACM, New York, NY, USA, Article 17, 14 pages.  <span class="references__pub-id doi 10.1145/3243176.3243180"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Young+H.+Oh%2C+Quan+Quan%2C+Daeyeon+Kim%2C+Seonghak+Kim%2C+Jun+Heo%2C+Sungjun+Jung%2C+Jaeyoung+Jang%2C+and+Jae+W.+Lee.+2018.+A+Portable%2C+Automatic+Data+Quantizer+for+Deep+Neural+Networks.+In+Proceedings+of+the+27th+International+Conference+on+Parallel+Architectures+and+Compilation+Techniques+%28PACT+%2718%29.+ACM%2C+New+York%2C+NY%2C+USA%2C+Article+17%2C+14+pages.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/3243176.3243180" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00044" class="&#xA;                references__item&#xA;            "><span class="references__note">Mahadev Satyanarayanan. 2017. The Emergence of Edge Computing. Computer 50, 1 (Jan. 2017), 30--39.  <span class="references__pub-id doi 10.1109/MC.2017.9"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Mahadev+Satyanarayanan.+2017.+The+Emergence+of+Edge+Computing.+Computer+50%2C+1+%28Jan.+2017%29%2C+30%2D%2D39.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1109/MC.2017.9" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00045" class="&#xA;                references__item&#xA;            "><span class="references__note">Virginia Smith, Simone Forte, Chenxin Ma, Martin Takác, Michael I. Jordan, and Martin Jaggi. 2017. CoCoA: A General Framework for Communication-Efficient Distributed Optimization. Journal of Machine Learning Research 18 (2017), 230:1--230:49. http://jmlr.org/papers/v18/papers/v18/16-512.html <span class="references__pub-id doi 10.5555/3122009.3290415"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Virginia+Smith%2C+Simone+Forte%2C+Chenxin+Ma%2C+Martin+Tak%C3%A1c%2C+Michael+I.+Jordan%2C+and+Martin+Jaggi.+2017.+CoCoA%3A+A+General+Framework+for+Communication-Efficient+Distributed+Optimization.+Journal+of+Machine+Learning+Research+18+%282017%29%2C+230%3A1%2D%2D230%3A49.+http%3A%2F%2Fjmlr.org%2Fpapers%2Fv18%2Fpapers%2Fv18%2F16-512.html+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.5555/3122009.3290415" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00046" class="&#xA;                references__item&#xA;            "><span class="references__note">Leonard Truong, Rajkishore Barik, Ehsan Totoni, Hai Liu, Chick Markley, Armando Fox, and Tatiana Shpeisman. 2016. Latte: A Language, Compiler, and Runtime for Elegant and Efficient Deep Neural Networks. SIGPLAN Not. 51, 6 (June 2016), 209--223.  <span class="references__pub-id doi 10.1145/2908080.2908105"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Leonard+Truong%2C+Rajkishore+Barik%2C+Ehsan+Totoni%2C+Hai+Liu%2C+Chick+Markley%2C+Armando+Fox%2C+and+Tatiana+Shpeisman.+2016.+Latte%3A+A+Language%2C+Compiler%2C+and+Runtime+for+Elegant+and+Efficient+Deep+Neural+Networks.+SIGPLAN+Not.+51%2C+6+%28June+2016%29%2C+209%2D%2D223.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.1145/2908080.2908105" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00047" class="&#xA;                references__item&#xA;            "><span class="references__note">Leonid Velikovich, Ian Williams, Justin Scheiner, Petar S. Aleksic, Pedro J. Moreno, and Michael Riley. 2018. Semantic Lattice Processing in Contextual Automatic Speech Recognition for Google Assistant. In Interspeech 2018, 19th Annual Conference of the International Speech Communication Association, Hyderabad, India, 2-6 September 2018. 2222--2226.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Leonid+Velikovich%2C+Ian+Williams%2C+Justin+Scheiner%2C+Petar+S.+Aleksic%2C+Pedro+J.+Moreno%2C+and+Michael+Riley.+2018.+Semantic+Lattice+Processing+in+Contextual+Automatic+Speech+Recognition+for+Google+Assistant.+In+Interspeech+2018%2C+19th+Annual+Conference+of+the+International+Speech+Communication+Association%2C+Hyderabad%2C+India%2C+2-6+September+2018.+2222%2D%2D2226."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00048" class="&#xA;                references__item&#xA;            "><span class="references__note">Liang Wang, Mengyuan Li, Yinqian Zhang, Thomas Ristenpart, and Michael Swift. 2018. Peeking Behind the Curtains of Serverless Platforms. In 2018 USENIX Annual Technical Conference (USENIX ATC 18). USENIX Association, Boston, MA, 133--146. https://www.usenix.org/conference/atc18/presentation/wang-liang <span class="references__pub-id doi 10.5555/3277355.3277369"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Liang+Wang%2C+Mengyuan+Li%2C+Yinqian+Zhang%2C+Thomas+Ristenpart%2C+and+Michael+Swift.+2018.+Peeking+Behind+the+Curtains+of+Serverless+Platforms.+In+2018+USENIX+Annual+Technical+Conference+%28USENIX+ATC+18%29.+USENIX+Association%2C+Boston%2C+MA%2C+133%2D%2D146.+https%3A%2F%2Fwww.usenix.org%2Fconference%2Fatc18%2Fpresentation%2Fwang-liang+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.5555/3277355.3277369" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00049" class="&#xA;                references__item&#xA;            "><span class="references__note">Wei Wang, Jinyang Gao, Meihui Zhang, Sheng Wang, Gang Chen, Teck Khim Ng, Beng Chin Ooi, Jie Shao, and Moaz Reyad. 2018. Rafiki: machine learning as an analytics service system. Proceedings of the VLDB Endowment 12, 2 (2018), 128--140.  <span class="references__pub-id doi 10.14778/3282495.3282499"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Wei+Wang%2C+Jinyang+Gao%2C+Meihui+Zhang%2C+Sheng+Wang%2C+Gang+Chen%2C+Teck+Khim+Ng%2C+Beng+Chin+Ooi%2C+Jie+Shao%2C+and+Moaz+Reyad.+2018.+Rafiki%3A+machine+learning+as+an+analytics+service+system.+Proceedings+of+the+VLDB+Endowment+12%2C+2+%282018%29%2C+128%2D%2D140.+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.14778/3282495.3282499" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00050" class="&#xA;                references__item&#xA;            "><span class="references__note">Wencong Xiao, Romil Bhardwaj, Ramachandran Ramjee, Muthian Sivathanu, Nipun Kwatra, Zhenhua Han, Pratyush Patel, Xuan Peng, Hanyu Zhao, Quanlu Zhang, Fan Yang, and Lidong Zhou. 2018. Gandiva: Introspective Cluster Scheduling for Deep Learning. In 13th USENIX Symposium on Operating Systems Design and Implementation (OSDI 18). USENIX Association, Carlsbad, CA, 595--610. https://www. usenix.org/conference/osdi18/presentation/xiao <span class="references__pub-id doi 10.5555/3291168.3291212"></span><span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Wencong+Xiao%2C+Romil+Bhardwaj%2C+Ramachandran+Ramjee%2C+Muthian+Sivathanu%2C+Nipun+Kwatra%2C+Zhenhua+Han%2C+Pratyush+Patel%2C+Xuan+Peng%2C+Hanyu+Zhao%2C+Quanlu+Zhang%2C+Fan+Yang%2C+and+Lidong+Zhou.+2018.+Gandiva%3A+Introspective+Cluster+Scheduling+for+Deep+Learning.+In+13th+USENIX+Symposium+on+Operating+Systems+Design+and+Implementation+%28OSDI+18%29.+USENIX+Association%2C+Carlsbad%2C+CA%2C+595%2D%2D610.+https%3A%2F%2Fwww.+usenix.org%2Fconference%2Fosdi18%2Fpresentation%2Fxiao+"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span><span class="references__suffix"><a href="/doi/10.5555/3291168.3291212" target="_blank"><span class="visibility-hidden">Digital Library</span><img class="simple-tooltip__block--b" data-title="Digital Library" alt="Digital Library" src="/templates/jsp/_ux3/_acm/images/DL_icon.svg"/></a></span></span></li><li id="ref-00051" class="&#xA;                references__item&#xA;            "><span class="references__note">Xilinx 2018. Accelerating DNNs with Xilinx Alveo Accelerator Cards. https://www.xilinx.com/support/documentation/white_papers/wp504-accel-dnns.pdf.<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Xilinx+2018.+Accelerating+DNNs+with+Xilinx+Alveo+Accelerator+Cards.+https%3A%2F%2Fwww.xilinx.com%2Fsupport%2Fdocumentation%2Fwhite_papers%2Fwp504-accel-dnns.pdf."target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li><li id="ref-00052" class="&#xA;                references__item&#xA;            "><span class="references__note">Mengjia Yan, Christopher W. Fletcher, and Josep Torrellas. 2018. Cache Telepathy: Leveraging Shared Resource Attacks to Learn DNN Architectures. CoRR abs/1808.04761 (2018). arXiv:1808.04761 http://arxiv.org/abs/1808.04761<span class="references__suffix"><a class="google-scholar" href="http://scholar.google.com/scholar?hl=en&q=Mengjia+Yan%2C+Christopher+W.+Fletcher%2C+and+Josep+Torrellas.+2018.+Cache+Telepathy%3A+Leveraging+Shared+Resource+Attacks+to+Learn+DNN+Architectures.+CoRR+abs%2F1808.04761+%282018%29.+arXiv%3A1808.04761+http%3A%2F%2Farxiv.org%2Fabs%2F1808.04761"target="_blank"><span class="visibility-hidden">Google Scholar</span><img src="/specs/products/acm/images/googleScholar.svg" class="simple-tooltip__block--b" alt="Google Scholar"/></a></span></span></li></ol></div><div class="pb-dropzone" data-pb-dropzone="citedByListDropzone" title="citedByListDropzone"><div class="article__cited article__section show-more-items hidden" data-sectionname="Cited By">
+  <div class="header-container">
+    <div class="colored-block__title">
+      <h2 class="section__title left-bordered-title citedBy-label" id="sec-cit">Cited By</h2><a class="btn btn--rounded ml-0 mt-0 mb-0 pl-2 blue pull-right" id="downloadAllMain" href="#" target="_blank" title="View all cited by in new tab">View all<i class="icon-export ml-2"></i></a>
+    </div>
+      <div class="loader"><img src="/specs/products/acm/releasedAssets/images/loader-7e60691fbe777356dc81ff6d223a82a6.gif"></div>
+      <ol class="rlist citedBy-main references__list mt-4"></ol>
+  </div>
+</div></div>
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3TagWidget" data-widget-id="2a75f978-170a-4843-8722-e878a1b77fbc" class="citation article__section article__index-terms">
+        
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="graphQueryWidget" data-widget-id="4ca2ed65-717e-4e67-bbb5-6578b8c6acac" class="colored-block__title">
+        
+
+
+
+        
+        <h2 id="sec-terms" class="section__title left-bordered-title">Index Terms</h2>
+
+        </div>
+    
+
+
+<ol class="rlist organizational-chart"><li><h6>A Case for Managed and Model-less Inference Serving</h6><ol class="rlist level-1  ch-2 hasNodes"><li><div data-background="#808080" style="background-color:#808080;box-shadow:none"><p><a href="/topic/ccs2012/10010520?ContentGroupKey=10.1145%2F3317550&amp;expand=all">Computer systems organization</a></p></div><ol class="rlist level-2 ch-1 hasNodes"><li><div data-background="#808080" style="background-color:#808080;box-shadow:none"><p><a href="/topic/ccs2012/10010520.10010521?ContentGroupKey=10.1145%2F3317550&amp;expand=all">Architectures</a></p></div><ol class="rlist level-3 ch-1 hasNodes"><li><div data-background="#808080" style="background-color:#808080;box-shadow:none"><p><a href="/topic/ccs2012/10010520.10010521.10010537?ContentGroupKey=10.1145%2F3317550&amp;expand=all">Distributed architectures</a></p></div><ol class="rlist level-4 ch-1 hasNodes"><li><div data-background="#808080" style="background-color:#808080;box-shadow:none"><p><a href="/topic/ccs2012/10010520.10010521.10010537.10003100?ContentGroupKey=10.1145%2F3317550&amp;expand=all">Cloud computing</a></p></div><ol class="rlist level-5 ch-0"></ol></li></ol></li></ol></li></ol></li><li><div data-background="#808080" style="background-color:#808080;box-shadow:none"><p><a href="/topic/ccs2012/10010147?ContentGroupKey=10.1145%2F3317550&amp;expand=all">Computing methodologies</a></p></div><ol class="rlist level-2 ch-1 hasNodes"><li><div data-background="#808080" style="background-color:#808080;box-shadow:none"><p><a href="/topic/ccs2012/10010147.10010257?ContentGroupKey=10.1145%2F3317550&amp;expand=all">Machine learning</a></p></div><ol class="rlist level-3 ch-0"></ol></li></ol></li></ol></li></ol>
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="graphQueryWidget" data-widget-id="f85757d8-f597-4128-920f-1eb1466bb8b8" class="disclaimer">
+        
+
+
+
+        
+        
+
+        </div>
+    
+
+
+
+
+
+        
+        <div class="colored-block__title"> <h2 id="sec-recommendations" class="section__title left-bordered-title">Recommendations</h2> </div>
+
+
+
+
+        
+        <div data-exp-type="" data-query-id="10.1145/3317550.3321443" class="recommended-articles__content"><ul class="rlist lot"><li class="grid-item"><div class="creative-work"><a href="/doi/10.1145/3437984.3458837" title="Interference-Aware Scheduling for Inference Serving"><h5 data-lines="2" class="creative-work__title truncate-text-css">Interference-Aware Scheduling for Inference Serving</h5></a><div class="creative-work__sub-title mb-3 mt-1">EuroMLSys '21: Proceedings of the 1st Workshop on Machine Learning and Systems  </div><div class="description"><div class="issue-item__abstract truncate-text" data-lines="4">
+		<p>Machine learning inference applications have proliferated through diverse domains such as healthcare, security, and analytics. Recent work has proposed inference serving systems for improving the deployment and scalability of models. To improve resource ...</p><p></p></div></div><div class="readMore"><a href="/doi/10.1145/3437984.3458837" title="Read More">Read More</a></div></div></li><li class="grid-item"><div class="creative-work"><a href="/doi/10.1007/978-3-031-39698-4_12" title="ODIN: Overcoming Dynamic Interference in iNference Pipelines"><h5 data-lines="2" class="creative-work__title truncate-text-css">ODIN: Overcoming Dynamic Interference in iNference Pipelines</h5></a><div class="creative-work__sub-title mb-3 mt-1">Euro-Par 2023: Parallel Processing  </div><div class="description"><div class="issue-item__abstract truncate-text" data-lines="4">Abstract<p>As an increasing number of businesses becomes powered by machine-learning, inference becomes a core operation, with a growing trend to be offered as a service. In this context, the inference task must meet certain service-level objectives (SLOs), ...</p></div></div><div class="readMore"><a href="/doi/10.1007/978-3-031-39698-4_12" title="Read More">Read More</a></div></div></li><li class="grid-item"><div class="creative-work"><a href="/doi/10.1109/TSP.2008.2005752" title="Variational Bayesian inference for a nonlinear forward model"><h5 data-lines="2" class="creative-work__title truncate-text-css">Variational Bayesian inference for a nonlinear forward model</h5></a><div class="description"><div class="issue-item__abstract truncate-text" data-lines="4">
+		<p>Variational Bayes (VB) has been proposed as a method to facilitate calculations of the posterior distributions for linear models, by providing a fast method for Bayesian inference by estimating the parameters of a factorized approximation to the ...</p></div></div><div class="readMore"><a href="/doi/10.1109/TSP.2008.2005752" title="Read More">Read More</a></div></div></li></ul></div>
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="graphQueryWidget" data-widget-id="91639479-279a-46e3-b7c7-f902a3fd7945" class="toc__section accordion-tabbed__tab">
+        
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3RelatedDigitalObject" data-widget-id="98838540-5c38-436f-9b98-0e292765fbe4" class="accordion-tabbed__content">
+        
+
+
+
+        
+        
+
+        </div>
+    
+
+
+
+        </div>
+    
+
+
+
+
+
+        
+        <div class="article__section article__comments">
+
+
+
+        
+        <div class="colored-block__title"> <h2 id="sec-comments" class="section__title left-bordered-title">Comments</h2> </div>
+
+
+
+
+        
+        <div id="disqus_thread"></div><a href="https://dl.acm.org/doi/abs/10.1145/3317550.3321443?download=true#disqus_thread" class="disqus-count hidden"></a><script>var disqus_config = function () {
+    this.page.url = window.location.href;
+    this.page.identifier = '10.1145/3317550.3321443';
+    this.page.remote_auth_s3 = '';
+    this.page.api_key = 'MmWj4FlWmXk20FJsmWMXbTJoZT7TVzTsc9Rw0yrJp3L1ZNXZuvmxF3F5rFIF8RqQ';
+};
+(function () {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://acm-prod.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();</script><noscript>Please enable JavaScript to view the<a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript><script id="dsq-count-scr" src="//acm-prod.disqus.com/count.js" async=""></script>
+</div>
+</div><div class="pill-content"><div id="pill-access"><div class="pill-access__content">
+
+
+
+        
+        <div class="pill-access__content"><div class="section__separator"><h3 class="left-bordered-title">Login options</h3><div class="section__content"><p class="info--text">Check if you have access through your login credentials or your institution to get full access on this article.</p><a href="/action/showLogin?redirectUri=/doi/abs/10.1145/3317550.3321443?download=true" title="Sign in" class="btn big btn--inverse">Sign in</a></div></div><div class="section__separator"><h3 class="left-bordered-title">Full Access</h3><div class="section__content"><a href="/action/publisherEcommerceHelper?doi=10.1145/3317550.3321443&amp;redirectUri=https://dl.acm.org/doi/abs/10.1145/3317550.3321443?download=true" title="Get this Publication" class="btn blue big">Get this Publication</a></div></div></div>
+</div></div><div id="pill-information"><div class="tab tab--flex"><ul role="tablist" class="rlist tab__nav"><li role="presentation" class="active"><a id="pill-information__contentcon" href="#pill-information__content" aria-controls="pill-information__content" role="tab" data-toggle="tab" title="Information" aria-selected="true" data-simple-tab-id="" tabindex="0">Information</a></li><li role="presentation"><a id="pill-authors__contentcon" href="#pill-authors__content" aria-controls="pill-authors__content" role="tab" data-toggle="tab" title="Authors" aria-selected="false" data-simple-tab-id="" tabindex="-1">Contributors</a></li></ul><ul class="rlist tab__content"><li id="pill-information__content" aria-labelledby="pill-information__contentcon" role="tabpanel" aria-hidden="false" tabindex="0" class="tab__pane active"><div class="pill-information__content"><div class="section__separator"><h3 class="left-bordered-title">Published in</h3><div class="section__content cover-image-proceeding">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3CoverImage" data-widget-id="7b8bd09e-8112-4266-b136-2f71ab2b109c" class="left-side-image">
+        
+
+
+
+        
+        <div class="cover-image"><div class="cover-image__image"><img src="/specs/products/acm/releasedAssets/images/Default_image_lazy-0687af31f0f1c8d4b7a22b686995ab9b.svg" data-src="/specs/products/acm/releasedAssets/images/cover-default--acm-proceeding-4d51ce6d9b364da1d24015fc4d1b50fb.svg" alt="cover image ACM Conferences" class="lazy"/></div><div class="cover-image__details"><div class="book-meta">HotOS '19: Proceedings of the Workshop on Hot Topics in Operating Systems</div><div class="cover-date">May 2019</div><div class="cover-pages">227  pages</div><div class="cover-image__details-extra"><div class="flex-container"><span class="bold">ISBN:</span><span class="space">9781450367271</span></div><div class="flex-container"><span class="bold">DOI:</span><span class="space">10.1145/3317550</span></div></div><div class="pb-dropzone" data-pb-dropzone="metadataDisplayExtra" title="metadataDisplayExtra"></div></div></div>
+
+        </div>
+    
+
+<p class="copyrights small">Copyright © 2019 ACM</p><p class="small">Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="104075627d796363797f7e635071737d3e7f6277">[email&#160;protected]</a></p></div></div><div class="section__separator proceedingInfo-sponsors hidden"><h3 class="left-bordered-title">Sponsors</h3><ul class="proceedingInfo-sponsors__list"></ul></div><div class="section__separator proceedingInfo-inCoop hidden"><h3 class="left-bordered-title">In-Cooperation</h3><ul class="proceedingInfo-inCoop__list"></ul></div><div class="section__separator"><h3 class="left-bordered-title">Publisher</h3><div class="section__content publisher"><div class="inlineBlock"></div><div class="inlineBlock"><p class="publisher__name">Association for Computing Machinery</p><p class="publisher__address">New York, NY, United States</p></div></div></div>
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="contentItemHistory" data-widget-id="6eba30da-4023-4f09-bb08-f98cf09d5aa0" class="section__separator">
+        
+
+
+
+        
+            <h3 class="left-bordered-title">
+                Publication History
+            </h3>
+        
+        <div class="section__content"><ul class="rlist article-chapter-history-list"><li><span class="item_label">Published:</span> 13 May 2019</li></ul></div>
+
+        </div>
+    
+
+
+
+
+
+        
+        <!-- rightslink drop zone-->
+
+
+
+        
+        <div class="section__separator"><h3 class="left-bordered-title"> Permissions</h3><div class="section__content"><p class="info--text">Request permissions about this article.</p><a href="https://marketplace.copyright.com/rs-ui-web/mp/search/all/10.1145%2F3317550.3321443" rel="noopener" target="_blank" class="btn big stretched blue">Request Permissions</a></div></div>
+
+<div class="section__separator inline-section p-3"><h3 class="left-bordered-title">Check for updates</h3><a data-target="crossmark"><img alt="Check for updates on crossmark" src="/specs/products/acm/releasedAssets/images/CrossMarkIcon-d6fb3282a56d93dd889e4259d1cf4bd1.svg" class="crossmark__mini__logo ml-5 mt-sm-2 mt-xs-2 ml-lg-5 mb-2"/></a></div>
+
+<div class="section__separator"><h3 class="left-bordered-title">Author Tags</h3><div class="section__content"><div class="tags-widget"><div class="tags-widget__content"><ul class="rlist--inline"><li><a href="/keyword/Automatic Resource Management?expand=all" title="Automatic Resource Management" class="badge-type">Automatic Resource Management</a></li><li><a href="/keyword/Inference Serving?expand=all" title="Inference Serving" class="badge-type">Inference Serving</a></li><li><a href="/keyword/Model-less?expand=all" title="Model-less" class="badge-type">Model-less</a></li></ul></div></div></div></div><div class="section__separator"><h3 class="left-bordered-title">Qualifiers</h3><ul class="qualifiers__list"><li class="capitalized qualifiers__list__item">research-article</li><li class="qualifiers__list__item">Research</li><li class="qualifiers__list__item capitalized">Refereed limited</li></ul></div><div class="section__separator proceedingInfo-conference hidden"><h3 class="left-bordered-title">Conference</h3></div>
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3AcceptanceRatesWidget" data-widget-id="daac1568-1d03-438e-a4c9-c9df280908b7" class="section__separator">
+        
+
+
+
+        
+        
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3UpcomingConferencesWidget" data-widget-id="452ce022-9919-435e-ab40-1386965a30bd" class="section__separator">
+        
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+        </div>
+    
+
+<div class="section__separator funding-sources hidden"><h3 class="left-bordered-title">Funding Sources</h3><ul class="funding-list"></ul></div></div></li><li id="pill-authors__content" aria-labelledby="pill-authors__contentcon" role="tabpanel" aria-hidden="true" class="tab__pane"><div class="pill-authors__content"><div class="section__separator"><div class="pill-authors-list"><div class="expandable-accordion"><div class="pill-normalized-authors">
+
+
+
+        
+        <div class="publication-contribs-contianer"><input id="ContribsAjax" type="hidden" data-ajax="/pb/widgets/getContribs?widgetId=f6c6c0f3-1b50-42bb-a7bb-1062377c12d4&amp;pbContext=%3Bissue%3Aissue%3Adoi%5C%3A10.1145%2F3317550%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3Bctype%3Astring%3ABook+Content%3Bpage%3Astring%3AArticle%2FChapter+View%3Barticle%3Aarticle%3Adoi%5C%3A10.1145%2F3317550.3321443%3BsubPage%3Astring%3AAbstract%3Bcsubtype%3Astring%3AConference+Proceedings%3Btopic%3Atopic%3Aconference-collections%26gt%3Bhotos%3Bwebsite%3Awebsite%3Adl-site%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages"/><div class="loader"><img src="/specs/products/acm/releasedAssets/images/loader-7e60691fbe777356dc81ff6d223a82a6.gif"/></div></div>
+</div><!--.pill-all-authors.authors-accordion.disable-truncate.hidden(aria-hidden="true")--><!--    if(data.item && data.item.contribsFull)--><!--        | !{data.item.contribsFull}--></div></div></div><div class="section__separator"><h3 class="left-bordered-title">Other Metrics</h3><div class="section__content badges"><a href="#pill-bibliometrics__contentcon" data-slide-target="#pill-metric" data-tab="pill-bibliometrics__content" data-ctrl-res="screen-xlg" data-full-screen="false" data-label="&lt;i class=&quot;icon-metric &quot;&gt;&lt;/i&gt;Bibliometrics &amp; Citations" class="btn big stretched btn--inverse w-slide__btn tab-link pill-content">View Article Metrics</a></div></div></div></li></ul></div></div><div id="pill-metric"><div class="tab tab--flex"><ul role="tablist" class="rlist tab__nav"><li role="presentation" class="active"><a id="pill-bibliometrics__contentcon" href="#pill-bibliometrics__content" aria-controls="pill-bibliometrics__content" role="tab" data-toggle="tab" title="Bibliometrics" aria-selected="true" data-simple-tab-id="" tabindex="0">Bibliometrics</a></li><li role="presentation"><a id="pill-citations__contentcon" href="#pill-citations__content" data-ajaxurl="/action/ajaxShowCitedBy?widgetId=f69d88a8-b404-4aae-83a9-9acea4426d78&amp;ajax=true&amp;doi=10.1145%2F3317550.3321443&amp;pbContext=%3Bissue%3Aissue%3Adoi%5C%3A10.1145%2F3317550%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3Bctype%3Astring%3ABook+Content%3Bpage%3Astring%3AArticle%2FChapter+View%3Barticle%3Aarticle%3Adoi%5C%3A10.1145%2F3317550.3321443%3BsubPage%3Astring%3AAbstract%3Bcsubtype%3Astring%3AConference+Proceedings%3Btopic%3Atopic%3Aconference-collections%26gt%3Bhotos%3Bwebsite%3Awebsite%3Adl-site%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages" data-component="pubAjaxContent" data-ajaxtarget="#pill-citations__content .citedBy" aria-controls="pill-citations__content" role="tab" data-toggle="tab" title="Citations" aria-selected="false" data-simple-tab-id="" tabindex="-1" class="loadAjax loadLazyAjax">Citations<span class="citation-count count-bubble">16</span></a></li></ul><ul class="rlist tab__content"><li id="pill-bibliometrics__content" aria-labelledby="pill-bibliometrics__contentcon" role="tabpanel" aria-hidden="false" tabindex="0" class="tab__pane active"><div class="pill-bibliometrics__content"><div class="section__separator"><h3 class="left-bordered-title">Article Metrics</h3><div class="section__content"><ul class="rlist--inline article-metrics"><li><div class="article-metric citation"><div class="metric-value"><span>16</span></div>Total Citations</div><a href="#pill-citations__contentcon" data-tab="pill-citations__content" data-slide-target="#pill-metric" data-full-screen="false" data-ctrl-res="screen-xlg" class="primary-blue-color w-slide__btn tab-link slide-active pill-content">View Citations</a></li><li><div class="article-metric download"><div class="metric-value"><span>1,187</span></div>Total Downloads</div></li></ul><ul class="rlist metrics__list"><li><span class="metric-name">Downloads (Last 12 months)</span><span class="metric-value">111</span></li><li><span class="metric-name">Downloads (Last 6 weeks)</span><span class="metric-value">13</span></li></ul></div></div><div class="section__separator"><h3 class="left-bordered-title">Other Metrics</h3><div class="section__content"><a href="#pill-authors__contentcon" data-slide-target="#pill-information" data-ctrl-res="screen-xlg" data-tab="pill-authors__content" data-full-screen="false" data-label="&lt;i class=&quot;icon-Icon_Information &quot;&gt;&lt;/i&gt;Information &amp; Authors" class="btn big stretched btn--inverse w-slide__btn tab-link pill-content">View Author Metrics</a></div></div></div></li><li id="pill-citations__content" aria-labelledby="pill-citations__contentcon" role="tabpanel" aria-hidden="true" class="tab__pane"><div class="pill-citations__content"><div class="section__separator"><div class="header-container"><h3 class="left-bordered-title citedBy-label">Cited By</h3><a id="downloadAll" href="/action/ajaxShowCitedBy?doi=10.1145/3317550.3321443" target="_blank" title="View all cited by in new tab" class="btn btn--rounded ml-0 mt-0 mb-0 pl-2 blue pull-right">View all<i class="icon-export ml-2"></i></a><ol class="rlist references__list citedBy mt-5"></ol></div></div></div></li></ul></div></div><div id="pill-formats"><div class="pill-formats__content"><div class="section__separator"><h3 class="left-bordered-title">PDF Format</h3><div class="section__content"><p class="info--text">View or Download as a PDF file.</p><a href="/doi/pdf/10.1145/3317550.3321443" title="View or Download as a PDF file" class="btn big stretched red"><i aria-hidden="true" class="icon-pdf-file"></i>PDF</a></div></div><div class="section__separator"><h3 class="left-bordered-title">eReader</h3><div class="section__content"><p class="info--text">View online with eReader.</p><a href="/doi/epdf/10.1145/3317550.3321443" title="View online with eReader" class="btn big stretched blue no-margin-top pill-content"><i aria-hidden="true" class="icon-eReader"></i>eReader</a></div></div><div class="section__separator de-format hidden"><h3 class="left-bordered-title">Digital Edition</h3><div class="section__content"><p class="info--text">View this article in digital edition.</p><a href="#" title="View Digital Edition" class="btn big stretched blue"><i aria-hidden="true" class="icon-open-book"></i>View Digital Edition</a></div></div></div></div><div id="pill-references"><div class="pill-references__content"></div></div><div id="pill-media"><div class="tab tab--flex"><ul role="tablist" class="rlist tab__nav"><li role="presentation" class="active"><a id="pill-fig__contentcon" href="#pill-fig__content" aria-controls="pill-fig__content" role="tab" data-toggle="tab" title="Figures" aria-selected="true" data-simple-tab-id="" tabindex="0">Figures</a></li><li role="presentation"><a id="pill-media__contentcon" href="#pill-media__content" aria-controls="pill-media__content" role="tab" data-toggle="tab" title="Other" aria-selected="false" data-simple-tab-id="" tabindex="-1">Other</a></li></ul><div class="pill-figures__content"><ul class="rlist tab__content"><li id="pill-fig__content" aria-labelledby="pill-fig__contentcon" role="tabpanel" aria-hidden="false" tabindex="0" class="tab__pane active"></li><li id="pill-media__content" aria-labelledby="pill-media__contentcon" role="tabpanel" aria-hidden="true" class="tab__pane"><ul class="rlist pill-media__content"></ul></li></ul></div></div></div><div id="pill-tables"><div class="pill-tables__content"></div></div><div id="pill-share"><div class="pill-share__content"><div class="section__separator"><h3 class="left-bordered-title">Share this Publication link</h3><div class="section__content copy__text-wrapper"><fieldset><p id="shareable-link__text" class="copy__text">https://dl.acm.org/doi/abs/10.1145/3317550.3321443?download=true</p><button type="submit" class="btn big btn--inverse copy__btn"><i aria-hidden="true" class="icon-pages"></i>Copy Link</button></fieldset></div></div><div class="section__separator"><h3 class="left-bordered-title">Share on Social Media</h3><div class="section__content"><div class="visible-service-name">
+
+
+
+        
+        <!-- Go to https://www.addtoany.com/buttons/customize/ to customize your tools --><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" defer="defer" src="https://static.addtoany.com/menu/page.js"></script><div class="share__block share__inline-links"><div class="pb-dropzone" data-pb-dropzone="shareBlock" title="shareBlock"></div><span class="sr-only">Share on</span><ul class="rlist--inline a2a a2a_kit a2a_kit_size_32 a2a_default_style"><li><a role="link" title="Twitter" class="a2a_button_twitter"></a></li><li><a role="link" title="Linked In" class="a2a_button_linkedin"></a></li><li><a role="link" title="Reddit" class="a2a_button_reddit"></a></li><li><a role="link" title="Facebook" class="a2a_button_facebook"></a></li><li><a role="link" title="Email" class="a2a_button_email"></a></li><div class="pb-dropzone" data-pb-dropzone="share-additional-links" title="share-additional-links"></div></ul></div>
+</div></div></div></div></div></div></div><div class="col-sm-2 pill-section"><div data-stop-on=".more-issue__section" class="pill-icons"><ul class="rlist pill-list"><li title="Information &amp; Authors"><button aria-haspopup="dialog" aria-controls="w-slideElement" data-slide-target="#pill-information" data-ctrl-res="screen-xlg" data-full-screen="false" title="Information and Authors" data-label="&lt;i class=&quot;icon-Icon_Information&quot;&gt;&lt;/i&gt;Information &amp; Authors" class="w-slide__btn pill-information"><i aria-hidden="true" class="icon-Icon_Information"></i></button></li><li title="Bibliometrics &amp; Citations"><button aria-haspopup="dialog" aria-controls="w-slideElement" data-slide-target="#pill-metric" data-ctrl-res="screen-xlg" data-full-screen="false" data-label="&lt;i class=&quot;icon-metric &quot;&gt;&lt;/i&gt;Bibliometrics &amp; Citations" title="Bibliometrics and Citations" class="w-slide__btn pill-metric"><i aria-hidden="true" class="icon-metric"></i></button></li><li title="Get Access"><a href="javascript:void(0);" data-slide-target="#pill-access" data-ctrl-res="screen-xlg" data-full-screen="false" title="Get Access" data-label="&lt;i class=&quot;icon-get-access&quot;&gt;&lt;/i&gt;Get Access" class="w-slide__btn pill-access"><i class="icon-get-access"></i></a></li><li title="References"><button aria-haspopup="dialog" aria-controls="w-slideElement" data-slide-target="#pill-references" data-ctrl-res="screen-xlg" data-full-screen="false" title="References" data-label="&lt;i class=&quot;icon-Icon_Links-References&quot;&gt;&lt;/i&gt;References" class="w-slide__btn pill-references"><i aria-hidden="true" class="icon-Icon_Links-References"></i><span class="refNum count-bubble">0<span class="sr-only">References</span></span></button></li><li title="Media"><button aria-haspopup="dialog" aria-controls="w-slideElement" data-slide-target="#pill-media" data-ctrl-res="screen-xlg" data-full-screen="false" title="Media" data-label="&lt;i class=&quot;icon-Icon_Images&quot;&gt;&lt;/i&gt;Media" data-ajaxtarget="#pill-fig__content" data-component="pubAjaxContent" data-action="onResponse" data-ajaxurl="/action/ajaxShowFigures?widgetId=f69d88a8-b404-4aae-83a9-9acea4426d78&amp;ajax=true&amp;doi=10.1145%2F3317550.3321443&amp;pbContext=%3Bissue%3Aissue%3Adoi%5C%3A10.1145%2F3317550%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3Bctype%3Astring%3ABook+Content%3Bpage%3Astring%3AArticle%2FChapter+View%3Barticle%3Aarticle%3Adoi%5C%3A10.1145%2F3317550.3321443%3BsubPage%3Astring%3AAbstract%3Bcsubtype%3Astring%3AConference+Proceedings%3Btopic%3Atopic%3Aconference-collections%26gt%3Bhotos%3Bwebsite%3Awebsite%3Adl-site%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages" class="w-slide__btn loadAjax-auto pill-media"><i aria-hidden="true" class="icon-Icon_Images"></i></button></li><li title="Tables"><button aria-haspopup="dialog" aria-controls="w-slideElement" data-slide-target="#pill-tables" data-ctrl-res="screen-xlg" title="Tables" data-full-screen="false" data-label="&lt;i class=&quot;icon-table&quot;&gt;&lt;/i&gt;Tables" data-ajaxtarget=".pill-tables__content" data-component="pubAjaxContent" data-action="onResponse" data-ajaxurl="/action/ajaxShowTables?widgetId=f69d88a8-b404-4aae-83a9-9acea4426d78&amp;ajax=true&amp;doi=10.1145%2F3317550.3321443&amp;pbContext=%3Bissue%3Aissue%3Adoi%5C%3A10.1145%2F3317550%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3Bctype%3Astring%3ABook+Content%3Bpage%3Astring%3AArticle%2FChapter+View%3Barticle%3Aarticle%3Adoi%5C%3A10.1145%2F3317550.3321443%3BsubPage%3Astring%3AAbstract%3Bcsubtype%3Astring%3AConference+Proceedings%3Btopic%3Atopic%3Aconference-collections%26gt%3Bhotos%3Bwebsite%3Awebsite%3Adl-site%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages" class="w-slide__btn loadAjax-auto pill-tables"><i aria-hidden="true" class="icon-table"></i></button></li><li title="Share"><button aria-haspopup="dialog" aria-controls="w-slideElement" data-slide-target="#pill-share" data-ctrl-res="screen-xlg" data-full-screen="false" title="Share" data-label="&lt;i class=&quot;icon-Icon_Share&quot;&gt;&lt;/i&gt;Share" class="w-slide__btn pill-share pill-content"><i aria-hidden="true" class="icon-Icon_Share"></i></button></li></ul></div></div></div></article><div id="figure-viewer" data-ux3-wrapper="figure-viewer" data-ux3-transformed-by="figureInit" data-ux3-role="parent" role="dialog" aria-label="Figure Viewer" class="figure-viewer"><div class="figure-viewer__reg__top clearfix"><div class="figure-viewer__top__right"><a title="Zoom In" href="#" class="figure-viewer__ctrl figure-viewer__ctrl__zoom zoomSetting"><div aria-hidden="true" class="icon-zoom-in zoom-in"></div></a><a title="Zoom Out" href="#" class="figure-viewer__ctrl figure-viewer__label__zoom zoomSetting"><div aria-hidden="true" class="icon-zoom-out zoom-out"></div></a><a title="Open Caption" href="#" class="figure-viewer__ctrl figure-viewer__ctrl__caption"><i aria-hidden="true" class="icon-Icon_Information"></i></a><a href="#" data-ux3-role="controller" role="button" title="close" class="figure-viewer__ctrl figure-viewer__ctrl__close"><i aria-hidden="true" class="icon-cancel-bold"><span class="sr-only">Close Figure Viewer</span></i></a></div><h4 class="figure-viewer__top__center"></h4><div class="figure-viewer__top__left"><a href="#" role="button" title="Browse All" class="figure-viewer__ctrl__browse"><i aria-hidden="true" class="icon-grid-3"><span class="sr-only">Browse All</span></i></a><a href="#" role="button" title="Return" class="figure-viewer__ctrl__return is-hidden"><i aria-hidden="true" class="icon-cancel-bold"><span class="sr-only">Return</span></i></a><span class="zoomSlider js__zoom-slider ui-slider zoomSetting"><label for="figure-viewer__zoom-range" class="sr-only">Change zoom level</label><input type="range" id="figure-viewer__zoom-range" class="zoom-range"/></span></div></div><div class="figure-viewer__reg__center"><div class="figure-viewer__cent__left"><div class="figure-viewer__hold__fig"><div class="holder"></div></div><div class="figure-viewer__hold__list"><h3 class="figure-viewer__browse-title"></h3><div class="flex-grid"></div></div></div><div class="figure-viewer__cent__right"><div class="figure-viewer__caption-header"><h3 class="figure-viewer__caption-label">Caption</h3><a title="Close Caption" href="#" class="pull-right figure-viewer__close-caption figure-viewer__ctrl__caption"><i aria-hidden="true" class="icon-cancel-bold"></i></a></div><div class="figure-viewer__caption-wrapper"><div class="figure-viewer__title"><span class="figure-viewer__title__text"></span></div><div class="figure-viewer__hold__figcap"></div></div></div></div></div>
+
+        </div>
+    
+
+
+
+
+
+        
+        <div class="separated-block--dashed align-center"><a href="/doi/proceedings/10.1145/3317550" style="text-transform: capitalize;" class="btn btn--inverse big">View Table of Contents</a></div>
+
+
+
+
+        
+        <div role="dialog" aria-labelledby="exportCitationsPopup" class="ux-modal-container"><div id="exportCitation" class="modal"><div class="modal__dialog"><div class="modal__header"><button type="button" data-dismiss="modal" class="close"><i aria-hidden="true" aria-label="close popup" class="icon-close_thin"></i></button><h2 id="exportCitationsPopup">Export Citations</h2></div><div class="modal__body"><div class="exportCitation__tabs"><div class="tab"><ul role="tablist" class="rlist tab__nav"></ul></div><div class="csl-wrapper copy__text-wrapper"><form action="/action/exportCiteProcCitation" method="post" target="_blank"><input type="hidden" name="content" value=""/><input type="hidden" name="dois" value=""/><input type="hidden" name="format" value=""/><fieldset class="input-group"><label for="citation-format" class="visibility-hidden">Select Citation format</label><select id="citation-format" data-csl-doi="10.1145/3317550.3321443" aria-label="Select Citation format"><option value="bibtex" data-format="bibTex">BibTeX</option><option value="endNote" data-format="endNote">EndNote</option><option value="acm" data-format="text">ACM Ref</option></select><span class="select-arrow"><i class="icon-bottom-arrow"></i></span></fieldset><ul class="rlist tab__content"><li id="allResultstab" aria-labelledby="allResults" role="tabpanel" class="tab__pane"><div class="all-results-tab-container"><div class="hidden warning-message mb-2">Please download or close your previous search result export first before starting a new bulk export.</div><div class="desc-text"><div class="bold">Preview is not available.</div>By clicking download,<b class="ml-1">a status dialog</b> will open to start the export process. The process may take<b class="ml-1">a few minutes</b> but once it finishes a file will be downloadable from your browser. You may continue to browse the DL while the export process is in progress.</div><a href="#" title="Download" data-href="/action/searchCitationExport?query=DOI%3D10.1145%252F3317550.3321443%26target%3Dindex-terms" class="btn transparent downloadBtn"><i aria-hidden="true" class="icon-Icon_Download"></i>Download<i aria-hidden="true" class="icon-export"></i></a></div></li><li id="selectedTab" aria-labelledby="selected" role="tabpanel" class="tab__pane active"><div class="csl-wrapper copy__text-wrapper"><pre class="copy__text csl-response"></pre><div id="export-warning"></div><div class="pull-right"><ul role="menu" class="rlist--inline separator"><li><a href="javascript:void(0)" role="menuitem" title="Download citation" class="download__btn disabled"><label class="visibility-hidden">Download citation</label><i aria-hidden="true" class="icon-Icon_Download"></i></a></li><li><input type="hidden" id="doisLimitNumber" value="1000"/><a href="javascript:void(0)" role="menuitem" title="Copy citation" class="copy__btn disabled"><label class="visibility-hidden">Copy citation</label><i aria-hidden="true" class="icon-pages"></i></a></li></ul></div></div></li></ul></form></div></div></div></div></div></div>
+</main>
+
+        </div>
+    
+
+
+
+
+
+        
+        <footer class="footer">
+
+
+
+        
+        <h2 class="sr-only" tabindex="0">Footer</h2>
+
+
+
+
+        
+        <div class="back-to-top clearfix">
+    <i class="icon-arrow_u_p"></i>
+</div>
+
+
+
+
+        
+        <div class="footer-top">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="81a18a14-d709-41fd-9bb6-25a7fc1e13df" class="container">
+        
+
+
+
+        
+        <div class="row sitemap">
+
+
+
+        
+        <div class="col-sm-2 col-xs-6 sitemap__column">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="5b00ef28-f63b-4518-bd06-da82035f86ca" class="sitemap__data">
+        
+
+
+
+        
+        <h3 style="font-size: .875rem; margin-bottom: 18px;" tabindex="0">Categories</h3>
+<ul class="rlist">
+    <li><a href="/journals" title="Browse a listing of ACM’s Journals">Journals</a></li>
+    <li><a href="/magazines" title="Browse ACM's Magazines">Magazines</a></li>
+    <li><a href="/acmbooks" title="Browse new Releases of ACM Books">Books</a></li>
+    <li><a href="/proceedings" title="Browse the ACM Proceedings">Proceedings</a></li>
+    <li><a href="/sigs" title="Browse the Special Interest Groups">SIGs</a></li>
+    <li><a href="/conferences" title="Browse the Conferences">Conferences</a></li>
+    <li><a href="/collections" title="Browse the Special Collections">Collections</a></li>
+    <li><a href="/people" title="Discover ACM’s community of authors">People</a></li>
+</ul>
+
+        </div>
+    
+
+</div><div class="col-sm-4 col-xs-6 sitemap__column">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="731f98d3-e996-490d-a071-e9b966b32e2d" class="sitemap__data">
+        
+
+
+
+        
+        <h3 style="font-size: .875rem; margin-bottom: 18px;" tabindex="0">About</h3>
+<ul class="rlist">
+    <li><a href="/about">About ACM Digital Library</a></li>
+    <li><a href="/about/dlboard" title="ACM DL Board - Governance and Support Staff">ACM Digital Library Board</a></li>
+    <li><a href="/about/access" title="Accessing the DL">Subscription Information</a></li>
+    <li><a href="https://www.acm.org/publications/authors/information-for-authors" title="Information for Authors">Author Guidelines</a></li>
+    <li><a href="/about/access" title="Accessing the DL">Using ACM Digital Library</a></li>
+    <li><a href="/about/content#sec2">All Holdings within the ACM Digital Library</a></li>
+    <li><a href="/ccs" title="Classify publications using ACM's Computing Classification System">ACM Computing Classification System</a></li>
+     <li><a href="/about/accessibility" title="Digital Library Accessibility">Digital Library Accessibility</a></li>
+</ul>
+
+        </div>
+    
+
+</div><div class="col-sm-3 col-xs-6 sitemap__column">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="d4ed040d-22e8-481c-a7ef-0cac141f5246" class="sitemap__data">
+        
+
+
+
+        
+        <h3 style="font-size: .875rem; margin-bottom: 18px;" tabindex="0">Join</h3>
+<ul class="rlist">
+    <li><a href="https://www.acm.org/membership/join">Join ACM</a></li>
+    <li><a href="https://www.acm.org/special-interest-groups/join">Join SIGs</a></li>
+    <li><a href="https://www.acm.org/publications/subscribe">Subscribe to Publications</a></li>
+    <li><a href="https://libraries.acm.org/">Institutions and Libraries</a></li>
+</ul>
+
+        </div>
+    
+
+</div><div class="col-sm-3 col-xs-6 sitemap__column">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="4a649bf1-cf3f-472c-b764-dc3ab0cf4310" class="sitemap__data">
+        
+
+
+
+        
+        <h3 style="font-size: .875rem; margin-bottom: 18px;" tabindex="0">Connect</h3>
+<ul class="rlist social-media__connect">
+    <li><a href="/cdn-cgi/l/email-protection#71151d5c0514101c3119005f10121c5f1e0316" title="email dl team"><i class="icon-Icon_mail" aria-hidden="true"></i><span>Contact</span></a></li>
+    <li><a href="https://www.facebook.com/AssociationForComputingMachinery/" title="ACM on facebook"><i class="icon-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
+    <li><a href="https://twitter.com/acmdl" title="Tweets from ACM DL"><i class="icon-twitter" aria-hidden="true"></i><span>Twitter</span></a></li>
+    <li><a href="https://www.linkedin.com/company/association-for-computing-machinery/" title="acm  linkedin"><i class="icon-linkedin" aria-hidden="true"></i><span>Linkedin</span></a></li>
+    <!--li><a href="#" title="icon-Rss"><i class="icon-Rss" aria-hidden="true"></i><span>RSS</span></a></li-->
+    <li><a onclick="srv.openModal(true,'02b075ed48492ef0e7598ddf9762f5ef668d7320')" title="Provide Feedback"><i class="icon-Icon_Information" aria-hidden="true"></i><span>Feedback</span></a></li>
+    <li><a onclick="srv.openModal(true,'02b075ed48492ef0e7598ddf9762f5ef668d7320')" title="Report a problem"><i class="icon-Icon_Information" aria-hidden="true"></i><span>Bug Report</span></a></li>
+</ul>
+
+        </div>
+    
+
+</div>
+</div>
+
+        </div>
+    
+
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="6e6da9b7-371e-4ea0-827e-8de5915b8cd5" class="footer-bottom text-onDark">
+        
+
+
+
+        
+        <div class="container"><div class="row"><div class="col-md-8 col-sm-6 footer__copyright-wrapper">
+
+
+
+        
+        <div class="copyright">The ACM Digital Library is published by the Association for Computing Machinery. Copyright © 2024 ACM, Inc.</div>
+<ul class="rlist--inline">
+    <li><a class="link-nocolor-nounderline" href="https://libraries.acm.org/digital-library/policies#anchor3">Terms of Usage</a></li>
+    <li><a class="link-nocolor-nounderline" href="https://www.acm.org/about-acm/privacy-policy">Privacy Policy</a></li>
+    <li><a class="link-nocolor-nounderline" href="https://www.acm.org/code-of-ethics">Code of Ethics</a></li>
+</ul>
+</div><div class="col-md-4 col-sm-6 footer__logos-wrapper">
+
+
+
+        
+        <div class="logos">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-general-image" data-widget-id="42d543b3-ff9d-4f92-bf03-6d1fa00da8c6" class="footer__logo1">
+        
+
+
+
+        
+        <a href="/" title=""><img id="" alt="ACM Digital Library home" src="/specs/products/acm/releasedAssets/images/acm-logo-dl-8437178134fce530bc785276fc316cbf.png" loading="eager"/></a>
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-general-image" data-widget-id="5a0bc5df-cd95-408f-8ae5-8b1f40746519" class="footer__logo2">
+        
+
+
+
+        
+        <a href="https://www.acm.org" title=""><img id="" alt="ACM home" src="/specs/products/acm/releasedAssets/images/acm-logo-3-10aed79f3a6c95ddb67053b599f029af.png" loading="eager"/></a>
+
+        </div>
+    
+
+</div>
+</div></div></div>
+
+        </div>
+    
+
+
+
+
+
+        
+        <!-- Mopinion Pastea.se  start --><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">(function(){var id="7zt4vp6rxi2bbpxuy9yzabob4fy2enwmumr";var js=document.createElement("script");var pbBtn=document.querySelector('.admin-bar-disclosure');if(!window.PB){js.setAttribute("src","//deploy.mopinion.com/js/pastease.js");document.getElementsByTagName("head")[0].appendChild(js);var t=setInterval(function(){try{new Pastease.load(id);clearInterval(t)}catch(e){}},50)}})();
+    </script><!-- Mopinion Pastea.se end -->
+</footer>
+
+
+
+
+        
+        <script type="text/javascript">
+(function(h,o,t,j,a,r){
+    h.hj=h.hj||function()
+    
+    {(h.hj.q=h.hj.q||[]).push(arguments)}
+    ;
+    h._hjSettings={hjid:1290436,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+
+
+
+        
+        <script type="text/javascript">
+    (function (w, d) {
+    var b = d.getElementsByTagName('body')[0];
+    var s = d.createElement("script");
+    var v = !("IntersectionObserver" in w) ? "8.17.0" : "10.19.0";
+    s.async = true; // This includes the script as async. See the "recipes" section for more information about async loading of LazyLoad.
+    s.src = "https://cdn.jsdelivr.net/npm/vanilla-lazyload@" + v + "/dist/lazyload.min.js";
+    w.lazyLoadOptions = {elements_selector: ".lazy", "class_loaded": "image-lazy-loaded"};
+    b.appendChild(s);
+}(window, document));
+</script>
+
+
+
+
+        
+        
+
+
+
+
+        
+        
+
+
+
+    
+
+    
+
+    
+        
+    
+
+
+
+
+
+
+        
+        <div role="region" class="affs-popup"><input id="deleteCookie" type="hidden" name="deleteCookie" value="true"/></div>
+
+
+
+
+        
+        <div id="exportDownloadNotReady" role="region" class="searchCiteExport-popup hidden"><div class="searchCiteExport-popup__header"><i aria-hidden="true" class="icon-info"></i><span aria-label="Your Search Results Download Request" class="searchCiteExport-popup__title">Your Search Results Download Request</span><i aria-hidden="true" tabindex="0" class="icon-cancel-bold"> </i></div><div aria-label="Search Results Popup Body" class="searchCiteExport-popup__body clearfix"><p>We are preparing your search results for download ...</p><p>We will inform you here when the file is ready.</p><a href="#" disabled="disabled" class="btn blue pull-right">Download now!</a></div></div><div id="exportDownloadReady" role="region" class="searchCiteExport-popup hidden"><div class="searchCiteExport-popup__header"><i aria-hidden="true" class="icon-info"></i><span aria-label="Your Search Results Download Request" class="searchCiteExport-popup__title">Your Search Results Download Request</span><i aria-hidden="true" tabindex="0" class="icon-cancel-bold"></i></div><div aria-label="Search Results Popup Body" class="searchCiteExport-popup__body clearfix"><div class="csl-all-response hidden"></div><p>Your file of search results citations is now ready.</p><a href="#" class="btn blue searchCiteExport-popup__close pull-right">Download now!</a></div></div><div id="exportDownloadExpired" role="region" class="searchCiteExport-popup hidden"><div class="searchCiteExport-popup__header"><i aria-hidden="true" class="icon-info"></i><span aria-label="Your Search Results Download Request" class="searchCiteExport-popup__title">Your Search Results Download Request</span><i aria-hidden="true" tabindex="0" class="icon-cancel-bold"></i></div><div aria-label="Search Results Popup Body" class="searchCiteExport-popup__body clearfix"><p>Your search export query has expired. Please try again.</p></div></div>
+        </div>
+    </div>
+
+
+	
+    <script>if (typeof define !== 'undefined' && define.amd)
+    define.amd = false</script><script src="/products/acm/releasedAssets/js/main.bundle-d669c8a2ed7b5426bcf3.js"></script><script>(function (w, d) {
+    var b = d.getElementsByTagName('body')[0];
+    var s = d.createElement("script");
+    var v = !("IntersectionObserver" in w) ? "8.17.0" : "10.19.0";
+    s.async = true; // This includes the script as async. See the "recipes" section for more information about async loading of LazyLoad.
+    s.src = "https://cdn.jsdelivr.net/npm/vanilla-lazyload@" + v + "/dist/lazyload.min.js";
+    w.lazyLoadOptions = {elements_selector: ".lazy", "class_loaded": "image-lazy-loaded"};
+    b.appendChild(s);
+}(window, document));</script>
+<script type="text/javascript" src="/wro/n3h9~product.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(() => setTimeout(() => {
+            let _bnw=window,_bna=atob("bG9jYXRpb24="),_bnb=atob("b3JpZ2lu"),_hn=_bnw[_bna][_bnb],_bnt=btoa(_hn+new Array(5 - _hn.length % 4).join(" "));
+            $.get("/resource/lodash?t="+_bnt);
+        },4000));
+    </script>
+
+
+
+
+
+
+
+
+    
+
+    
+    
+
+    
+    
+    
+    
+        
+            
+                <script type="text/javascript" src="/wro/n3h9~article-metrics.js"></script>
+            
+            
+            
+        
+    
+
+
+
+<script>(function(){if (!document.body) return;var js = "window['__CF$cv$params']={r:'86bf72f93f505dd3',t:'MTcxMTcxMTAwMC43NTQwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script></body>
+</html>
