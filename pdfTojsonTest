@@ -1,0 +1,1144 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f2b22249",
+   "metadata": {
+    "_cell_guid": "b1076dfc-b9ad-4769-8c92-a6c4dae69d19",
+    "_uuid": "8f2839f25d086af736a60e9eeb907d3b93b6e0e5",
+    "execution": {
+     "iopub.execute_input": "2024-04-14T13:51:18.865357Z",
+     "iopub.status.busy": "2024-04-14T13:51:18.864920Z",
+     "iopub.status.idle": "2024-04-14T13:51:19.616230Z",
+     "shell.execute_reply": "2024-04-14T13:51:19.615106Z"
+    },
+    "papermill": {
+     "duration": 0.758967,
+     "end_time": "2024-04-14T13:51:19.618669",
+     "exception": false,
+     "start_time": "2024-04-14T13:51:18.859702",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "/kaggle/input/testkg/11418476.pdf\n"
+     ]
+    }
+   ],
+   "source": [
+    "# This Python 3 environment comes with many helpful analytics libraries installed\n",
+    "# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python\n",
+    "# For example, here's several helpful packages to load\n",
+    "\n",
+    "import numpy as np # linear algebra\n",
+    "import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)\n",
+    "\n",
+    "# Input data files are available in the read-only \"../input/\" directory\n",
+    "# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory\n",
+    "\n",
+    "import os\n",
+    "for dirname, _, filenames in os.walk('/kaggle/input'):\n",
+    "    for filename in filenames:\n",
+    "        print(os.path.join(dirname, filename))\n",
+    "\n",
+    "# You can write up to 20GB to the current directory (/kaggle/working/)detectron2 that gets preserved as output when you create a version using \"Save & Run All\" \n",
+    "# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "c554bb27",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-04-14T13:51:19.626646Z",
+     "iopub.status.busy": "2024-04-14T13:51:19.626075Z",
+     "iopub.status.idle": "2024-04-14T13:53:28.450832Z",
+     "shell.execute_reply": "2024-04-14T13:53:28.449700Z"
+    },
+    "papermill": {
+     "duration": 128.831499,
+     "end_time": "2024-04-14T13:53:28.453516",
+     "exception": false,
+     "start_time": "2024-04-14T13:51:19.622017",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Collecting git+https://github.com/facebookresearch/detectron2.git\r\n",
+      "  Cloning https://github.com/facebookresearch/detectron2.git to /tmp/pip-req-build-hfjzgdh7\r\n",
+      "  Running command git clone --filter=blob:none --quiet https://github.com/facebookresearch/detectron2.git /tmp/pip-req-build-hfjzgdh7\r\n",
+      "  Resolved https://github.com/facebookresearch/detectron2.git to commit b7c7f4ba82192ff06f2bbb162b9f67b00ea55867\r\n",
+      "  Preparing metadata (setup.py) ... \u001b[?25ldone\r\n",
+      "\u001b[?25hRequirement already satisfied: Pillow>=7.1 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (9.5.0)\r\n",
+      "Requirement already satisfied: matplotlib in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (3.7.5)\r\n",
+      "Collecting pycocotools>=2.0.2 (from detectron2==0.6)\r\n",
+      "  Downloading pycocotools-2.0.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.1 kB)\r\n",
+      "Requirement already satisfied: termcolor>=1.1 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (2.4.0)\r\n",
+      "Collecting yacs>=0.1.8 (from detectron2==0.6)\r\n",
+      "  Downloading yacs-0.1.8-py3-none-any.whl.metadata (639 bytes)\r\n",
+      "Requirement already satisfied: tabulate in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (0.9.0)\r\n",
+      "Requirement already satisfied: cloudpickle in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (2.2.1)\r\n",
+      "Requirement already satisfied: tqdm>4.29.0 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (4.66.1)\r\n",
+      "Requirement already satisfied: tensorboard in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (2.15.1)\r\n",
+      "Collecting fvcore<0.1.6,>=0.1.5 (from detectron2==0.6)\r\n",
+      "  Downloading fvcore-0.1.5.post20221221.tar.gz (50 kB)\r\n",
+      "\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m50.2/50.2 kB\u001b[0m \u001b[31m1.8 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25h  Preparing metadata (setup.py) ... \u001b[?25l-\b \bdone\r\n",
+      "\u001b[?25hCollecting iopath<0.1.10,>=0.1.7 (from detectron2==0.6)\r\n",
+      "  Downloading iopath-0.1.9-py3-none-any.whl.metadata (370 bytes)\r\n",
+      "Collecting omegaconf<2.4,>=2.1 (from detectron2==0.6)\r\n",
+      "  Downloading omegaconf-2.3.0-py3-none-any.whl.metadata (3.9 kB)\r\n",
+      "Collecting hydra-core>=1.1 (from detectron2==0.6)\r\n",
+      "  Downloading hydra_core-1.3.2-py3-none-any.whl.metadata (5.5 kB)\r\n",
+      "Collecting black (from detectron2==0.6)\r\n",
+      "  Downloading black-24.4.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (76 kB)\r\n",
+      "\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m76.4/76.4 kB\u001b[0m \u001b[31m3.4 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hRequirement already satisfied: packaging in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (21.3)\r\n",
+      "Requirement already satisfied: numpy in /opt/conda/lib/python3.10/site-packages (from fvcore<0.1.6,>=0.1.5->detectron2==0.6) (1.26.4)\r\n",
+      "Requirement already satisfied: pyyaml>=5.1 in /opt/conda/lib/python3.10/site-packages (from fvcore<0.1.6,>=0.1.5->detectron2==0.6) (6.0.1)\r\n",
+      "Collecting antlr4-python3-runtime==4.9.* (from hydra-core>=1.1->detectron2==0.6)\r\n",
+      "  Downloading antlr4-python3-runtime-4.9.3.tar.gz (117 kB)\r\n",
+      "\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m117.0/117.0 kB\u001b[0m \u001b[31m8.2 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25h  Preparing metadata (setup.py) ... \u001b[?25l-\b \bdone\r\n",
+      "\u001b[?25hCollecting portalocker (from iopath<0.1.10,>=0.1.7->detectron2==0.6)\r\n",
+      "  Downloading portalocker-2.8.2-py3-none-any.whl.metadata (8.5 kB)\r\n",
+      "Requirement already satisfied: contourpy>=1.0.1 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (1.2.0)\r\n",
+      "Requirement already satisfied: cycler>=0.10 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (0.12.1)\r\n",
+      "Requirement already satisfied: fonttools>=4.22.0 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (4.47.0)\r\n",
+      "Requirement already satisfied: kiwisolver>=1.0.1 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (1.4.5)\r\n",
+      "Requirement already satisfied: pyparsing>=2.3.1 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (3.1.1)\r\n",
+      "Requirement already satisfied: python-dateutil>=2.7 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (2.9.0.post0)\r\n",
+      "Requirement already satisfied: click>=8.0.0 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (8.1.7)\r\n",
+      "Requirement already satisfied: mypy-extensions>=0.4.3 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (1.0.0)\r\n",
+      "Collecting packaging (from detectron2==0.6)\r\n",
+      "  Downloading packaging-24.0-py3-none-any.whl.metadata (3.2 kB)\r\n",
+      "Collecting pathspec>=0.9.0 (from black->detectron2==0.6)\r\n",
+      "  Downloading pathspec-0.12.1-py3-none-any.whl.metadata (21 kB)\r\n",
+      "Requirement already satisfied: platformdirs>=2 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (4.2.0)\r\n",
+      "Requirement already satisfied: tomli>=1.1.0 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (2.0.1)\r\n",
+      "Requirement already satisfied: typing-extensions>=4.0.1 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (4.9.0)\r\n",
+      "Requirement already satisfied: absl-py>=0.4 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (1.4.0)\r\n",
+      "Requirement already satisfied: grpcio>=1.48.2 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (1.51.1)\r\n",
+      "Requirement already satisfied: google-auth<3,>=1.6.3 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (2.26.1)\r\n",
+      "Requirement already satisfied: google-auth-oauthlib<2,>=0.5 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (1.2.0)\r\n",
+      "Requirement already satisfied: markdown>=2.6.8 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (3.5.2)\r\n",
+      "Requirement already satisfied: protobuf<4.24,>=3.19.6 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (3.20.3)\r\n",
+      "Requirement already satisfied: requests<3,>=2.21.0 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (2.31.0)\r\n",
+      "Requirement already satisfied: setuptools>=41.0.0 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (69.0.3)\r\n",
+      "Requirement already satisfied: six>1.9 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (1.16.0)\r\n",
+      "Requirement already satisfied: tensorboard-data-server<0.8.0,>=0.7.0 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (0.7.2)\r\n",
+      "Requirement already satisfied: werkzeug>=1.0.1 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (3.0.2)\r\n",
+      "Requirement already satisfied: cachetools<6.0,>=2.0.0 in /opt/conda/lib/python3.10/site-packages (from google-auth<3,>=1.6.3->tensorboard->detectron2==0.6) (4.2.4)\r\n",
+      "Requirement already satisfied: pyasn1-modules>=0.2.1 in /opt/conda/lib/python3.10/site-packages (from google-auth<3,>=1.6.3->tensorboard->detectron2==0.6) (0.3.0)\r\n",
+      "Requirement already satisfied: rsa<5,>=3.1.4 in /opt/conda/lib/python3.10/site-packages (from google-auth<3,>=1.6.3->tensorboard->detectron2==0.6) (4.9)\r\n",
+      "Requirement already satisfied: requests-oauthlib>=0.7.0 in /opt/conda/lib/python3.10/site-packages (from google-auth-oauthlib<2,>=0.5->tensorboard->detectron2==0.6) (1.3.1)\r\n",
+      "Requirement already satisfied: charset-normalizer<4,>=2 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2==0.6) (3.3.2)\r\n",
+      "Requirement already satisfied: idna<4,>=2.5 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2==0.6) (3.6)\r\n",
+      "Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2==0.6) (1.26.18)\r\n",
+      "Requirement already satisfied: certifi>=2017.4.17 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2==0.6) (2024.2.2)\r\n",
+      "Requirement already satisfied: MarkupSafe>=2.1.1 in /opt/conda/lib/python3.10/site-packages (from werkzeug>=1.0.1->tensorboard->detectron2==0.6) (2.1.3)\r\n",
+      "Requirement already satisfied: pyasn1<0.6.0,>=0.4.6 in /opt/conda/lib/python3.10/site-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard->detectron2==0.6) (0.5.1)\r\n",
+      "Requirement already satisfied: oauthlib>=3.0.0 in /opt/conda/lib/python3.10/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<2,>=0.5->tensorboard->detectron2==0.6) (3.2.2)\r\n",
+      "Downloading hydra_core-1.3.2-py3-none-any.whl (154 kB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m154.5/154.5 kB\u001b[0m \u001b[31m9.5 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading iopath-0.1.9-py3-none-any.whl (27 kB)\r\n",
+      "Downloading omegaconf-2.3.0-py3-none-any.whl (79 kB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m79.5/79.5 kB\u001b[0m \u001b[31m4.8 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading pycocotools-2.0.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (426 kB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m426.2/426.2 kB\u001b[0m \u001b[31m16.1 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading yacs-0.1.8-py3-none-any.whl (14 kB)\r\n",
+      "Downloading black-24.4.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.7 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m1.7/1.7 MB\u001b[0m \u001b[31m45.3 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading packaging-24.0-py3-none-any.whl (53 kB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m53.5/53.5 kB\u001b[0m \u001b[31m3.0 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading pathspec-0.12.1-py3-none-any.whl (31 kB)\r\n",
+      "Downloading portalocker-2.8.2-py3-none-any.whl (17 kB)\r\n",
+      "Building wheels for collected packages: detectron2, fvcore, antlr4-python3-runtime\r\n",
+      "  Building wheel for detectron2 (setup.py) ... \u001b[?25l-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \bdone\r\n",
+      "\u001b[?25h  Created wheel for detectron2: filename=detectron2-0.6-cp310-cp310-linux_x86_64.whl size=1261334 sha256=6d3feb95598e743d26e7d57f79c2f22415465ccac91a8a29b2dd675df7153e2e\r\n",
+      "  Stored in directory: /tmp/pip-ephem-wheel-cache-nq0_gjt6/wheels/47/e5/15/94c80df2ba85500c5d76599cc307c0a7079d0e221bb6fc4375\r\n",
+      "  Building wheel for fvcore (setup.py) ... \u001b[?25l-\b \b\\\b \bdone\r\n",
+      "\u001b[?25h  Created wheel for fvcore: filename=fvcore-0.1.5.post20221221-py3-none-any.whl size=61400 sha256=c09b5f284434f192f1e125c740fc4e693ee0c4fb6607b5fa932e7376572f395b\r\n",
+      "  Stored in directory: /root/.cache/pip/wheels/01/c0/af/77c1cf53a1be9e42a52b48e5af2169d40ec2e89f7362489dd0\r\n",
+      "  Building wheel for antlr4-python3-runtime (setup.py) ... \u001b[?25l-\b \b\\\b \bdone\r\n",
+      "\u001b[?25h  Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.9.3-py3-none-any.whl size=144554 sha256=68823a76bf22e6a6f07a13e3c6a79675791ef341d049a482caf5553a4c99a198\r\n",
+      "  Stored in directory: /root/.cache/pip/wheels/12/93/dd/1f6a127edc45659556564c5730f6d4e300888f4bca2d4c5a88\r\n",
+      "Successfully built detectron2 fvcore antlr4-python3-runtime\r\n",
+      "Installing collected packages: antlr4-python3-runtime, yacs, portalocker, pathspec, packaging, omegaconf, iopath, hydra-core, black, pycocotools, fvcore, detectron2\r\n",
+      "  Attempting uninstall: packaging\r\n",
+      "    Found existing installation: packaging 21.3\r\n",
+      "    Uninstalling packaging-21.3:\r\n",
+      "      Successfully uninstalled packaging-21.3\r\n",
+      "\u001b[31mERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\r\n",
+      "cudf 23.8.0 requires cubinlinker, which is not installed.\r\n",
+      "cudf 23.8.0 requires cupy-cuda11x>=12.0.0, which is not installed.\r\n",
+      "cudf 23.8.0 requires ptxcompiler, which is not installed.\r\n",
+      "cuml 23.8.0 requires cupy-cuda11x>=12.0.0, which is not installed.\r\n",
+      "dask-cudf 23.8.0 requires cupy-cuda11x>=12.0.0, which is not installed.\r\n",
+      "keras-cv 0.8.2 requires keras-core, which is not installed.\r\n",
+      "keras-nlp 0.8.2 requires keras-core, which is not installed.\r\n",
+      "tensorflow-decision-forests 1.8.1 requires wurlitzer, which is not installed.\r\n",
+      "cudf 23.8.0 requires cuda-python<12.0a0,>=11.7.1, but you have cuda-python 12.4.0 which is incompatible.\r\n",
+      "cudf 23.8.0 requires pandas<1.6.0dev0,>=1.3, but you have pandas 2.1.4 which is incompatible.\r\n",
+      "cudf 23.8.0 requires protobuf<5,>=4.21, but you have protobuf 3.20.3 which is incompatible.\r\n",
+      "cudf 23.8.0 requires pyarrow==11.*, but you have pyarrow 15.0.2 which is incompatible.\r\n",
+      "cuml 23.8.0 requires dask==2023.7.1, but you have dask 2024.4.0 which is incompatible.\r\n",
+      "dask-cuda 23.8.0 requires dask==2023.7.1, but you have dask 2024.4.0 which is incompatible.\r\n",
+      "dask-cuda 23.8.0 requires pandas<1.6.0dev0,>=1.3, but you have pandas 2.1.4 which is incompatible.\r\n",
+      "dask-cudf 23.8.0 requires dask==2023.7.1, but you have dask 2024.4.0 which is incompatible.\r\n",
+      "dask-cudf 23.8.0 requires pandas<1.6.0dev0,>=1.3, but you have pandas 2.1.4 which is incompatible.\r\n",
+      "distributed 2023.7.1 requires dask==2023.7.1, but you have dask 2024.4.0 which is incompatible.\r\n",
+      "google-cloud-bigquery 2.34.4 requires packaging<22.0dev,>=14.3, but you have packaging 24.0 which is incompatible.\r\n",
+      "jupyterlab 4.1.5 requires jupyter-lsp>=2.0.0, but you have jupyter-lsp 1.5.1 which is incompatible.\r\n",
+      "jupyterlab-lsp 5.1.0 requires jupyter-lsp>=2.0.0, but you have jupyter-lsp 1.5.1 which is incompatible.\r\n",
+      "libpysal 4.9.2 requires shapely>=2.0.1, but you have shapely 1.8.5.post1 which is incompatible.\r\n",
+      "momepy 0.7.0 requires shapely>=2, but you have shapely 1.8.5.post1 which is incompatible.\r\n",
+      "osmnx 1.9.2 requires shapely>=2.0, but you have shapely 1.8.5.post1 which is incompatible.\r\n",
+      "raft-dask 23.8.0 requires dask==2023.7.1, but you have dask 2024.4.0 which is incompatible.\r\n",
+      "spopt 0.6.0 requires shapely>=2.0.1, but you have shapely 1.8.5.post1 which is incompatible.\r\n",
+      "tensorflow 2.15.0 requires keras<2.16,>=2.15.0, but you have keras 3.1.1 which is incompatible.\r\n",
+      "ydata-profiling 4.6.4 requires numpy<1.26,>=1.16.0, but you have numpy 1.26.4 which is incompatible.\u001b[0m\u001b[31m\r\n",
+      "\u001b[0mSuccessfully installed antlr4-python3-runtime-4.9.3 black-24.4.0 detectron2-0.6 fvcore-0.1.5.post20221221 hydra-core-1.3.2 iopath-0.1.9 omegaconf-2.3.0 packaging-24.0 pathspec-0.12.1 portalocker-2.8.2 pycocotools-2.0.7 yacs-0.1.8\r\n"
+     ]
+    }
+   ],
+   "source": [
+    "!pip install 'git+https://github.com/facebookresearch/detectron2.git'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "f708aa2d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-04-14T13:53:28.472605Z",
+     "iopub.status.busy": "2024-04-14T13:53:28.472030Z",
+     "iopub.status.idle": "2024-04-14T13:53:37.515209Z",
+     "shell.execute_reply": "2024-04-14T13:53:37.514220Z"
+    },
+    "papermill": {
+     "duration": 9.055446,
+     "end_time": "2024-04-14T13:53:37.517516",
+     "exception": false,
+     "start_time": "2024-04-14T13:53:28.462070",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\r\n",
+      "\r\n",
+      "\r\n",
+      "The following additional packages will be installed:\r\n",
+      "  libpoppler97 poppler-data\r\n",
+      "Suggested packages:\r\n",
+      "  ghostscript fonts-japanese-mincho | fonts-ipafont-mincho\r\n",
+      "  fonts-japanese-gothic | fonts-ipafont-gothic fonts-arphic-ukai\r\n",
+      "  fonts-arphic-uming fonts-nanum\r\n",
+      "The following NEW packages will be installed:\r\n",
+      "  libpoppler97 poppler-data poppler-utils\r\n",
+      "0 upgraded, 3 newly installed, 0 to remove and 65 not upgraded.\r\n",
+      "Need to get 2564 kB of archives.\r\n",
+      "After this operation, 16.8 MB of additional disk space will be used.\r\n",
+      "Get:1 http://archive.ubuntu.com/ubuntu focal/main amd64 poppler-data all 0.4.9-2 [1475 kB]\r\n",
+      "Get:2 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 libpoppler97 amd64 0.86.1-0ubuntu1.4 [916 kB]\r\n",
+      "Get:3 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 poppler-utils amd64 0.86.1-0ubuntu1.4 [174 kB]\r\n",
+      "Fetched 2564 kB in 2s (1701 kB/s)\r\n",
+      "Selecting previously unselected package poppler-data.\r\n",
+      "(Reading database ... 113807 files and directories currently installed.)\r\n",
+      "Preparing to unpack .../poppler-data_0.4.9-2_all.deb ...\r\n",
+      "Unpacking poppler-data (0.4.9-2) ...\r\n",
+      "Selecting previously unselected package libpoppler97:amd64.\r\n",
+      "Preparing to unpack .../libpoppler97_0.86.1-0ubuntu1.4_amd64.deb ...\r\n",
+      "Unpacking libpoppler97:amd64 (0.86.1-0ubuntu1.4) ...\r\n",
+      "Selecting previously unselected package poppler-utils.\r\n",
+      "Preparing to unpack .../poppler-utils_0.86.1-0ubuntu1.4_amd64.deb ...\r\n",
+      "Unpacking poppler-utils (0.86.1-0ubuntu1.4) ...\r\n",
+      "Setting up libpoppler97:amd64 (0.86.1-0ubuntu1.4) ...\r\n",
+      "Setting up poppler-data (0.4.9-2) ...\r\n",
+      "Setting up poppler-utils (0.86.1-0ubuntu1.4) ...\r\n",
+      "Processing triggers for libc-bin (2.31-0ubuntu9.14) ...\r\n",
+      "Processing triggers for man-db (2.9.1-1) ...\r\n",
+      "Processing triggers for fontconfig (2.13.1-2ubuntu3) ...\r\n"
+     ]
+    }
+   ],
+   "source": [
+    "!apt-get install -y poppler-utils\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "912c7b36",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-04-14T13:53:37.542185Z",
+     "iopub.status.busy": "2024-04-14T13:53:37.541820Z",
+     "iopub.status.idle": "2024-04-14T13:56:06.557180Z",
+     "shell.execute_reply": "2024-04-14T13:56:06.556110Z"
+    },
+    "papermill": {
+     "duration": 149.030301,
+     "end_time": "2024-04-14T13:56:06.559535",
+     "exception": false,
+     "start_time": "2024-04-14T13:53:37.529234",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Collecting appjsonify\r\n",
+      "  Downloading appjsonify-0.1.1-py3-none-any.whl.metadata (9.2 kB)\r\n",
+      "Requirement already satisfied: opencv-python<5.0.0.0,>=4.8.0.76 in /opt/conda/lib/python3.10/site-packages (from appjsonify) (4.9.0.80)\r\n",
+      "Requirement already satisfied: pdf2image<2.0.0,>=1.16.3 in /opt/conda/lib/python3.10/site-packages (from appjsonify) (1.17.0)\r\n",
+      "Collecting pdfplumber<0.11.0,>=0.10.2 (from appjsonify)\r\n",
+      "  Downloading pdfplumber-0.10.4-py3-none-any.whl.metadata (39 kB)\r\n",
+      "Collecting pillow<11.0.0,>=10.0.0 (from appjsonify)\r\n",
+      "  Downloading pillow-10.3.0-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (9.2 kB)\r\n",
+      "Collecting registrable<0.0.5,>=0.0.4 (from appjsonify)\r\n",
+      "  Downloading registrable-0.0.4-py3-none-any.whl.metadata (2.1 kB)\r\n",
+      "Requirement already satisfied: torch<3.0.0,>=2.0.1 in /opt/conda/lib/python3.10/site-packages (from appjsonify) (2.1.2)\r\n",
+      "Requirement already satisfied: torchaudio<3.0.0,>=2.0.2 in /opt/conda/lib/python3.10/site-packages (from appjsonify) (2.1.2)\r\n",
+      "Collecting torchvision<0.16.0,>=0.15.2 (from appjsonify)\r\n",
+      "  Downloading torchvision-0.15.2-cp310-cp310-manylinux1_x86_64.whl.metadata (11 kB)\r\n",
+      "Requirement already satisfied: tqdm<5.0.0,>=4.65.0 in /opt/conda/lib/python3.10/site-packages (from appjsonify) (4.66.1)\r\n",
+      "Requirement already satisfied: numpy>=1.21.2 in /opt/conda/lib/python3.10/site-packages (from opencv-python<5.0.0.0,>=4.8.0.76->appjsonify) (1.26.4)\r\n",
+      "Collecting pdfminer.six==20221105 (from pdfplumber<0.11.0,>=0.10.2->appjsonify)\r\n",
+      "  Downloading pdfminer.six-20221105-py3-none-any.whl.metadata (4.0 kB)\r\n",
+      "Collecting pypdfium2>=4.18.0 (from pdfplumber<0.11.0,>=0.10.2->appjsonify)\r\n",
+      "  Downloading pypdfium2-4.29.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (48 kB)\r\n",
+      "\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m48.5/48.5 kB\u001b[0m \u001b[31m2.4 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hRequirement already satisfied: charset-normalizer>=2.0.0 in /opt/conda/lib/python3.10/site-packages (from pdfminer.six==20221105->pdfplumber<0.11.0,>=0.10.2->appjsonify) (3.3.2)\r\n",
+      "Requirement already satisfied: cryptography>=36.0.0 in /opt/conda/lib/python3.10/site-packages (from pdfminer.six==20221105->pdfplumber<0.11.0,>=0.10.2->appjsonify) (41.0.7)\r\n",
+      "Requirement already satisfied: filelock in /opt/conda/lib/python3.10/site-packages (from torch<3.0.0,>=2.0.1->appjsonify) (3.13.1)\r\n",
+      "Requirement already satisfied: typing-extensions in /opt/conda/lib/python3.10/site-packages (from torch<3.0.0,>=2.0.1->appjsonify) (4.9.0)\r\n",
+      "Requirement already satisfied: sympy in /opt/conda/lib/python3.10/site-packages (from torch<3.0.0,>=2.0.1->appjsonify) (1.12)\r\n",
+      "Requirement already satisfied: networkx in /opt/conda/lib/python3.10/site-packages (from torch<3.0.0,>=2.0.1->appjsonify) (3.2.1)\r\n",
+      "Requirement already satisfied: jinja2 in /opt/conda/lib/python3.10/site-packages (from torch<3.0.0,>=2.0.1->appjsonify) (3.1.2)\r\n",
+      "Requirement already satisfied: fsspec in /opt/conda/lib/python3.10/site-packages (from torch<3.0.0,>=2.0.1->appjsonify) (2024.2.0)\r\n",
+      "Requirement already satisfied: requests in /opt/conda/lib/python3.10/site-packages (from torchvision<0.16.0,>=0.15.2->appjsonify) (2.31.0)\r\n",
+      "Collecting torch<3.0.0,>=2.0.1 (from appjsonify)\r\n",
+      "  Downloading torch-2.0.1-cp310-cp310-manylinux1_x86_64.whl.metadata (24 kB)\r\n",
+      "Collecting nvidia-cuda-nvrtc-cu11==11.7.99 (from torch<3.0.0,>=2.0.1->appjsonify)\r\n",
+      "  Downloading nvidia_cuda_nvrtc_cu11-11.7.99-2-py3-none-manylinux1_x86_64.whl.metadata (1.5 kB)\r\n",
+      "Collecting nvidia-cuda-runtime-cu11==11.7.99 (from torch<3.0.0,>=2.0.1->appjsonify)\r\n",
+      "  Downloading nvidia_cuda_runtime_cu11-11.7.99-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)\r\n",
+      "Collecting nvidia-cuda-cupti-cu11==11.7.101 (from torch<3.0.0,>=2.0.1->appjsonify)\r\n",
+      "  Downloading nvidia_cuda_cupti_cu11-11.7.101-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)\r\n",
+      "Collecting nvidia-cudnn-cu11==8.5.0.96 (from torch<3.0.0,>=2.0.1->appjsonify)\r\n",
+      "  Downloading nvidia_cudnn_cu11-8.5.0.96-2-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)\r\n",
+      "Collecting nvidia-cublas-cu11==11.10.3.66 (from torch<3.0.0,>=2.0.1->appjsonify)\r\n",
+      "  Downloading nvidia_cublas_cu11-11.10.3.66-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)\r\n",
+      "Collecting nvidia-cufft-cu11==10.9.0.58 (from torch<3.0.0,>=2.0.1->appjsonify)\r\n",
+      "  Downloading nvidia_cufft_cu11-10.9.0.58-py3-none-manylinux1_x86_64.whl.metadata (1.5 kB)\r\n",
+      "Collecting nvidia-curand-cu11==10.2.10.91 (from torch<3.0.0,>=2.0.1->appjsonify)\r\n",
+      "  Downloading nvidia_curand_cu11-10.2.10.91-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)\r\n",
+      "Collecting nvidia-cusolver-cu11==11.4.0.1 (from torch<3.0.0,>=2.0.1->appjsonify)\r\n",
+      "  Downloading nvidia_cusolver_cu11-11.4.0.1-2-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)\r\n",
+      "Collecting nvidia-cusparse-cu11==11.7.4.91 (from torch<3.0.0,>=2.0.1->appjsonify)\r\n",
+      "  Downloading nvidia_cusparse_cu11-11.7.4.91-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)\r\n",
+      "Collecting nvidia-nccl-cu11==2.14.3 (from torch<3.0.0,>=2.0.1->appjsonify)\r\n",
+      "  Downloading nvidia_nccl_cu11-2.14.3-py3-none-manylinux1_x86_64.whl.metadata (1.8 kB)\r\n",
+      "Collecting nvidia-nvtx-cu11==11.7.91 (from torch<3.0.0,>=2.0.1->appjsonify)\r\n",
+      "  Downloading nvidia_nvtx_cu11-11.7.91-py3-none-manylinux1_x86_64.whl.metadata (1.7 kB)\r\n",
+      "Collecting triton==2.0.0 (from torch<3.0.0,>=2.0.1->appjsonify)\r\n",
+      "  Downloading triton-2.0.0-1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.0 kB)\r\n",
+      "Requirement already satisfied: setuptools in /opt/conda/lib/python3.10/site-packages (from nvidia-cublas-cu11==11.10.3.66->torch<3.0.0,>=2.0.1->appjsonify) (69.0.3)\r\n",
+      "Requirement already satisfied: wheel in /opt/conda/lib/python3.10/site-packages (from nvidia-cublas-cu11==11.10.3.66->torch<3.0.0,>=2.0.1->appjsonify) (0.42.0)\r\n",
+      "Collecting cmake (from triton==2.0.0->torch<3.0.0,>=2.0.1->appjsonify)\r\n",
+      "  Downloading cmake-3.29.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.1 kB)\r\n",
+      "Collecting lit (from triton==2.0.0->torch<3.0.0,>=2.0.1->appjsonify)\r\n",
+      "  Downloading lit-18.1.3-py3-none-any.whl.metadata (2.5 kB)\r\n",
+      "Requirement already satisfied: MarkupSafe>=2.0 in /opt/conda/lib/python3.10/site-packages (from jinja2->torch<3.0.0,>=2.0.1->appjsonify) (2.1.3)\r\n",
+      "Requirement already satisfied: idna<4,>=2.5 in /opt/conda/lib/python3.10/site-packages (from requests->torchvision<0.16.0,>=0.15.2->appjsonify) (3.6)\r\n",
+      "Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/conda/lib/python3.10/site-packages (from requests->torchvision<0.16.0,>=0.15.2->appjsonify) (1.26.18)\r\n",
+      "Requirement already satisfied: certifi>=2017.4.17 in /opt/conda/lib/python3.10/site-packages (from requests->torchvision<0.16.0,>=0.15.2->appjsonify) (2024.2.2)\r\n",
+      "Requirement already satisfied: mpmath>=0.19 in /opt/conda/lib/python3.10/site-packages (from sympy->torch<3.0.0,>=2.0.1->appjsonify) (1.3.0)\r\n",
+      "Requirement already satisfied: cffi>=1.12 in /opt/conda/lib/python3.10/site-packages (from cryptography>=36.0.0->pdfminer.six==20221105->pdfplumber<0.11.0,>=0.10.2->appjsonify) (1.16.0)\r\n",
+      "Requirement already satisfied: pycparser in /opt/conda/lib/python3.10/site-packages (from cffi>=1.12->cryptography>=36.0.0->pdfminer.six==20221105->pdfplumber<0.11.0,>=0.10.2->appjsonify) (2.21)\r\n",
+      "Downloading appjsonify-0.1.1-py3-none-any.whl (64 kB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m64.8/64.8 kB\u001b[0m \u001b[31m3.5 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading pdfplumber-0.10.4-py3-none-any.whl (54 kB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m54.7/54.7 kB\u001b[0m \u001b[31m3.6 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading pdfminer.six-20221105-py3-none-any.whl (5.6 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m5.6/5.6 MB\u001b[0m \u001b[31m64.0 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading pillow-10.3.0-cp310-cp310-manylinux_2_28_x86_64.whl (4.5 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m4.5/4.5 MB\u001b[0m \u001b[31m82.3 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading registrable-0.0.4-py3-none-any.whl (9.9 kB)\r\n",
+      "Downloading torchvision-0.15.2-cp310-cp310-manylinux1_x86_64.whl (6.0 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m6.0/6.0 MB\u001b[0m \u001b[31m82.6 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading torch-2.0.1-cp310-cp310-manylinux1_x86_64.whl (619.9 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m619.9/619.9 MB\u001b[0m \u001b[31m2.6 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading nvidia_cublas_cu11-11.10.3.66-py3-none-manylinux1_x86_64.whl (317.1 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m317.1/317.1 MB\u001b[0m \u001b[31m5.0 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading nvidia_cuda_cupti_cu11-11.7.101-py3-none-manylinux1_x86_64.whl (11.8 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m11.8/11.8 MB\u001b[0m \u001b[31m83.2 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading nvidia_cuda_nvrtc_cu11-11.7.99-2-py3-none-manylinux1_x86_64.whl (21.0 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m21.0/21.0 MB\u001b[0m \u001b[31m71.4 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading nvidia_cuda_runtime_cu11-11.7.99-py3-none-manylinux1_x86_64.whl (849 kB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m849.3/849.3 kB\u001b[0m \u001b[31m38.9 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading nvidia_cudnn_cu11-8.5.0.96-2-py3-none-manylinux1_x86_64.whl (557.1 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m557.1/557.1 MB\u001b[0m \u001b[31m2.6 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading nvidia_cufft_cu11-10.9.0.58-py3-none-manylinux1_x86_64.whl (168.4 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m168.4/168.4 MB\u001b[0m \u001b[31m1.8 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading nvidia_curand_cu11-10.2.10.91-py3-none-manylinux1_x86_64.whl (54.6 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m54.6/54.6 MB\u001b[0m \u001b[31m5.7 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading nvidia_cusolver_cu11-11.4.0.1-2-py3-none-manylinux1_x86_64.whl (102.6 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m102.6/102.6 MB\u001b[0m \u001b[31m15.7 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading nvidia_cusparse_cu11-11.7.4.91-py3-none-manylinux1_x86_64.whl (173.2 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m173.2/173.2 MB\u001b[0m \u001b[31m9.3 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading nvidia_nccl_cu11-2.14.3-py3-none-manylinux1_x86_64.whl (177.1 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m177.1/177.1 MB\u001b[0m \u001b[31m9.3 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading nvidia_nvtx_cu11-11.7.91-py3-none-manylinux1_x86_64.whl (98 kB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m98.6/98.6 kB\u001b[0m \u001b[31m6.4 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading triton-2.0.0-1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (63.3 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m63.3/63.3 MB\u001b[0m \u001b[31m27.3 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading pypdfium2-4.29.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.8 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m2.8/2.8 MB\u001b[0m \u001b[31m74.1 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading cmake-3.29.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (26.7 MB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m26.7/26.7 MB\u001b[0m \u001b[31m67.6 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hDownloading lit-18.1.3-py3-none-any.whl (96 kB)\r\n",
+      "\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m96.4/96.4 kB\u001b[0m \u001b[31m6.3 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n",
+      "\u001b[?25hInstalling collected packages: lit, registrable, pypdfium2, pillow, nvidia-nvtx-cu11, nvidia-nccl-cu11, nvidia-cusparse-cu11, nvidia-curand-cu11, nvidia-cufft-cu11, nvidia-cuda-runtime-cu11, nvidia-cuda-nvrtc-cu11, nvidia-cuda-cupti-cu11, nvidia-cublas-cu11, cmake, nvidia-cusolver-cu11, nvidia-cudnn-cu11, pdfminer.six, pdfplumber, triton, torch, torchvision, appjsonify\r\n",
+      "  Attempting uninstall: pillow\r\n",
+      "    Found existing installation: Pillow 9.5.0\r\n",
+      "    Uninstalling Pillow-9.5.0:\r\n",
+      "      Successfully uninstalled Pillow-9.5.0\r\n",
+      "  Attempting uninstall: torch\r\n",
+      "    Found existing installation: torch 2.1.2\r\n",
+      "    Uninstalling torch-2.1.2:\r\n",
+      "      Successfully uninstalled torch-2.1.2\r\n",
+      "  Attempting uninstall: torchvision\r\n",
+      "    Found existing installation: torchvision 0.16.2\r\n",
+      "    Uninstalling torchvision-0.16.2:\r\n",
+      "      Successfully uninstalled torchvision-0.16.2\r\n",
+      "\u001b[31mERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\r\n",
+      "spopt 0.6.0 requires shapely>=2.0.1, but you have shapely 1.8.5.post1 which is incompatible.\r\n",
+      "ydata-profiling 4.6.4 requires numpy<1.26,>=1.16.0, but you have numpy 1.26.4 which is incompatible.\u001b[0m\u001b[31m\r\n",
+      "\u001b[0mSuccessfully installed appjsonify-0.1.1 cmake-3.29.2 lit-18.1.3 nvidia-cublas-cu11-11.10.3.66 nvidia-cuda-cupti-cu11-11.7.101 nvidia-cuda-nvrtc-cu11-11.7.99 nvidia-cuda-runtime-cu11-11.7.99 nvidia-cudnn-cu11-8.5.0.96 nvidia-cufft-cu11-10.9.0.58 nvidia-curand-cu11-10.2.10.91 nvidia-cusolver-cu11-11.4.0.1 nvidia-cusparse-cu11-11.7.4.91 nvidia-nccl-cu11-2.14.3 nvidia-nvtx-cu11-11.7.91 pdfminer.six-20221105 pdfplumber-0.10.4 pillow-10.3.0 pypdfium2-4.29.0 registrable-0.0.4 torch-2.0.1 torchvision-0.15.2 triton-2.0.0\r\n",
+      "Collecting git+https://github.com/facebookresearch/detectron2.git\r\n",
+      "  Cloning https://github.com/facebookresearch/detectron2.git to /tmp/pip-req-build-50neqxnx\r\n",
+      "  Running command git clone --filter=blob:none --quiet https://github.com/facebookresearch/detectron2.git /tmp/pip-req-build-50neqxnx\r\n",
+      "  Resolved https://github.com/facebookresearch/detectron2.git to commit b7c7f4ba82192ff06f2bbb162b9f67b00ea55867\r\n",
+      "  Preparing metadata (setup.py) ... \u001b[?25ldone\r\n",
+      "\u001b[?25hRequirement already satisfied: Pillow>=7.1 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (10.3.0)\r\n",
+      "Requirement already satisfied: matplotlib in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (3.7.5)\r\n",
+      "Requirement already satisfied: pycocotools>=2.0.2 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (2.0.7)\r\n",
+      "Requirement already satisfied: termcolor>=1.1 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (2.4.0)\r\n",
+      "Requirement already satisfied: yacs>=0.1.8 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (0.1.8)\r\n",
+      "Requirement already satisfied: tabulate in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (0.9.0)\r\n",
+      "Requirement already satisfied: cloudpickle in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (2.2.1)\r\n",
+      "Requirement already satisfied: tqdm>4.29.0 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (4.66.1)\r\n",
+      "Requirement already satisfied: tensorboard in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (2.15.1)\r\n",
+      "Requirement already satisfied: fvcore<0.1.6,>=0.1.5 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (0.1.5.post20221221)\r\n",
+      "Requirement already satisfied: iopath<0.1.10,>=0.1.7 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (0.1.9)\r\n",
+      "Requirement already satisfied: omegaconf<2.4,>=2.1 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (2.3.0)\r\n",
+      "Requirement already satisfied: hydra-core>=1.1 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (1.3.2)\r\n",
+      "Requirement already satisfied: black in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (24.4.0)\r\n",
+      "Requirement already satisfied: packaging in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (24.0)\r\n",
+      "Requirement already satisfied: numpy in /opt/conda/lib/python3.10/site-packages (from fvcore<0.1.6,>=0.1.5->detectron2==0.6) (1.26.4)\r\n",
+      "Requirement already satisfied: pyyaml>=5.1 in /opt/conda/lib/python3.10/site-packages (from fvcore<0.1.6,>=0.1.5->detectron2==0.6) (6.0.1)\r\n",
+      "Requirement already satisfied: antlr4-python3-runtime==4.9.* in /opt/conda/lib/python3.10/site-packages (from hydra-core>=1.1->detectron2==0.6) (4.9.3)\r\n",
+      "Requirement already satisfied: portalocker in /opt/conda/lib/python3.10/site-packages (from iopath<0.1.10,>=0.1.7->detectron2==0.6) (2.8.2)\r\n",
+      "Requirement already satisfied: contourpy>=1.0.1 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (1.2.0)\r\n",
+      "Requirement already satisfied: cycler>=0.10 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (0.12.1)\r\n",
+      "Requirement already satisfied: fonttools>=4.22.0 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (4.47.0)\r\n",
+      "Requirement already satisfied: kiwisolver>=1.0.1 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (1.4.5)\r\n",
+      "Requirement already satisfied: pyparsing>=2.3.1 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (3.1.1)\r\n",
+      "Requirement already satisfied: python-dateutil>=2.7 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (2.9.0.post0)\r\n",
+      "Requirement already satisfied: click>=8.0.0 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (8.1.7)\r\n",
+      "Requirement already satisfied: mypy-extensions>=0.4.3 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (1.0.0)\r\n",
+      "Requirement already satisfied: pathspec>=0.9.0 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (0.12.1)\r\n",
+      "Requirement already satisfied: platformdirs>=2 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (4.2.0)\r\n",
+      "Requirement already satisfied: tomli>=1.1.0 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (2.0.1)\r\n",
+      "Requirement already satisfied: typing-extensions>=4.0.1 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (4.9.0)\r\n",
+      "Requirement already satisfied: absl-py>=0.4 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (1.4.0)\r\n",
+      "Requirement already satisfied: grpcio>=1.48.2 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (1.51.1)\r\n",
+      "Requirement already satisfied: google-auth<3,>=1.6.3 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (2.26.1)\r\n",
+      "Requirement already satisfied: google-auth-oauthlib<2,>=0.5 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (1.2.0)\r\n",
+      "Requirement already satisfied: markdown>=2.6.8 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (3.5.2)\r\n",
+      "Requirement already satisfied: protobuf<4.24,>=3.19.6 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (3.20.3)\r\n",
+      "Requirement already satisfied: requests<3,>=2.21.0 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (2.31.0)\r\n",
+      "Requirement already satisfied: setuptools>=41.0.0 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (69.0.3)\r\n",
+      "Requirement already satisfied: six>1.9 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (1.16.0)\r\n",
+      "Requirement already satisfied: tensorboard-data-server<0.8.0,>=0.7.0 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (0.7.2)\r\n",
+      "Requirement already satisfied: werkzeug>=1.0.1 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (3.0.2)\r\n",
+      "Requirement already satisfied: cachetools<6.0,>=2.0.0 in /opt/conda/lib/python3.10/site-packages (from google-auth<3,>=1.6.3->tensorboard->detectron2==0.6) (4.2.4)\r\n",
+      "Requirement already satisfied: pyasn1-modules>=0.2.1 in /opt/conda/lib/python3.10/site-packages (from google-auth<3,>=1.6.3->tensorboard->detectron2==0.6) (0.3.0)\r\n",
+      "Requirement already satisfied: rsa<5,>=3.1.4 in /opt/conda/lib/python3.10/site-packages (from google-auth<3,>=1.6.3->tensorboard->detectron2==0.6) (4.9)\r\n",
+      "Requirement already satisfied: requests-oauthlib>=0.7.0 in /opt/conda/lib/python3.10/site-packages (from google-auth-oauthlib<2,>=0.5->tensorboard->detectron2==0.6) (1.3.1)\r\n",
+      "Requirement already satisfied: charset-normalizer<4,>=2 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2==0.6) (3.3.2)\r\n",
+      "Requirement already satisfied: idna<4,>=2.5 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2==0.6) (3.6)\r\n",
+      "Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2==0.6) (1.26.18)\r\n",
+      "Requirement already satisfied: certifi>=2017.4.17 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2==0.6) (2024.2.2)\r\n",
+      "Requirement already satisfied: MarkupSafe>=2.1.1 in /opt/conda/lib/python3.10/site-packages (from werkzeug>=1.0.1->tensorboard->detectron2==0.6) (2.1.3)\r\n",
+      "Requirement already satisfied: pyasn1<0.6.0,>=0.4.6 in /opt/conda/lib/python3.10/site-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard->detectron2==0.6) (0.5.1)\r\n",
+      "Requirement already satisfied: oauthlib>=3.0.0 in /opt/conda/lib/python3.10/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<2,>=0.5->tensorboard->detectron2==0.6) (3.2.2)\r\n"
+     ]
+    }
+   ],
+   "source": [
+    "!pip install appjsonify\n",
+    "!pip install 'git+https://github.com/facebookresearch/detectron2.git'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "ec78dbb4",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-04-14T13:56:06.710403Z",
+     "iopub.status.busy": "2024-04-14T13:56:06.710041Z",
+     "iopub.status.idle": "2024-04-14T13:56:27.065654Z",
+     "shell.execute_reply": "2024-04-14T13:56:27.064458Z"
+    },
+    "papermill": {
+     "duration": 20.435463,
+     "end_time": "2024-04-14T13:56:27.068119",
+     "exception": false,
+     "start_time": "2024-04-14T13:56:06.632656",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Obtaining file:///kaggle/working\r\n",
+      "\u001b[31mERROR: file:///kaggle/working does not appear to be a Python project: neither 'setup.py' nor 'pyproject.toml' found.\u001b[0m\u001b[31m\r\n",
+      "\u001b[0mCollecting git+https://github.com/facebookresearch/detectron2.git\r\n",
+      "  Cloning https://github.com/facebookresearch/detectron2.git to /tmp/pip-req-build-tkhh534s\r\n",
+      "  Running command git clone --filter=blob:none --quiet https://github.com/facebookresearch/detectron2.git /tmp/pip-req-build-tkhh534s\r\n",
+      "  Resolved https://github.com/facebookresearch/detectron2.git to commit b7c7f4ba82192ff06f2bbb162b9f67b00ea55867\r\n",
+      "  Preparing metadata (setup.py) ... \u001b[?25ldone\r\n",
+      "\u001b[?25hRequirement already satisfied: Pillow>=7.1 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (10.3.0)\r\n",
+      "Requirement already satisfied: matplotlib in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (3.7.5)\r\n",
+      "Requirement already satisfied: pycocotools>=2.0.2 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (2.0.7)\r\n",
+      "Requirement already satisfied: termcolor>=1.1 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (2.4.0)\r\n",
+      "Requirement already satisfied: yacs>=0.1.8 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (0.1.8)\r\n",
+      "Requirement already satisfied: tabulate in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (0.9.0)\r\n",
+      "Requirement already satisfied: cloudpickle in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (2.2.1)\r\n",
+      "Requirement already satisfied: tqdm>4.29.0 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (4.66.1)\r\n",
+      "Requirement already satisfied: tensorboard in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (2.15.1)\r\n",
+      "Requirement already satisfied: fvcore<0.1.6,>=0.1.5 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (0.1.5.post20221221)\r\n",
+      "Requirement already satisfied: iopath<0.1.10,>=0.1.7 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (0.1.9)\r\n",
+      "Requirement already satisfied: omegaconf<2.4,>=2.1 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (2.3.0)\r\n",
+      "Requirement already satisfied: hydra-core>=1.1 in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (1.3.2)\r\n",
+      "Requirement already satisfied: black in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (24.4.0)\r\n",
+      "Requirement already satisfied: packaging in /opt/conda/lib/python3.10/site-packages (from detectron2==0.6) (24.0)\r\n",
+      "Requirement already satisfied: numpy in /opt/conda/lib/python3.10/site-packages (from fvcore<0.1.6,>=0.1.5->detectron2==0.6) (1.26.4)\r\n",
+      "Requirement already satisfied: pyyaml>=5.1 in /opt/conda/lib/python3.10/site-packages (from fvcore<0.1.6,>=0.1.5->detectron2==0.6) (6.0.1)\r\n",
+      "Requirement already satisfied: antlr4-python3-runtime==4.9.* in /opt/conda/lib/python3.10/site-packages (from hydra-core>=1.1->detectron2==0.6) (4.9.3)\r\n",
+      "Requirement already satisfied: portalocker in /opt/conda/lib/python3.10/site-packages (from iopath<0.1.10,>=0.1.7->detectron2==0.6) (2.8.2)\r\n",
+      "Requirement already satisfied: contourpy>=1.0.1 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (1.2.0)\r\n",
+      "Requirement already satisfied: cycler>=0.10 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (0.12.1)\r\n",
+      "Requirement already satisfied: fonttools>=4.22.0 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (4.47.0)\r\n",
+      "Requirement already satisfied: kiwisolver>=1.0.1 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (1.4.5)\r\n",
+      "Requirement already satisfied: pyparsing>=2.3.1 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (3.1.1)\r\n",
+      "Requirement already satisfied: python-dateutil>=2.7 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2==0.6) (2.9.0.post0)\r\n",
+      "Requirement already satisfied: click>=8.0.0 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (8.1.7)\r\n",
+      "Requirement already satisfied: mypy-extensions>=0.4.3 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (1.0.0)\r\n",
+      "Requirement already satisfied: pathspec>=0.9.0 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (0.12.1)\r\n",
+      "Requirement already satisfied: platformdirs>=2 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (4.2.0)\r\n",
+      "Requirement already satisfied: tomli>=1.1.0 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (2.0.1)\r\n",
+      "Requirement already satisfied: typing-extensions>=4.0.1 in /opt/conda/lib/python3.10/site-packages (from black->detectron2==0.6) (4.9.0)\r\n",
+      "Requirement already satisfied: absl-py>=0.4 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (1.4.0)\r\n",
+      "Requirement already satisfied: grpcio>=1.48.2 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (1.51.1)\r\n",
+      "Requirement already satisfied: google-auth<3,>=1.6.3 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (2.26.1)\r\n",
+      "Requirement already satisfied: google-auth-oauthlib<2,>=0.5 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (1.2.0)\r\n",
+      "Requirement already satisfied: markdown>=2.6.8 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (3.5.2)\r\n",
+      "Requirement already satisfied: protobuf<4.24,>=3.19.6 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (3.20.3)\r\n",
+      "Requirement already satisfied: requests<3,>=2.21.0 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (2.31.0)\r\n",
+      "Requirement already satisfied: setuptools>=41.0.0 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (69.0.3)\r\n",
+      "Requirement already satisfied: six>1.9 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (1.16.0)\r\n",
+      "Requirement already satisfied: tensorboard-data-server<0.8.0,>=0.7.0 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (0.7.2)\r\n",
+      "Requirement already satisfied: werkzeug>=1.0.1 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2==0.6) (3.0.2)\r\n",
+      "Requirement already satisfied: cachetools<6.0,>=2.0.0 in /opt/conda/lib/python3.10/site-packages (from google-auth<3,>=1.6.3->tensorboard->detectron2==0.6) (4.2.4)\r\n",
+      "Requirement already satisfied: pyasn1-modules>=0.2.1 in /opt/conda/lib/python3.10/site-packages (from google-auth<3,>=1.6.3->tensorboard->detectron2==0.6) (0.3.0)\r\n",
+      "Requirement already satisfied: rsa<5,>=3.1.4 in /opt/conda/lib/python3.10/site-packages (from google-auth<3,>=1.6.3->tensorboard->detectron2==0.6) (4.9)\r\n",
+      "Requirement already satisfied: requests-oauthlib>=0.7.0 in /opt/conda/lib/python3.10/site-packages (from google-auth-oauthlib<2,>=0.5->tensorboard->detectron2==0.6) (1.3.1)\r\n",
+      "Requirement already satisfied: charset-normalizer<4,>=2 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2==0.6) (3.3.2)\r\n",
+      "Requirement already satisfied: idna<4,>=2.5 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2==0.6) (3.6)\r\n",
+      "Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2==0.6) (1.26.18)\r\n",
+      "Requirement already satisfied: certifi>=2017.4.17 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2==0.6) (2024.2.2)\r\n",
+      "Requirement already satisfied: MarkupSafe>=2.1.1 in /opt/conda/lib/python3.10/site-packages (from werkzeug>=1.0.1->tensorboard->detectron2==0.6) (2.1.3)\r\n",
+      "Requirement already satisfied: pyasn1<0.6.0,>=0.4.6 in /opt/conda/lib/python3.10/site-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard->detectron2==0.6) (0.5.1)\r\n",
+      "Requirement already satisfied: oauthlib>=3.0.0 in /opt/conda/lib/python3.10/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<2,>=0.5->tensorboard->detectron2==0.6) (3.2.2)\r\n"
+     ]
+    }
+   ],
+   "source": [
+    "!pip install --editable .\n",
+    "!pip install 'git+https://github.com/facebookresearch/detectron2.git'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "1c35ee43",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-04-14T13:56:27.288673Z",
+     "iopub.status.busy": "2024-04-14T13:56:27.287743Z",
+     "iopub.status.idle": "2024-04-14T14:01:22.294723Z",
+     "shell.execute_reply": "2024-04-14T14:01:22.293851Z"
+    },
+    "papermill": {
+     "duration": 295.142131,
+     "end_time": "2024-04-14T14:01:22.297130",
+     "exception": false,
+     "start_time": "2024-04-14T13:56:27.154999",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "/kaggle/working/output does not exist. Create a new directory.\n",
+      "Overwrite the pipeline None to ['load_docs', 'load_objects_with_ml', 'remove_illegal_tokens', 'remove_meta', 'extract_lines', 'extract_captions_with_ml', 'remove_figures_with_ml', 'remove_tables_with_ml', 'remove_equations_with_ml', 'extract_footnotes_with_ml', 'extract_footnotes', 'remove_lines_by_objects', 'extract_paragraphs', 'detect_sections', 'concat_columns', 'concat_pages', 'dump_formatted_doc'] following --paper_type=AAAI.\n",
+      "Now running 0: load_docs\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [01:08<00:00, 68.58s/it]\n",
+      "/opt/conda/lib/python3.10/site-packages/appjsonify/weights/tablebank/configs/Base-RCNN-FPN.yaml: 1.29kB [00:00, 3.55MB/s]                 \n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 1: load_objects_with_ml\n",
+      "\tThe followings will use the default value as they are not specified or unchanged!\n",
+      "\t\ttablebank_threshold:\t0.9\n",
+      "\t\tpublaynet_threshold:\t0.75\n",
+      "\t\tdocbank_threshold:\t0.9\n",
+      "\t\tdetectron_device_mode:\tcpu\n",
+      "\t/opt/conda/lib/python3.10/site-packages/appjsonify/weights/tablebank/configs/Base-RCNN-FPN.yaml does not exist. Download the file.\n",
+      "    Downloading a file from https://raw.githubusercontent.com/facebookresearch/detectron2/cbbc1ce26473cb2a5cc8f58e8ada9ae14cb41052/configs/Base-RCNN-FPN.yaml to /opt/conda/lib/python3.10/site-packages/appjsonify/weights/tablebank/configs/Base-RCNN-FPN.yaml...\n",
+      "\tDownload complete.\n",
+      "\t/opt/conda/lib/python3.10/site-packages/appjsonify/weights/tablebank/X152/All_X152.yaml does not exist. Download the file.\n",
+      "    Downloading a file from https://layoutlm.blob.core.windows.net/tablebank/model_zoo/detection/All_X152/All_X152.yaml?sv=2022-11-02&ss=b&srt=o&sp=r&se=2033-06-08T16:48:15Z&st=2023-06-08T08:48:15Z&spr=https&sig=a9VXrihTzbWyVfaIDlIT1Z0FoR1073VB0RLQUMuudD4%3D to /opt/conda/lib/python3.10/site-packages/appjsonify/weights/tablebank/X152/All_X152.yaml...\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/opt/conda/lib/python3.10/site-packages/appjsonify/weights/tablebank/X152/All_X152.yaml: 100%|██████████| 536/536 [00:00<00:00, 1.89MB/s]\n",
+      "/opt/conda/lib/python3.10/site-packages/appjsonify/weights/tablebank/X152/model_final.pth:   0%|          | 0.00/1.03G [00:00<?, ?B/s]"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\tDownload complete.\n",
+      "\t/opt/conda/lib/python3.10/site-packages/appjsonify/weights/tablebank/X152/model_final.pth does not exist. Download the file.\n",
+      "    Downloading a file from https://layoutlm.blob.core.windows.net/tablebank/model_zoo/detection/All_X152/model_final.pth?sv=2022-11-02&ss=b&srt=o&sp=r&se=2033-06-08T16:48:15Z&st=2023-06-08T08:48:15Z&spr=https&sig=a9VXrihTzbWyVfaIDlIT1Z0FoR1073VB0RLQUMuudD4%3D to /opt/conda/lib/python3.10/site-packages/appjsonify/weights/tablebank/X152/model_final.pth...\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/opt/conda/lib/python3.10/site-packages/appjsonify/weights/tablebank/X152/model_final.pth: 100%|██████████| 1.03G/1.03G [00:21<00:00, 52.2MB/s]\n",
+      "/opt/conda/lib/python3.10/site-packages/appjsonify/weights/publaynet/X101/Base-RCNN-FPN.yaml: 1.29kB [00:00, 4.12MB/s]                 \n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\tDownload complete.\n",
+      "\t/opt/conda/lib/python3.10/site-packages/appjsonify/weights/publaynet/X101/Base-RCNN-FPN.yaml does not exist. Download the file.\n",
+      "    Downloading a file from https://raw.githubusercontent.com/facebookresearch/detectron2/cbbc1ce26473cb2a5cc8f58e8ada9ae14cb41052/configs/Base-RCNN-FPN.yaml to /opt/conda/lib/python3.10/site-packages/appjsonify/weights/publaynet/X101/Base-RCNN-FPN.yaml...\n",
+      "\tDownload complete.\n",
+      "\t/opt/conda/lib/python3.10/site-packages/appjsonify/weights/publaynet/X101/DLA_mask_rcnn_X_101_32x8d_FPN_3x.yaml does not exist. Download the file.\n",
+      "    Downloading a file from https://raw.githubusercontent.com/hpanwar08/detectron2/master/configs/DLA_mask_rcnn_X_101_32x8d_FPN_3x.yaml to /opt/conda/lib/python3.10/site-packages/appjsonify/weights/publaynet/X101/DLA_mask_rcnn_X_101_32x8d_FPN_3x.yaml...\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/opt/conda/lib/python3.10/site-packages/appjsonify/weights/publaynet/X101/DLA_mask_rcnn_X_101_32x8d_FPN_3x.yaml: 592B [00:00, 1.29MB/s]                   \n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\tDownload complete.\n",
+      "\t/opt/conda/lib/python3.10/site-packages/appjsonify/weights/publaynet/X101/model_final_trimmed.pth does not exist. Download the file.\n",
+      "    Downloading a file from https://www.dropbox.com/sh/1098ym6vhad4zi6/AAD8Y-SVN6EbfAWEDYuZHG8xa/model_final_trimmed.pth?dl=1 to /opt/conda/lib/python3.10/site-packages/appjsonify/weights/publaynet/X101/model_final_trimmed.pth...\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/opt/conda/lib/python3.10/site-packages/appjsonify/weights/publaynet/X101/model_final_trimmed.pth: 100%|██████████| 410M/410M [00:09<00:00, 43.9MB/s]\n",
+      "/opt/conda/lib/python3.10/site-packages/appjsonify/weights/configs/Base-RCNN-FPN.yaml: 1.29kB [00:00, 4.31MB/s]                 \n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\tDownload complete.\n",
+      "\t/opt/conda/lib/python3.10/site-packages/appjsonify/weights/configs/Base-RCNN-FPN.yaml does not exist. Download the file.\n",
+      "    Downloading a file from https://raw.githubusercontent.com/facebookresearch/detectron2/cbbc1ce26473cb2a5cc8f58e8ada9ae14cb41052/configs/Base-RCNN-FPN.yaml to /opt/conda/lib/python3.10/site-packages/appjsonify/weights/configs/Base-RCNN-FPN.yaml...\n",
+      "\tDownload complete.\n",
+      "\t/opt/conda/lib/python3.10/site-packages/appjsonify/weights/docbank/X101/X101.yaml does not exist. Download the file.\n",
+      "    Downloading a file from https://layoutlm.blob.core.windows.net/docbank/model_zoo/X101.zip?sv=2022-11-02&ss=b&srt=o&sp=r&se=2033-06-08T16:48:15Z&st=2023-06-08T08:48:15Z&spr=https&sig=a9VXrihTzbWyVfaIDlIT1Z0FoR1073VB0RLQUMuudD4%3D to /opt/conda/lib/python3.10/site-packages/appjsonify/weights/docbank/X101.zip...\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/opt/conda/lib/python3.10/site-packages/appjsonify/weights/docbank/X101.zip: 100%|██████████| 748M/748M [00:14<00:00, 55.2MB/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\tDownload complete.\n",
+      "\tUnzipped weights.\n",
+      "\tDeleted original downloaded file.\n",
+      "\t/opt/conda/lib/python3.10/site-packages/appjsonify/weights/docbank/X101/model.pth exists. Use the downloaded file.\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "  0%|          | 0/1 [00:00<?, ?it/s]/opt/conda/lib/python3.10/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3483.)\n",
+      "  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]\n",
+      "100%|██████████| 1/1 [02:36<00:00, 156.18s/it]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 2: remove_illegal_tokens\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00,  2.58it/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 3: remove_meta\n",
+      "\tThe followings will use the default value as they are not specified or unchanged!\n",
+      "\t\tfooter_offset:\t80\n",
+      "\t\tleft_side_offset:\t40\n",
+      "\t\tright_side_offset:\t40\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00, 157.28it/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 4: extract_lines\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00,  6.56it/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 5: extract_captions_with_ml\n",
+      "\tThe followings will use the default value as they are not specified or unchanged!\n",
+      "\t\tcaption_overlap_threshold:\t0.5\n",
+      "\t\ttable_start_ptn_str:\tTable [0-9]+:\n",
+      "\t\tfigure_start_ptn_str:\tFigure [0-9]+:\n",
+      "\t\tpreset_table_caption_pos:\tbelow\n",
+      "\t\tpreset_figure_caption_pos:\tbelow\n",
+      "\t\tcaption_assignment_threshold:\t75.0\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00, 316.31it/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "No matched object for the caption: \"Dataset split ((train + val) / test ≈ 80%/20%).\"!\n",
+      "Now running 6: remove_figures_with_ml\n",
+      "\tThe followings will use the default value as they are not specified or unchanged!\n",
+      "\t\tobject_bbox_offset:\t25\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00, 576.77it/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 7: remove_tables_with_ml\n",
+      "\tThe followings will use the default value as they are not specified or unchanged!\n",
+      "\t\tobject_bbox_offset:\t25\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00, 880.23it/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 8: remove_equations_with_ml\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00, 1661.77it/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 9: extract_footnotes_with_ml\n",
+      "\tThe followings will use the default value as they are not specified or unchanged!\n",
+      "\t\tfootnote_overlap_threshold:\t0.5\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00, 1328.99it/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 10: extract_footnotes\n",
+      "\tThe followings will use the default value as they are not specified or unchanged!\n",
+      "\t\tcaption_font_size:\tNone\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00, 126.02it/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 11: remove_lines_by_objects\n",
+      "\tThe followings will use the default value as they are not specified or unchanged!\n",
+      "\t\tobject_bbox_offset:\t25\n",
+      "\t\tremove_by_rect:\tFalse\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00, 23.99it/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 12: extract_paragraphs\n",
+      "\tThe followings will use the default value as they are not specified or unchanged!\n",
+      "\t\ty_offset:\t4\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00, 58.05it/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 13: detect_sections\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00, 101.56it/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 14: concat_columns\n",
+      "\tThe followings will use the default value as they are not specified or unchanged!\n",
+      "\t\tcolumn_offset:\t300\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00, 167.69it/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 15: concat_pages\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00, 49.87it/s]\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Now running 16: dump_formatted_doc\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|██████████| 1/1 [00:00<00:00, 519.93it/s]\n"
+     ]
+    }
+   ],
+   "source": [
+    "import subprocess\n",
+    "\n",
+    "def convert_pdf_to_json(pdf_path, output_dir, paper_type):\n",
+    "    command = f'appjsonify {pdf_path} {output_dir} --paper_type {paper_type} --output_image_dir {image_dir} --save_image'\n",
+    "    subprocess.run(command, shell=True)\n",
+    "    \n",
+    "pdf_path = '/kaggle/input/testkg/11418476.pdf'\n",
+    "output_dir = '/kaggle/working/output'\n",
+    "image_dir = '/kaggle/working/output'\n",
+    "paper_type = 'AAAI'\n",
+    "\n",
+    "convert_pdf_to_json(pdf_path, output_dir, paper_type)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "93a5a1ad",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-04-14T14:01:22.482620Z",
+     "iopub.status.busy": "2024-04-14T14:01:22.482237Z",
+     "iopub.status.idle": "2024-04-14T14:01:35.607965Z",
+     "shell.execute_reply": "2024-04-14T14:01:35.606878Z"
+    },
+    "papermill": {
+     "duration": 13.220924,
+     "end_time": "2024-04-14T14:01:35.610228",
+     "exception": false,
+     "start_time": "2024-04-14T14:01:22.389304",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Looking in links: https://dl.fbaipublicfiles.com/detectron2/wheels/cu113/torch1.10/index.html\r\n",
+      "Requirement already satisfied: detectron2 in /opt/conda/lib/python3.10/site-packages (0.6)\r\n",
+      "Requirement already satisfied: Pillow>=7.1 in /opt/conda/lib/python3.10/site-packages (from detectron2) (10.3.0)\r\n",
+      "Requirement already satisfied: matplotlib in /opt/conda/lib/python3.10/site-packages (from detectron2) (3.7.5)\r\n",
+      "Requirement already satisfied: pycocotools>=2.0.2 in /opt/conda/lib/python3.10/site-packages (from detectron2) (2.0.7)\r\n",
+      "Requirement already satisfied: termcolor>=1.1 in /opt/conda/lib/python3.10/site-packages (from detectron2) (2.4.0)\r\n",
+      "Requirement already satisfied: yacs>=0.1.8 in /opt/conda/lib/python3.10/site-packages (from detectron2) (0.1.8)\r\n",
+      "Requirement already satisfied: tabulate in /opt/conda/lib/python3.10/site-packages (from detectron2) (0.9.0)\r\n",
+      "Requirement already satisfied: cloudpickle in /opt/conda/lib/python3.10/site-packages (from detectron2) (2.2.1)\r\n",
+      "Requirement already satisfied: tqdm>4.29.0 in /opt/conda/lib/python3.10/site-packages (from detectron2) (4.66.1)\r\n",
+      "Requirement already satisfied: tensorboard in /opt/conda/lib/python3.10/site-packages (from detectron2) (2.15.1)\r\n",
+      "Requirement already satisfied: fvcore<0.1.6,>=0.1.5 in /opt/conda/lib/python3.10/site-packages (from detectron2) (0.1.5.post20221221)\r\n",
+      "Requirement already satisfied: iopath<0.1.10,>=0.1.7 in /opt/conda/lib/python3.10/site-packages (from detectron2) (0.1.9)\r\n",
+      "Requirement already satisfied: omegaconf<2.4,>=2.1 in /opt/conda/lib/python3.10/site-packages (from detectron2) (2.3.0)\r\n",
+      "Requirement already satisfied: hydra-core>=1.1 in /opt/conda/lib/python3.10/site-packages (from detectron2) (1.3.2)\r\n",
+      "Requirement already satisfied: black in /opt/conda/lib/python3.10/site-packages (from detectron2) (24.4.0)\r\n",
+      "Requirement already satisfied: packaging in /opt/conda/lib/python3.10/site-packages (from detectron2) (24.0)\r\n",
+      "Requirement already satisfied: numpy in /opt/conda/lib/python3.10/site-packages (from fvcore<0.1.6,>=0.1.5->detectron2) (1.26.4)\r\n",
+      "Requirement already satisfied: pyyaml>=5.1 in /opt/conda/lib/python3.10/site-packages (from fvcore<0.1.6,>=0.1.5->detectron2) (6.0.1)\r\n",
+      "Requirement already satisfied: antlr4-python3-runtime==4.9.* in /opt/conda/lib/python3.10/site-packages (from hydra-core>=1.1->detectron2) (4.9.3)\r\n",
+      "Requirement already satisfied: portalocker in /opt/conda/lib/python3.10/site-packages (from iopath<0.1.10,>=0.1.7->detectron2) (2.8.2)\r\n",
+      "Requirement already satisfied: contourpy>=1.0.1 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2) (1.2.0)\r\n",
+      "Requirement already satisfied: cycler>=0.10 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2) (0.12.1)\r\n",
+      "Requirement already satisfied: fonttools>=4.22.0 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2) (4.47.0)\r\n",
+      "Requirement already satisfied: kiwisolver>=1.0.1 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2) (1.4.5)\r\n",
+      "Requirement already satisfied: pyparsing>=2.3.1 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2) (3.1.1)\r\n",
+      "Requirement already satisfied: python-dateutil>=2.7 in /opt/conda/lib/python3.10/site-packages (from matplotlib->detectron2) (2.9.0.post0)\r\n",
+      "Requirement already satisfied: click>=8.0.0 in /opt/conda/lib/python3.10/site-packages (from black->detectron2) (8.1.7)\r\n",
+      "Requirement already satisfied: mypy-extensions>=0.4.3 in /opt/conda/lib/python3.10/site-packages (from black->detectron2) (1.0.0)\r\n",
+      "Requirement already satisfied: pathspec>=0.9.0 in /opt/conda/lib/python3.10/site-packages (from black->detectron2) (0.12.1)\r\n",
+      "Requirement already satisfied: platformdirs>=2 in /opt/conda/lib/python3.10/site-packages (from black->detectron2) (4.2.0)\r\n",
+      "Requirement already satisfied: tomli>=1.1.0 in /opt/conda/lib/python3.10/site-packages (from black->detectron2) (2.0.1)\r\n",
+      "Requirement already satisfied: typing-extensions>=4.0.1 in /opt/conda/lib/python3.10/site-packages (from black->detectron2) (4.9.0)\r\n",
+      "Requirement already satisfied: absl-py>=0.4 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2) (1.4.0)\r\n",
+      "Requirement already satisfied: grpcio>=1.48.2 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2) (1.51.1)\r\n",
+      "Requirement already satisfied: google-auth<3,>=1.6.3 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2) (2.26.1)\r\n",
+      "Requirement already satisfied: google-auth-oauthlib<2,>=0.5 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2) (1.2.0)\r\n",
+      "Requirement already satisfied: markdown>=2.6.8 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2) (3.5.2)\r\n",
+      "Requirement already satisfied: protobuf<4.24,>=3.19.6 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2) (3.20.3)\r\n",
+      "Requirement already satisfied: requests<3,>=2.21.0 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2) (2.31.0)\r\n",
+      "Requirement already satisfied: setuptools>=41.0.0 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2) (69.0.3)\r\n",
+      "Requirement already satisfied: six>1.9 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2) (1.16.0)\r\n",
+      "Requirement already satisfied: tensorboard-data-server<0.8.0,>=0.7.0 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2) (0.7.2)\r\n",
+      "Requirement already satisfied: werkzeug>=1.0.1 in /opt/conda/lib/python3.10/site-packages (from tensorboard->detectron2) (3.0.2)\r\n",
+      "Requirement already satisfied: cachetools<6.0,>=2.0.0 in /opt/conda/lib/python3.10/site-packages (from google-auth<3,>=1.6.3->tensorboard->detectron2) (4.2.4)\r\n",
+      "Requirement already satisfied: pyasn1-modules>=0.2.1 in /opt/conda/lib/python3.10/site-packages (from google-auth<3,>=1.6.3->tensorboard->detectron2) (0.3.0)\r\n",
+      "Requirement already satisfied: rsa<5,>=3.1.4 in /opt/conda/lib/python3.10/site-packages (from google-auth<3,>=1.6.3->tensorboard->detectron2) (4.9)\r\n",
+      "Requirement already satisfied: requests-oauthlib>=0.7.0 in /opt/conda/lib/python3.10/site-packages (from google-auth-oauthlib<2,>=0.5->tensorboard->detectron2) (1.3.1)\r\n",
+      "Requirement already satisfied: charset-normalizer<4,>=2 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2) (3.3.2)\r\n",
+      "Requirement already satisfied: idna<4,>=2.5 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2) (3.6)\r\n",
+      "Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2) (1.26.18)\r\n",
+      "Requirement already satisfied: certifi>=2017.4.17 in /opt/conda/lib/python3.10/site-packages (from requests<3,>=2.21.0->tensorboard->detectron2) (2024.2.2)\r\n",
+      "Requirement already satisfied: MarkupSafe>=2.1.1 in /opt/conda/lib/python3.10/site-packages (from werkzeug>=1.0.1->tensorboard->detectron2) (2.1.3)\r\n",
+      "Requirement already satisfied: pyasn1<0.6.0,>=0.4.6 in /opt/conda/lib/python3.10/site-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard->detectron2) (0.5.1)\r\n",
+      "Requirement already satisfied: oauthlib>=3.0.0 in /opt/conda/lib/python3.10/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<2,>=0.5->tensorboard->detectron2) (3.2.2)\r\n"
+     ]
+    }
+   ],
+   "source": [
+    "!pip install detectron2 -f \\\n",
+    "  https://dl.fbaipublicfiles.com/detectron2/wheels/cu113/torch1.10/index.html"
+   ]
+  }
+ ],
+ "metadata": {
+  "kaggle": {
+   "accelerator": "none",
+   "dataSources": [
+    {
+     "datasetId": 4794712,
+     "sourceId": 8115635,
+     "sourceType": "datasetVersion"
+    }
+   ],
+   "dockerImageVersionId": 30684,
+   "isGpuEnabled": false,
+   "isInternetEnabled": true,
+   "language": "python",
+   "sourceType": "notebook"
+  },
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.13"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 620.108512,
+   "end_time": "2024-04-14T14:01:36.123534",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "__notebook__.ipynb",
+   "output_path": "__notebook__.ipynb",
+   "parameters": {},
+   "start_time": "2024-04-14T13:51:16.015022",
+   "version": "2.5.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
